@@ -1,0 +1,12 @@
+fitz
+pymupdf
+nltk
+spacy
+sentence-transformers
+faiss-cpu
+sumy
+networkx
+bertopic
+llama-cpp-python
+scikit-learn
+hdbscan
