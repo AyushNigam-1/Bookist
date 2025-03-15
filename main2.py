@@ -1,14 +1,13 @@
-import fitz  # PyMuPDF 
+import fitz  # PyMuPDF
 import json
-from langchain_groq import ChatGroq
-from langchain.schema import HumanMessage
+import ollama
 import os
 from dotenv import load_dotenv
 from markdown_it import MarkdownIt
+from langchain_community.chat_models import ChatOllama
+from langchain.schema import HumanMessage
 
 load_dotenv()
-GROQ_API_KEY = os.getenv("groq_api_key")
-
 
 def extract_json_from_markdown(markdown_text):
     md = MarkdownIt()
@@ -20,31 +19,34 @@ def extract_json_from_markdown(markdown_text):
 
     raise ValueError("No valid JSON block found in the Markdown") 
 
-
-
 class BookistProcessor:
-    def __init__(self, pdf_path, model_name="llama-3.3-70b-versatile", chunk_size=5):
+    def __init__(self, pdf_path, model_name="hf.co/itlwas/Mistral-7B-Instruct-v0.1-Q4_K_M-GGUF:latest", chunk_size=5):
         self.pdf_path = pdf_path
-        self.model = ChatGroq(model_name=model_name)
+        self.model = ChatOllama(model=model_name)
         self.chunk_size = chunk_size
         self.actionable_steps = []
         self.categorized_steps = {}
 
     def extract_text(self):
         doc = fitz.open(self.pdf_path)
-        pages = [page.get_text() for page in doc][:40]  
-        print(len(pages))
+        pages = [page.get_text() for page in doc][:10] 
+        print(len(pages)) 
         return ["\n".join(pages[i:i+self.chunk_size]) for i in range(0, len(pages), self.chunk_size)]
 
+    def call_ollama(self, prompt):
+        print(prompt)
+        response = self.model([HumanMessage(content=prompt)])
+        return response.content
+
     def extract_actionable_steps(self, text_chunk):
-        prompt = (
-        f"""
+        prompt = f"""
         Extract only the most precise and actionable steps from the following text in JSON format.
         The response should be a JSON object with a key "steps" containing a list of action items.
         Ensure there is no extra text outside the JSON format.
 
         Text:
         {text_chunk}
+        
         Preferred Markdown structure:
         ```json
         {{
@@ -54,22 +56,21 @@ class BookistProcessor:
             "Actionable step 3"
         ]
         }}
+        ```
         """
-        )
-        response = self.model.invoke([HumanMessage(content=prompt)])
-        print(response.content)
-        return extract_json_from_markdown(response.content)
+        print('calling ollama')
+        response = self.call_ollama(prompt)
+        return extract_json_from_markdown(response)
 
     def categorize_steps(self):
-        prompt = (
-        f"""
+        prompt = f"""
         Categorize the following actionable steps into broad topics and return the result in JSON format.
         The response should be a JSON object where each key is a category and the value is a list of steps.
         Ensure there is no extra text outside the JSON format.
 
         Actionable Steps:
         {json.dumps(self.actionable_steps)}
-        
+
         Preferred Markdown structure:
         ```json
         {{
@@ -82,20 +83,20 @@ class BookistProcessor:
             "Step 4"
         ]
         }}
+        ```
         """
-        )
-        response = self.model.invoke([HumanMessage(content=prompt)])
-        return extract_json_from_markdown(response.content)
+        response = self.call_ollama(prompt)
+        return extract_json_from_markdown(response)
 
     def order_hierarchy(self):
-        prompt = (
-        f"""
+        prompt = f"""
         Arrange the topics in a logical order and return the ordered structure in JSON format.
         The response should be a JSON object where each key is a topic and its value is the ordered list of steps.
         Ensure there is no extra text outside the JSON format.
 
         Categorized Steps:
         {json.dumps(self.categorized_steps)}
+
         Preferred Markdown structure:
         ```json
         {{
@@ -108,10 +109,10 @@ class BookistProcessor:
             "Step 4"
         ]
         }}
+        ```
         """
-        )
-        response = self.model.invoke([HumanMessage(content=prompt)])
-        return extract_json_from_markdown(response.content)
+        response = self.call_ollama(prompt)
+        return extract_json_from_markdown(response)
 
     def process_book(self):
         text_chunks = self.extract_text()
@@ -131,11 +132,9 @@ class BookistProcessor:
         with open("ordered_hierarchy.json", "w") as f:
             json.dump(ordered_hierarchy, f, indent=4)
 
-        # return ordered_hierarchy
-    
 def run_process(pdf_path):
     processor = BookistProcessor(pdf_path)
-    hierarchy = processor.process_book()
-    print("Final Structured Data:", json.dumps(hierarchy, indent=2))
+    processor.process_book()
+    print("Processing complete. Check JSON files for results.")
 
 run_process("TheLeanStartup.pdf")

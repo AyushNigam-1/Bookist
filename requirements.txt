@@ -12,3 +12,4 @@ scikit-learn
 hdbscan
 langchain
 langchain_community
+markdown-it-py
