@@ -1,0 +1,74 @@
+{
+    "Product Development": [
+        {
+            "step": "Build a minimum viable product to test your idea quickly",
+            "Real-life example": "Airbnb launched with a single listing, allowing the founders to test their idea and gather feedback before scaling up"
+        },
+        {
+            "step": "Ship your product to customers before it's fully polished and charge money for it",
+            "Real-life example": "Dropbox launched a beta version of its cloud storage service, allowing users to pay for additional storage and providing valuable feedback for improvement"
+        },
+        {
+            "step": "Change your product constantly based on customer feedback and experimentation",
+            "Real-life example": "Netflix constantly updates its user interface and content offerings based on user behavior and feedback, leading to a highly personalized experience"
+        },
+        {
+            "step": "Run experiments on your customers to validate your product and overall vision",
+            "Real-life example": "Amazon regularly runs A/B tests on its website, trying out different layouts, features, and recommendations to optimize the user experience and increase sales"
+        },
+        {
+            "step": "Use the Build-Measure-Learn feedback loop to turn ideas into products and learn from customer responses",
+            "Real-life example": "Airbnb used this loop to develop its platform, starting with a simple air mattress rental service and iterating based on user feedback to become a global accommodations marketplace"
+        },
+        {
+            "step": "Use a minimum viable product to test leap-of-faith assumptions and iterate on your product",
+            "Real-life example": "Dropbox released a minimum viable product as a video showcasing its potential, which helped the company gauge interest and refine its product before launching the full version"
+        }
+    ],
+    "Decision Making": [
+        {
+            "step": "Use a scientific approach to making decisions and measuring progress",
+            "Real-life example": "Google uses data-driven decision making, relying on metrics such as user engagement and click-through rates to inform product development and marketing strategies"
+        },
+        {
+            "step": "Implement a new accounting system to evaluate progress and decide whether to pivot or persevere",
+            "Real-life example": "Intuit implemented a new accounting system to track key metrics and make data-driven decisions, allowing the company to pivot its strategy and focus on high-growth areas"
+        }
+    ],
+    "Customer Feedback and Innovation": [
+        {
+            "step": "Focus on what customers want without directly asking them",
+            "Real-life example": "Apple observes customer behavior and preferences, using this information to design innovative products like the iPhone and iPad that meet unmet needs"
+        },
+        {
+            "step": "Apply lean thinking to the process of innovation to reduce waste and increase efficiency",
+            "Real-life example": "Toyota applies lean principles to its product development process, eliminating waste and maximizing value for customers through continuous improvement and iteration"
+        },
+        {
+            "step": "Conduct frequent experiments to test elements of your vision and validate learning scientifically",
+            "Real-life example": "Amazon conducts frequent A/B testing experiments to validate new features and products, such as its 1-Click ordering button, which was tested and refined based on customer feedback"
+        },
+        {
+            "step": "Adopt innovation accounting to measure progress, set up milestones, and prioritize work",
+            "Real-life example": "Google uses innovation accounting to measure the progress of its innovative projects, such as Google X, and prioritize work based on key metrics and milestones"
+        }
+    ],
+    "Mindset and Approach": [
+        {
+            "step": "Embrace a growth mindset, focusing on learning and improvement",
+            "Real-life example": "Microsoft's CEO, Satya Nadella, prioritizes a growth mindset, encouraging employees to learn from failures and experiment with new ideas"
+        },
+        {
+            "step": "Prioritize experimentation and learning over perfection",
+            "Real-life example": "Facebook's early motto was 'Move Fast and Break Things,' reflecting a mindset that prioritizes rapid experimentation and learning over perfection"
+        },
+        {
+            "step": "Apply the Lean Startup principles to your business to improve success rates",
+            "Real-life example": "Instagram applied Lean Startup principles to its development, rapidly iterating and refining its product based on user feedback to become a successful and widely-used social media platform"
+        },
+        {
+            "step": "Focus on validated learning to build a sustainable business, rather than just making products or money",
+            "Real-life example": "Warby Parker focuses on validated learning, using customer feedback and data to inform its product development and marketing strategies, and build a sustainable and socially responsible business model"
+        }
+    ]
+}
