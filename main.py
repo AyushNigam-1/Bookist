@@ -44,51 +44,99 @@ class BookistProcessor:
             json.dump(data, f, indent=4)
                     
     def process_chunk(self, text_chunk):
-        actionable_steps = self.extract_actionable_steps(text_chunk)
-        categorized_steps = self.categorize_steps(actionable_steps)
-        real_life_examples = self.generate_real_life_examples(categorized_steps)
-        self.merge_real_life_examples(real_life_examples)
-        # ordered_hierarchy = self.order_hierarchy(categorized_steps)
-        return categorized_steps
+        self.extract_actionable_steps(text_chunk)
+        self.categorize_steps()
+        self.order_hierarchy()
+
     
     def extract_text(self):
         doc = fitz.open(self.pdf_path)
-        pages = [page.get_text() for page in doc][:10]  
+        pages = [page.get_text() for page in doc][:100]  
         print(len(pages))
         return ["\n".join(pages[i:i+self.chunk_size]) for i in range(0, len(pages), self.chunk_size)]
 
     def extract_actionable_steps(self, text_chunk):
         prompt = (
-        f"""
-        Extract only the most precise and actionable steps from the following text in JSON format.
-        The response should be a JSON object with a key "steps" containing a list of action items.
-        Ensure there is no extra text outside the JSON format.
+            f"""
+            Extract only the most precise and actionable steps from the following text in JSON format.
+            Additionally, provide detailed information for each step to illustrate its real-life application.
+            The response should be a valid JSON list where each item is a dictionary containing:
 
-        Text:
-        {text_chunk}
-        Preferred Markdown structure:
-        ```json
-        {{
-        "steps": [
-            "Actionable step 1",
-            "Actionable step 2",
-            "Actionable step 3"
-        ]
-        }}
-        """
+            - "step": The actionable step.
+            - "description": A clear explanation of what the step means.
+            - "example": A real-life example demonstrating the step in action.
+            - "hypothetical_situation": A hypothetical scenario where this step would be relevant.
+            - "recommended_response": The best response or course of action **specifically aligned with the actionable step** to handle the given situation effectively.
+
+            Ensure there is no extra text outside the JSON format.
+
+            Text:
+            {json.dumps(text_chunk)}
+
+            Preferred JSON structure:
+
+            ```json
+            {{
+                "steps": [
+                    {{
+                        "step": "Actionable step 1",
+                        "description": "Clear description about the step",
+                        "example": "Real-life example demonstrating the step",
+                        "hypothetical_situation": "A hypothetical situation based on the extracted step",
+                        "recommended_response": "The best response specifically aligned with this step to handle the situation effectively"
+                    }},
+                    {{
+                        "step": "Actionable step 2",
+                        "description": "Clear description about the step",
+                        "example": "Real-life example demonstrating the step",
+                        "hypothetical_situation": "A hypothetical situation based on the extracted step",
+                        "recommended_response": "The best response specifically aligned with this step to handle the situation effectively"
+                    }}
+                ]
+            }}
+            ```
+            """
         )
-        
-        response = self.model.invoke([HumanMessage(content=prompt)])
-        print(response.content)
-        return extract_json_from_markdown(response.content)
 
-    def categorize_steps(self , actionable_steps):
-        # Load previously categorized steps if they exist
+        response = self.model.invoke([HumanMessage(content=prompt)])
+        new_data = extract_json_from_markdown(response.content)
+        self.actionable_steps = new_data
+
+        if not isinstance(new_data, dict) or "steps" not in new_data or not isinstance(new_data["steps"], list):
+            raise ValueError("Invalid response format: Expected a dictionary with a 'steps' list.")
+
+        try:
+            with open("actionable_steps.json", "r") as f:
+                existing_data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            existing_data = {"steps": []}
+
+        if "steps" not in existing_data:
+            existing_data["steps"] = []
+
+        existing_steps = {step["step"] for step in existing_data["steps"]}
+
+        for step in new_data["steps"]:
+            if step["step"] not in existing_steps:
+                existing_data["steps"].append(step)
+
+        self.save_json_file("actionable_steps.json", existing_data)
+        return new_data
+
+
+
+    def categorize_steps(self): 
         try:
             with open("categorized_steps.json", "r") as f:
                 self.categorized_steps = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
             self.categorized_steps = {}
+
+        if "steps" not in self.actionable_steps or not isinstance(self.actionable_steps["steps"], list):
+            raise ValueError("Invalid format: Expected a dictionary with a 'steps' key containing a list.")
+
+        actionable_steps = self.actionable_steps["steps"]
+        steps_only = [item["step"] for item in actionable_steps]
 
         prompt = (
             f"""
@@ -101,20 +149,21 @@ class BookistProcessor:
             {list(self.categorized_steps.keys())}
 
             New Actionable Steps:
-            {json.dumps(actionable_steps, indent=4)}
+            {json.dumps(steps_only, indent=4)}
 
-            Preferred Markdown structure:
+            Preferred JSON structure:
             ```json
             {{
-            "Category 1": [
-                "Step 1",
-                "Step 2"
-            ],
-            "Category 2": [
-                "Step 3",
-                "Step 4"
-            ]
+                "Category 1": [
+                    "Step 1",
+                    "Step 2"
+                ],
+                "Category 2": [
+                    "Step 3",
+                    "Step 4"
+                ]
             }}
+            ```
             """
         )
 
@@ -129,41 +178,74 @@ class BookistProcessor:
                 raise ValueError(f"Steps under {category} are not a list.")
 
             if category in self.categorized_steps:
-                existing_steps = set(self.categorized_steps[category])
+                existing_steps = {item["step"] for item in self.categorized_steps[category]}
                 new_steps = [step for step in steps if step not in existing_steps]
-                self.categorized_steps[category].extend(new_steps)
+                self.categorized_steps[category].extend(
+                    {
+                        "step": step,
+                        **next(
+                            (
+                                {
+                                    "example": item.get("example", ""),
+                                    "description": item.get("description", ""),
+                                    "hypothetical_situation": item.get("hypothetical_situation", ""),
+                                    "recommended_response": item.get("recommended_response", ""),
+                                }
+                                for item in actionable_steps
+                                if item["step"] == step
+                            ),
+                            {"example": "", "description": "", "hypothetical_situation": "", "recommended_response": ""},
+                        ),
+                    }
+                    for step in new_steps
+                )
             else:
-                self.categorized_steps[category] = steps
+                self.categorized_steps[category] = [
+                    {
+                        "step": step,
+                        **next(
+                            (
+                                {
+                                    "example": item.get("example", ""),
+                                    "description": item.get("description", ""),
+                                    "hypothetical_situation": item.get("hypothetical_situation", ""),
+                                    "recommended_response": item.get("recommended_response", ""),
+                                }
+                                for item in actionable_steps
+                                if item["step"] == step
+                            ),
+                            {"example": "", "description": "", "hypothetical_situation": "", "recommended_response": ""},
+                        ),
+                    }
+                    for step in steps
+                ]
 
-        self.save_json_file("categorized_steps.json",self.categorized_steps)
+        self.save_json_file("categorized_steps.json", self.categorized_steps)
         return new_categories
-
 
     def order_hierarchy(self):
         prompt = (
-        f"""
-        Arrange the topics in a logical order and return the ordered structure in JSON format.
-        The response should be a JSON object where each key is a topic and its value is the ordered list of steps.
-        Ensure there is no extra text outside the JSON format.
+            f"""
+        Given the following list of topics, arrange them in a logical learning hierarchy.
+        The ordering should reflect the most natural progression for understanding the subject, where foundational topics come first, followed by intermediate, and then advanced topics.
+        The output must be a **structured sequence**, ensuring that each topic is positioned based on its prerequisites and dependencies.
 
-        Categorized Steps:
-        {json.dumps(self.categorized_steps)}
-        Preferred Markdown structure:
-        ```json
-        {{
-        "Topic 1": [
-            "Step 1",
-            "Step 2"
-        ],
-        "Topic 2": [
-            "Step 3",
-            "Step 4"
-        ]
-        }}
+        Return only a JSON array of the correctly ordered topics with no extra text.
+
+        Topics:
+        {json.dumps(list(self.categorized_steps.keys()))}
+
+        Preferred JSON format:
+        ["Fundamental Topic", "Intermediate Topic", "Advanced Topic"]
         """
-        )
+    )
+      
         response = self.model.invoke([HumanMessage(content=prompt)])
-        return extract_json_from_markdown(response.content)
+        ordered_topics = json.loads(response.content)
+
+        ordered_steps = {topic: self.categorized_steps[topic] for topic in ordered_topics if topic in self.categorized_steps}
+
+        self.save_json_file("ordered_steps.json", ordered_steps)
     
     def generate_real_life_examples(self,categorized_steps):
         prompt = (
@@ -211,7 +293,6 @@ class BookistProcessor:
             json.dump(self.structured_data, f, indent=4)
         print("Processing complete.")
 
-        # return ordered_hierarchy
     
 def run_process(pdf_path):
     processor = BookistProcessor(pdf_path)
