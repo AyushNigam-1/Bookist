@@ -6,7 +6,7 @@ load_dotenv()
 
 def main():
     root_folder = os.getcwd()
-    pdf_path = os.path.join(root_folder, "TheLeanStartup.pdf")
+    pdf_path = os.path.join(root_folder, "The Lean Startup.pdf")
     processor = BookistProcessor(pdf_path)
     text_chunks = processor.extract_text()
     processor.process(text_chunks)

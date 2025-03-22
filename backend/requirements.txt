@@ -1,15 +1,9 @@
 fitz
 pymupdf
-nltk
-# spacy
-sentence-transformers
-faiss-cpu
-sumy
-networkx
-bertopic
-llama-cpp-python
-scikit-learn
-hdbscan
 langchain
 langchain_community
+langchain_groq
 markdown-it-py
+fastapi
+uvicorn 
+psycopg2-binary
