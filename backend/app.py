@@ -1,4 +1,5 @@
 import psycopg2
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from typing import List, Dict
@@ -113,3 +114,6 @@ def create_book(book_data: Dict):
             conn.close()
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
