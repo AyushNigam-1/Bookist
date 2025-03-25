@@ -7,3 +7,4 @@ markdown-it-py
 fastapi
 uvicorn 
 psycopg2-binary
+python-multipart
