@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface Book {
@@ -13,16 +14,16 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ book }) => {
     return (
-        <div className="w-72 bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700">
+        <div className=" bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-                <img className="rounded-t-lg w-72 h-72 " src={book.thumbnail} alt={book.title} />
+                <img className="rounded-t-lg w-64" src={book.thumbnail} alt={book.title} />
             </a>
             <div className="p-2">
-                <a href="#">
+                <Link href={`categories/${book.title}`}>
                     <h5 className="text-xl font-semibold text-gray-600 dark:text-white">
                         {book.title}
                     </h5>
-                </a>
+                </Link>
                 <p className="text-sm text-gray-500 dark:text-gray-400">by {book.author}</p>
                 <p className="font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
                     {/* {book.description.length > 150 ? `${book.description.substring(0, 150)}...` : book.description} */}

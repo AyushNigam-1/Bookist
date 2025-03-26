@@ -10,6 +10,14 @@ export const getAllBooks = async () => {
         throw error;
     }
 };
+export const getAllCategories = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/get-categories`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
 
 export const getBookContentKeys = async (title: string) => {
     try {
@@ -20,14 +28,24 @@ export const getBookContentKeys = async (title: string) => {
     }
 };
 
-export const getBookContentValue = async (title: string, key: string) => {
+export const getBookContentValue = async (title: string, category: string) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/book/${title}/${key}`);
+        const response = await axios.get(`${API_BASE_URL}/book/${title}/${category}`);
         return response.data;
     } catch (error) {
         throw error;
     }
 };
+
+export async function getStepDetails(title: string, category: string, step: string) {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/book/${title}/${category}/${step}`);
+        return response.data
+    } catch (error) {
+        throw error;
+    }
+
+}
 
 export const createBook = async (bookData: {
     Title: string;

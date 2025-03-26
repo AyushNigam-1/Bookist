@@ -5,7 +5,7 @@ from typing import List, Dict
 from controllers.connection import connect_db
 import json
 from src.processor import BookistProcessor
-
+from src.utils.file_operations import load_json_file
 router = APIRouter()
 
 @router.get("/books", response_model=List[Dict[str, str]])
@@ -44,9 +44,9 @@ def get_content_keys(title: str):
         raise HTTPException(status_code=500, detail="Database connection failed")
 
 
-@router.get("/book/{title}/{key}")
+@router.get("/book/{title}/{key}", response_model=List[Dict[str, str]])
 def get_content_values(title: str, key: str):
-    """Fetches the values of a given key within the content property for a given book title."""
+    """Fetches only steps and description of a given key within the content property for a given book title."""
     conn = connect_db()
     if conn:
         cur = conn.cursor()
@@ -54,17 +54,45 @@ def get_content_values(title: str, key: str):
         book_data = cur.fetchone()
         cur.close()
         conn.close()
+
         if book_data:
             content = book_data[0]
             if key in content:
-                return content[key]
+                steps = content[key]
+                return [{"step": step["step"], "description": step["description"]} for step in steps]
             else:
                 raise HTTPException(status_code=404, detail="Key not found in content")
         else:
             raise HTTPException(status_code=404, detail="Book not found")
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
+    
+@router.get("/book/{title}/{category}/{step}")
+def get_step_details(title: str, category: str, step: str):
+    """Fetches full details of a specific step within a category for a given book."""
+    conn = connect_db()
+    if conn:
+        cur = conn.cursor()
+        cur.execute("SELECT content FROM book WHERE title = %s;", (title,))
+        book_data = cur.fetchone()
+        cur.close()
+        conn.close()
 
+        if book_data:
+            content = book_data[0]
+            if category in content:
+                steps = content[category]
+                for s in steps:
+                    if s["step"] == step:
+                        return s  # Return full details of the step
+                raise HTTPException(status_code=404, detail="Step not found")
+            else:
+                raise HTTPException(status_code=404, detail="Category not found in content")
+        else:
+            raise HTTPException(status_code=404, detail="Book not found")
+    else:
+        raise HTTPException(status_code=500, detail="Database connection failed")
+    
 @router.post("/books/")
 def create_book(book_data: Dict):
     conn = connect_db()
@@ -113,3 +141,13 @@ def process_book(
     book_data = processor.process()
 
     return create_book(book_data)
+
+@router.get("/get-categories")
+def extract_json_keys():
+    """Extracts all keys from a JSON file."""
+    try:
+        content = load_json_file("","categories.json",{})
+        keys = list(content.keys())
+        return keys
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=400, detail="Invalid JSON file")
