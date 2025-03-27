@@ -55,7 +55,7 @@ const Page = () => {
                 </form>
 
             </div>
-            <ul className="flex flex-col gap-2" >
+            <ul className="flex flex-col gap-4" >
 
                 {categories ? (
                     categories.map((category, index) => (

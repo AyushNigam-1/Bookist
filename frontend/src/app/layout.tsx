@@ -29,13 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-gray-100">
 
-      <body className={`${montserrat.className} antialiased p-2 flex flex-col gap-2`}>
+      <body className={`${montserrat.className} antialiased p-2 flex flex-col gap-4`}>
         <Navbar />
         <div className="grid grid-cols-6 container mx-auto gap-2"  >
-          <div className="col-span-1" >
+          {/* <div className="col-span-1" >
             <Sidebar />
-          </div>
-          <div className="col-span-5" >
+          </div> */}
+          <div className="col-span-6" >
             <div className="w-full">
               {children}
 

@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getStepDetails } from "@/app/services/bookService";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'
 
 export default function StepPage() {
     const { title, category, step } = useParams();
     const [stepDetails, setStepDetails] = useState(null);
     const [error, setError] = useState(null);
+
 
     useEffect(() => {
         if (!title || !category || !step) return;
@@ -28,10 +31,24 @@ export default function StepPage() {
     if (!stepDetails) return <p>Loading...</p>;
 
     return (
-        <div className="p-2">
+        <div className="prose prose-lg text-gray-700">
             <h1 className="text-3xl font-bold text-gray-700">{stepDetails.step}</h1>
             <p className="mt-2 text-lg text-gray-600">{stepDetails.description}</p>
-            <div className="mt-4">
+            <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+
+                components={{
+                    h1: ({ children }) => <h1 className="text-6xl font-bold mt-6 mb-4">{children}</h1>,
+                    h2: ({ children }) => <h2 className="text-3xl font-semibold mt-6 mb-3">{children}</h2>,
+                    h3: ({ children }) => <h3 className="text-xl font-bold text-gray-700 mt-5 mb-2">{children}</h3>,
+                    ul: ({ children }) => <ul className="list-disc ml-6 text-lg">{children}</ul>,
+                    li: ({ children }) => <li className="text-gray-600">{children}</li>,
+                    p: ({ children }) => <p className="text-lg leading-relaxed">{children}</p>,
+                }}
+            >
+                {JSON.parse(stepDetails?.detailed_breakdown)}
+            </ReactMarkdown >
+            {/* <div className="mt-4">
                 <h2 className=" text-gray-600 ">Example</h2>
                 <p className="mt-1  text-xl text-gray-800">{stepDetails.example}</p>
             </div>
@@ -42,8 +59,8 @@ export default function StepPage() {
             <div className="mt-4">
                 <h2 className=" text-gray-600">Recommended Response</h2>
                 <p className="mt-1  text-xl text-gray-800">{stepDetails.recommended_response}</p>
-            </div>
+            </div> */}
 
-        </div>
+        </div >
     );
 }

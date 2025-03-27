@@ -7,8 +7,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white container dark:bg-gray-900  mx-auto p-4 rounded-xl z-20 top-0 start-0 ">
-      <div className=" flex flex-wrap items-center justify-between   ">
+    <nav className=" border-b border-gray-300 dark:bg-gray-900  p-4 z-20 top-0 start-0 ">
+      <div className=" flex flex-wrap items-center justify-between container mx-auto  ">
         <Link href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bookist</span>
         </Link>

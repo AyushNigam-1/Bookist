@@ -26,7 +26,7 @@ const Page = () => {
         console.log("Searching for:", search);
     };
     return (
-        <div className="flex flex-col gap-2 w-full" >
+        <div className="flex flex-col gap-4 w-full" >
             <div className="flex justify-between" >
                 <h4 className="text-4xl font-black text-gray-700" >Explore</h4>
 
