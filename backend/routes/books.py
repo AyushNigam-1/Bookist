@@ -1,27 +1,42 @@
-from fastapi import APIRouter , HTTPException ,UploadFile, File, Form
+from fastapi import APIRouter , HTTPException ,UploadFile, File, Form , Query
 import os
 from fastapi.responses import JSONResponse
-from typing import List, Dict
+from typing import List, Dict , Any
 from controllers.connection import connect_db
 import json
 from src.processor import BookistProcessor
 from src.utils.file_operations import load_json_file
+from typing import List
+
 router = APIRouter()
 
-@router.get("/books", response_model=List[Dict[str, str]])
+@router.get("/books", response_model=List[Dict[str, Any]])
 def get_all_books():
-    """Fetches all book titles, authors, and thumbnails."""
+    """Fetches all book titles, authors, thumbnails, descriptions, and categories."""
     conn = connect_db()
     if conn:
         cur = conn.cursor()
-        cur.execute("SELECT title, author, thumbnail , description FROM book")
+        cur.execute("SELECT title, author, thumbnail, description, category FROM book")
         books = cur.fetchall()
         cur.close()
         conn.close()
-        book_list = [{"title": title, "author": author, "thumbnail": thumbnail , "description":description} for title, author, thumbnail , description in books]
+
+        book_list = []
+        for title, author, thumbnail, description, category in books:
+            if isinstance(category, list):  # PostgreSQL may return a list
+                category = ", ".join(category)  # Convert list to a comma-separated string
+            book_list.append({
+                "title": title,
+                "author": author,
+                "thumbnail": thumbnail,
+                "description": description,
+                "category": category
+            })
+
         return book_list
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
+
 
 
 @router.get("/book/{title}/content_keys", response_model=List[str])
@@ -100,12 +115,13 @@ def create_book(book_data: Dict):
         cur = conn.cursor()
         try:
             cur.execute(
-                "INSERT INTO book (title, author, description, thumbnail, content) VALUES (%s, %s, %s, %s, %s);",
+                "INSERT INTO book (title, author, description, thumbnail,category, content) VALUES (%s, %s,%s, %s, %s, %s);",
                 (
                     book_data["Title"],
                     book_data["Author"],
                     book_data["Description"],
                     book_data["Thumbnail"],
+                    book_data["Category"],
                     json.dumps(book_data["Content"]),
                 ),
             )
@@ -131,7 +147,8 @@ def process_book(
 ):
     root_folder = os.getcwd()
     pdf_path = os.path.join(root_folder, file.filename)
-    
+    category_list = category.split(",")  # Convert string to list
+    category = [c.strip() for c in category_list]  # Remove extra spaces
     with open(pdf_path, "wb") as buffer:
         buffer.write(file.file.read())
     

@@ -3,8 +3,13 @@ from src.utils.pdf_operations import extract_json_from_markdown
 from src.utils.file_operations import save_json_file, load_json_file
 from src.utils.prompts import categorization_prompt
 
-def categorize_steps(folder_path, actionable_steps, category, model):
-    categories = load_json_file("", "categories.json", {})[category]
+def categorize_steps(folder_path, actionable_steps, categories, model):
+    categories_dict = load_json_file("", "categories.json", {})
+    print("categories" , categories)
+    print("categorize_dict" , categories_dict)
+    subcategories = [sub for category in categories for sub in categories_dict[category]]
+    print( "subcategories",subcategories )
+
     categorized_steps = load_json_file(folder_path, "categorized_steps.json", {})
 
     if "steps" not in actionable_steps or not isinstance(actionable_steps["steps"], list):
@@ -13,7 +18,7 @@ def categorize_steps(folder_path, actionable_steps, category, model):
     actionable_steps = actionable_steps["steps"]
     steps_only = [item["step"] for item in actionable_steps]
 
-    prompt = categorization_prompt(categories, steps_only)
+    prompt = categorization_prompt(subcategories, steps_only)
     response = model.invoke([HumanMessage(content=prompt)])
     new_categories = extract_json_from_markdown(response.content)
 

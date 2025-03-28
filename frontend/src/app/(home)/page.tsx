@@ -57,7 +57,7 @@ const Page = () => {
                 </form>
 
             </div>
-            {/* <Categories /> */}
+            <Categories />
             < div className="flex gap-2" >
                 {books.map((book) => (
                     <Card key={book.title} book={book} />

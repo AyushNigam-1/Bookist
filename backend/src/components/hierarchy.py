@@ -5,11 +5,8 @@ import json
 
 def order_hierarchy( folder_name , categorized_steps,model):
     prompt = hierarchy_prompt(categorized_steps)
-    print(prompt)
     response = model.invoke([HumanMessage(content=prompt)])
-    print(response.content)
     ordered_topics = json.loads(response.content)
-    print(ordered_topics)
 
     ordered_steps = {topic: categorized_steps[topic] for topic in ordered_topics if topic in categorized_steps}
 

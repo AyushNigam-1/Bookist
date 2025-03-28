@@ -8,7 +8,6 @@ import React, { useEffect, useState } from "react";
 const Page = () => {
     const params = useParams<{ title?: string }>();
     const [categories, setCategories] = useState<string[] | null>(null);
-
     useEffect(() => {
         const fetchCategories = async () => {
             if (!params?.title) return;
@@ -53,17 +52,27 @@ const Page = () => {
                         />
                     </div>
                 </form>
-
             </div>
-            <ul className="flex flex-col gap-4" >
+            <ul className="grid grid-cols-3 gap-4" >
 
                 {categories ? (
                     categories.map((category, index) => (
-                        <Link href={`/steps/${params.title}/${category}`} key={index} className="bg-white rounded-xl p-3 text-xl text-gray-600" >{category}</Link>
+                        <Link href={`/steps/${params.title}/${category}`} key={index} className="bg-white rounded-xl p-3 col-span-1 flex flex-col justify-center items-center gap-2" >
+                            <span className="text-4xl bg-gray-100 p-4 py-5 rounded-full">
+                                {category.split(" ")[0]}
+                            </span>
+                            <h6 className="text-center text-xl font-semibold text-gray-700">
+                                {category.substring(category.indexOf(" ") + 1)}
+                            </h6>
+                            <h5 className="text-md text-center text-gray-500">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quaerat ullam porro nulla harum eligendi quia numquam cupiditate fugit consequatur?
+                            </h5>
+                        </Link>
                     ))
                 ) : (
                     <p>Loading categories...</p>
                 )}
+
             </ul>
         </div>
     );

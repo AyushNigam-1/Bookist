@@ -144,6 +144,7 @@ def hierarchy_prompt(categorized_steps):
 
     Preferred JSON format:
     ["Fundamental Topic", "Intermediate Topic", "Advanced Topic"]
+    
     **Return only a JSON array of the correctly ordered topics with no extra text.**
     """
 )
