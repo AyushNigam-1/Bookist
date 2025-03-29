@@ -5,16 +5,22 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
+type Categories = {
+    name: String,
+    icon: String,
+    description: String,
+}
+
 const Page = () => {
     const params = useParams<{ title?: string }>();
-    const [categories, setCategories] = useState<string[] | null>(null);
+    const [categories, setCategories] = useState<Categories[] | null>(null);
     useEffect(() => {
         const fetchCategories = async () => {
             if (!params?.title) return;
             try {
                 const fetchedCategories = await getBookContentKeys(params.title);
+                console.log(fetchedCategories)
                 setCategories(fetchedCategories);
-                console.log(fetchedCategories);
             } catch (error) {
                 console.error("Error fetching categories:", error);
             }
@@ -46,26 +52,28 @@ const Page = () => {
                             id="simple-search"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                             placeholder="Search branch name..."
                             required
                         />
                     </div>
                 </form>
             </div>
+            <hr className="border-gray-300" />
+
             <ul className="grid grid-cols-3 gap-4" >
 
                 {categories ? (
                     categories.map((category, index) => (
-                        <Link href={`/steps/${params.title}/${category}`} key={index} className="bg-white rounded-xl p-3 col-span-1 flex flex-col justify-center items-center gap-2" >
+                        <Link href={`/steps/${params.title}/${category.name}`} key={index} className="bg-white rounded-xl p-3 col-span-1 flex flex-col justify-center items-center gap-2" >
                             <span className="text-4xl bg-gray-100 p-4 py-5 rounded-full">
-                                {category.split(" ")[0]}
+                                {category.icon}
                             </span>
                             <h6 className="text-center text-xl font-semibold text-gray-700">
-                                {category.substring(category.indexOf(" ") + 1)}
+                                {category.name}
                             </h6>
                             <h5 className="text-md text-center text-gray-500">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quaerat ullam porro nulla harum eligendi quia numquam cupiditate fugit consequatur?
+                                {category.description}
                             </h5>
                         </Link>
                     ))

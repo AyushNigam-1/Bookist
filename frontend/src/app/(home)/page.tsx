@@ -43,7 +43,7 @@ const Page = () => {
                             id="simple-search"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 "
                             placeholder="Search branch name..."
                             required
                         />
@@ -57,7 +57,7 @@ const Page = () => {
                 </form>
 
             </div>
-            <Categories />
+            {/* <Categories /> */}
             < div className="flex gap-2" >
                 {books.map((book) => (
                     <Card key={book.title} book={book} />

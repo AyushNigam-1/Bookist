@@ -5,10 +5,11 @@ from src.utils.prompts import categorization_prompt
 
 def categorize_steps(folder_path, actionable_steps, categories, model):
     categories_dict = load_json_file("", "categories.json", {})
-    print("categories" , categories)
-    print("categorize_dict" , categories_dict)
-    subcategories = [sub for category in categories for sub in categories_dict[category]]
-    print( "subcategories",subcategories )
+
+    subcategories = {key: value
+    for category in categories
+    for key, value in categories_dict[category].items()
+}
 
     categorized_steps = load_json_file(folder_path, "categorized_steps.json", {})
 
@@ -18,21 +19,22 @@ def categorize_steps(folder_path, actionable_steps, categories, model):
     actionable_steps = actionable_steps["steps"]
     steps_only = [item["step"] for item in actionable_steps]
 
-    prompt = categorization_prompt(subcategories, steps_only)
+    prompt = categorization_prompt(subcategories.keys(), steps_only)
     response = model.invoke([HumanMessage(content=prompt)])
     new_categories = extract_json_from_markdown(response.content)
 
     if not isinstance(new_categories, dict):
         raise ValueError("Categorization response is not a valid dictionary.")
-
+    print(new_categories)
     for category, steps in new_categories.items():
         if not isinstance(steps, list):
             raise ValueError(f"Steps under {category} are not a list.")
 
         if category in categorized_steps:
-            existing_steps = {item["step"] for item in categorized_steps[category]}
+            print("if")
+            existing_steps = {item["step"] for item in categorized_steps[category]['steps']}
             new_steps = [step for step in steps if step not in existing_steps]
-            categorized_steps[category].extend(
+            categorized_steps[category]['steps'].extend(
                 {
                     "step": step,
                     **next(
@@ -50,7 +52,10 @@ def categorize_steps(folder_path, actionable_steps, categories, model):
                 for step in new_steps
             )
         else:
-            categorized_steps[category] = [
+            categorized_steps[category] = {}
+            categorized_steps[category]['icon'] = subcategories[category]['icon']
+            categorized_steps[category]['description'] = subcategories[category]['description']
+            categorized_steps[category]['steps'] = [
                 {
                     "step": step,
                     **next(

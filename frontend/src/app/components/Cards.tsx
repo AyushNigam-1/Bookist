@@ -18,21 +18,21 @@ const Card: React.FC<CardProps> = ({ book }) => {
     const router = useRouter();
 
     return (
-        <div className=" bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700">
+        <div className=" rounded-lg ">
             <a href="#">
-                <img className="rounded-t-lg w-64" src={book.thumbnail} alt={book.title} />
+                <img className="rounded-lg h-80" src={book.thumbnail} alt={book.title} />
             </a>
-            <div className="p-2">
+            <div className="py-2">
                 <button onClick={() => {
                     sessionStorage.setItem("bookData", JSON.stringify(book));
                     router.push(`/overview/${book.title}`);
                 }}>
-                    <h5 className="text-xl font-semibold text-gray-600 dark:text-white">
+                    <h5 className="text-xl font-semibold text-gray-600">
                         {book.title}
                     </h5>
                 </button>
-                <p className="text-sm text-gray-500 dark:text-gray-400">by {book.author}</p>
-                <p className="font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
+                <p className="text-sm text-gray-500 "> {book.author}</p>
+                <p className="font-normal text-gray-700 line-clamp-4">
                     {/* {book.description.length > 150 ? `${book.description.substring(0, 150)}...` : book.description} */}
                 </p>
                 {/* <a

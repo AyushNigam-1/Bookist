@@ -1,6 +1,8 @@
 "use client"
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import remarkGfm from "remark-gfm";
+import ReactMarkdown from 'react-markdown';
 
 const Overview = () => {
     const [book, setBook] = useState<any>(null);
@@ -20,14 +22,17 @@ const Overview = () => {
                 <div className="flex flex-col gap-4 w-full">
                     <div className="flex flex-col gap-1" >
 
-                        <h1 className="text-gray-600 font-black text-4xl">{book?.title}</h1>
+                        <h1 className="text-gray-600 font-bold text-4xl">{book?.title}</h1>
                         <p className=" text-gray-600 ">  {book?.author}</p>
                     </div>
                     <div className="flex gap-2" >
-                        {book?.category.split(",").map((category: any) => <h4 className="border border-gray-300 p-1 px-3 rounded-xl w-min text-nowrap text-sm flex gap-1 items-center" ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" />
-                        </svg>{category} </h4>)}
+                        {book?.category.split(",").map((category: any, index: Number) => <h4 className="border border-gray-300 p-1 px-3 rounded-xl w-min text-nowrap text-sm flex gap-1 items-center"
+                            key={String(index)} >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" />
+                            </svg>{category}
+                        </h4>)}
                     </div>
                     <div className="flex gap-2 justify-between w-full">
                         <div className="flex gap-2">
@@ -64,14 +69,27 @@ const Overview = () => {
                 </div>
             </div>
             <hr className="border-gray-300" />
-            <p className="text-md text-gray-600" >
+            {/* <p className="text-md text-gray-600" >
                 About Book
-            </p>
-            <p className="text-xl text-gray-600 font-medium">{book?.description}</p>
-            <p className="text-md text-gray-600" >
+            </p> */}
+            <div className="text-xl text-gray-600 font-medium">
+                <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+
+                // components={{
+                //     h1: ({ children }) => <h1 className="text-6xl font-bold mt-6 mb-4">{children}</h1>,
+                //     h2: ({ children }) => <h2 className="text-3xl font-semibold mt-6 mb-3">{children}</h2>,
+                //     h3: ({ children }) => <h3 className="text-xl font-bold text-gray-700 mt-5 mb-2">{children}</h3>,
+                //     ul: ({ children }) => <ul className="list-disc ml-6 text-lg">{children}</ul>,
+                //     li: ({ children }) => <li className="text-gray-600">{children}</li>,
+                //     p: ({ children }) => <p className="text-lg leading-relaxed">{children}</p>,
+                // }}
+                >{book?.description}</ReactMarkdown>
+            </div>
+            {/* <p className="text-md text-gray-600" >
                 About Author
             </p>
-            <p className="text-xl text-gray-600 font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque sunt quidem nostrum inventore neque, molestiae eligendi officiis earum! Ipsa laudantium iste accusamus? Similique molestiae dolore aut alias! Dolorum molestiae voluptatibus dolorem quo deserunt et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel repellendus aspernatur reprehenderit iusto, voluptatibus tempora eum aperiam, hic laboriosam ab, enim eveniet! Aliquam libero illo nisi unde laboriosam placeat ducimus voluptate incidunt dignissimos ipsum error dolorum in necessitatibus praesentium eveniet, doloremque eos atque quasi cumque.</p>
+            <p className="text-xl text-gray-600 font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque sunt quidem nostrum inventore neque, molestiae eligendi officiis earum! Ipsa laudantium iste accusamus? Similique molestiae dolore aut alias! Dolorum molestiae voluptatibus dolorem quo deserunt et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel repellendus aspernatur reprehenderit iusto, voluptatibus tempora eum aperiam, hic laboriosam ab, enim eveniet! Aliquam libero illo nisi unde laboriosam placeat ducimus voluptate incidunt dignissimos ipsum error dolorum in necessitatibus praesentium eveniet, doloremque eos atque quasi cumque.</p> */}
         </div>
     );
 };

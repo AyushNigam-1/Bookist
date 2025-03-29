@@ -1,0 +1,428 @@
+{
+    "Travel & Exploration": [
+        {
+            "icon": "⛰️",
+            "name": "Adventure Travel",
+            "description": "Exploring thrilling experiences like hiking, rafting, and extreme sports."
+        },
+        {
+            "icon": "🗺️",
+            "name": "Cultural Travel",
+            "description": "Immersing in local traditions, history, and cultural experiences."
+        },
+        {
+            "icon": "🚶",
+            "name": "Solo Travel",
+            "description": "Traveling alone for self-discovery, independence, and adventure."
+        },
+        {
+            "icon": "🎒",
+            "name": "Backpacking & Budget Travel",
+            "description": "Exploring destinations affordably with minimal expenses."
+        },
+        {
+            "icon": "💎",
+            "name": "Luxury Travel",
+            "description": "Experiencing high-end accommodations, fine dining, and premium services."
+        },
+        {
+            "icon": "🛣️",
+            "name": "Road Trips & Overlanding",
+            "description": "Traveling by road, exploring destinations at your own pace."
+        },
+        {
+            "icon": "🏕️",
+            "name": "Expedition & Survival Travel",
+            "description": "Challenging expeditions into extreme or remote locations."
+        },
+        {
+            "icon": "🌱",
+            "name": "Eco-Tourism & Sustainable Travel",
+            "description": "Traveling with minimal environmental impact and supporting conservation."
+        },
+        {
+            "icon": "✈️",
+            "name": "Travel Hacking & Cheap Flights",
+            "description": "Strategies for finding the best travel deals and saving on flights."
+        },
+        {
+            "icon": "🏛️",
+            "name": "Historical Travel & Heritage Sites",
+            "description": "Visiting historical landmarks, ancient ruins, and cultural heritage sites."
+        },
+        {
+            "icon": "🍽️",
+            "name": "Food & Culinary Travel",
+            "description": "Exploring global cuisines and unique dining experiences."
+        },
+        {
+            "icon": "🕌",
+            "name": "Spiritual & Pilgrimage Travel",
+            "description": "Visiting sacred sites and exploring spiritual journeys."
+        },
+        {
+            "icon": "🐘",
+            "name": "Wildlife & Safari Travel",
+            "description": "Observing animals in their natural habitats and exploring wildlife reserves."
+        },
+        {
+            "icon": "🏙️",
+            "name": "Urban Exploration & City Travel",
+            "description": "Discovering vibrant cities, architecture, and local lifestyles."
+        },
+        {
+            "icon": "🏝️",
+            "name": "Island & Beach Travel",
+            "description": "Relaxing on tropical islands, enjoying sun, sand, and ocean views."
+        },
+        {
+            "icon": "⛰️",
+            "name": "Mountain & Trekking Adventures",
+            "description": "Exploring mountain ranges and embarking on trekking expeditions."
+        },
+        {
+            "icon": "🚀",
+            "name": "Space Exploration & Astro-Tourism",
+            "description": "Exploring space-related tourism and future space travel possibilities."
+        },
+        {
+            "icon": "🏜️",
+            "name": "Extreme Travel & Remote Destinations",
+            "description": "Visiting the world's most isolated and extreme locations."
+        },
+        {
+            "icon": "💻",
+            "name": "Digital Nomad & Work Travel",
+            "description": "Traveling while working remotely and embracing a location-independent lifestyle."
+        },
+        {
+            "icon": "👨‍👩‍👧‍👦",
+            "name": "Family & Group Travel",
+            "description": "Planning and enjoying travel experiences with family and groups."
+        },
+        {
+            "icon": "📷",
+            "name": "Travel Photography & Videography",
+            "description": "Capturing stunning visuals and documenting travel experiences."
+        },
+        {
+            "icon": "📝",
+            "name": "Travel Writing & Blogging",
+            "description": "Sharing travel stories, guides, and experiences through writing."
+        },
+        {
+            "icon": "⚕️",
+            "name": "Travel Safety & Health",
+            "description": "Tips for staying safe, healthy, and prepared while traveling."
+        },
+        {
+            "icon": "🤝",
+            "name": "Cultural Etiquette & Adaptation",
+            "description": "Understanding and respecting local customs and social norms."
+        },
+        {
+            "icon": "🗿",
+            "name": "Mythology & Legends of Travel Destinations",
+            "description": "Exploring the myths, legends, and folklore of travel destinations."
+        },
+        {
+            "icon": "🛄",
+            "name": "Travel Logistics & Planning",
+            "description": "Organizing itineraries, transportation, visas, and trip essentials."
+        }
+    ],
+    "Law & Ethics": [
+        {
+            "icon": "📜",
+            "name": "Constitutional Law",
+            "description": "Laws that define government structure, individual rights, and state powers."
+        },
+        {
+            "icon": "🚔",
+            "name": "Criminal Law",
+            "description": "Laws related to crimes, punishments, and justice systems."
+        },
+        {
+            "icon": "🏛️",
+            "name": "Civil Law",
+            "description": "Legal disputes between individuals, organizations, and private rights."
+        },
+        {
+            "icon": "🏢",
+            "name": "Corporate & Business Law",
+            "description": "Laws governing businesses, corporate governance, and commerce."
+        },
+        {
+            "icon": "✍️",
+            "name": "Contract Law",
+            "description": "Legal agreements, obligations, and enforceability of contracts."
+        },
+        {
+            "icon": "🔏",
+            "name": "Intellectual Property Law",
+            "description": "Protection of inventions, trademarks, copyrights, and patents."
+        },
+        {
+            "icon": "🌍",
+            "name": "International Law",
+            "description": "Legal frameworks governing relationships between nations."
+        },
+        {
+            "icon": "🕊️",
+            "name": "Human Rights Law",
+            "description": "Laws protecting fundamental human rights and freedoms."
+        },
+        {
+            "icon": "🌱",
+            "name": "Environmental Law",
+            "description": "Regulations for environmental protection and sustainability."
+        },
+        {
+            "icon": "👷‍♂️",
+            "name": "Labor & Employment Law",
+            "description": "Laws governing workers' rights, wages, and workplace conditions."
+        },
+        {
+            "icon": "💰",
+            "name": "Tax Law",
+            "description": "Legal rules on taxation, compliance, and financial regulations."
+        },
+        {
+            "icon": "🏠",
+            "name": "Real Estate & Property Law",
+            "description": "Laws related to property ownership, leasing, and land disputes."
+        },
+        {
+            "icon": "👨‍👩‍👧",
+            "name": "Family Law",
+            "description": "Laws governing marriage, divorce, custody, and family matters."
+        },
+        {
+            "icon": "⚖️",
+            "name": "Tort Law & Personal Injury",
+            "description": "Legal claims for harm, negligence, and compensation."
+        },
+        {
+            "icon": "🖥️",
+            "name": "Cyber Law & Digital Privacy",
+            "description": "Legal aspects of internet rights, cybersecurity, and digital privacy."
+        },
+        {
+            "icon": "🤖",
+            "name": "AI & Technology Law",
+            "description": "Regulations for artificial intelligence, automation, and emerging tech."
+        },
+        {
+            "icon": "🏥",
+            "name": "Healthcare & Medical Law",
+            "description": "Laws governing medical ethics, patient rights, and healthcare regulations."
+        },
+        {
+            "icon": "🛒",
+            "name": "Consumer Protection Law",
+            "description": "Laws ensuring fair trade practices and consumer rights."
+        },
+        {
+            "icon": "📊",
+            "name": "Ethics in Business",
+            "description": "Legal and ethical considerations in corporate decision-making."
+        },
+        {
+            "icon": "📚",
+            "name": "Legal Philosophy & Jurisprudence",
+            "description": "Theories and principles behind laws and legal systems."
+        },
+        {
+            "icon": "✊",
+            "name": "Social Justice & Legal Reforms",
+            "description": "Legal efforts to address inequality, discrimination, and reforms."
+        },
+        {
+            "icon": "🤖⚖️",
+            "name": "Ethics in AI & Technology",
+            "description": "Moral and legal implications of AI, automation, and digital ethics."
+        },
+        {
+            "icon": "🎭",
+            "name": "Media & Entertainment Law",
+            "description": "Laws governing film, music, digital content, and media rights."
+        },
+        {
+            "icon": "🎖️",
+            "name": "Ethical Leadership & Decision Making",
+            "description": "Legal responsibilities in leadership, governance, and corporate ethics."
+        },
+        {
+            "icon": "📢",
+            "name": "Whistleblowing & Corporate Accountability",
+            "description": "Legal protections for whistleblowers and corporate ethics enforcement."
+        },
+        {
+            "icon": "⚕️",
+            "name": "Ethics in Medicine & Bioethics",
+            "description": "Legal aspects of medical research, biotechnology, and patient rights."
+        },
+        {
+            "icon": "📖",
+            "name": "Philosophy of Law",
+            "description": "Fundamental legal principles and their philosophical underpinnings."
+        },
+        {
+            "icon": "🚨",
+            "name": "Law Enforcement & Criminal Justice",
+            "description": "Legal systems, policing, and criminal justice policies."
+        },
+        {
+            "icon": "🔐",
+            "name": "Privacy & Data Protection Laws",
+            "description": "Regulations on data privacy, digital security, and personal information protection."
+        }
+    ],
+    " Environment & Sustainability": [
+        {
+            "icon": "🔥",
+            "name": "Climate Change & Global Warming",
+            "description": "Understanding climate change, its causes, effects, and mitigation strategies."
+        },
+        {
+            "icon": "☀️",
+            "name": "Renewable Energy & Clean Technology",
+            "description": "Exploring solar, wind, hydro, and other renewable energy solutions."
+        },
+        {
+            "icon": "🌱",
+            "name": "Sustainable Development",
+            "description": "Balancing economic growth with environmental and social responsibility."
+        },
+        {
+            "icon": "🦜",
+            "name": "Biodiversity & Conservation",
+            "description": "Protecting species, habitats, and maintaining ecosystem balance."
+        },
+        {
+            "icon": "🚯",
+            "name": "Pollution Control & Waste Management",
+            "description": "Strategies to reduce pollution and manage waste effectively."
+        },
+        {
+            "icon": "💧",
+            "name": "Water Conservation & Management",
+            "description": "Ensuring sustainable use and protection of freshwater resources."
+        },
+        {
+            "icon": "🌲",
+            "name": "Forestry & Deforestation",
+            "description": "Managing forests, preventing deforestation, and promoting reforestation."
+        },
+        {
+            "icon": "🌾",
+            "name": "Sustainable Agriculture & Food Systems",
+            "description": "Eco-friendly farming practices and sustainable food production."
+        },
+        {
+            "icon": "⚖️",
+            "name": "Environmental Policy & Law",
+            "description": "Legal frameworks for environmental protection and sustainability."
+        },
+        {
+            "icon": "🏢",
+            "name": "Eco-Friendly Business & Green Economy",
+            "description": "Sustainable business practices and green economic strategies."
+        },
+        {
+            "icon": "🌎",
+            "name": "Carbon Footprint Reduction",
+            "description": "Reducing greenhouse gas emissions and promoting carbon neutrality."
+        },
+        {
+            "icon": "♻️",
+            "name": "Circular Economy & Recycling",
+            "description": "Minimizing waste through reuse, recycling, and sustainable production."
+        },
+        {
+            "icon": "🏙️",
+            "name": "Urban Sustainability & Smart Cities",
+            "description": "Developing smart, sustainable urban environments."
+        },
+        {
+            "icon": "🐘",
+            "name": "Wildlife Protection & Endangered Species",
+            "description": "Conserving endangered species and protecting natural habitats."
+        },
+        {
+            "icon": "🌊",
+            "name": "Ocean Conservation & Marine Ecosystems",
+            "description": "Protecting oceans, marine biodiversity, and reducing pollution."
+        },
+        {
+            "icon": "🛍️",
+            "name": "Ethical Consumerism & Sustainable Living",
+            "description": "Making conscious choices for a sustainable lifestyle."
+        },
+        {
+            "icon": "🚆",
+            "name": "Sustainable Transportation",
+            "description": "Eco-friendly transport solutions and reducing emissions."
+        },
+        {
+            "icon": "🏠",
+            "name": "Energy Efficiency & Green Building",
+            "description": "Designing energy-efficient homes and sustainable infrastructure."
+        },
+        {
+            "icon": "🌿",
+            "name": "Ecosystem Restoration",
+            "description": "Restoring damaged ecosystems for long-term sustainability."
+        },
+        {
+            "icon": "📜",
+            "name": "Environmental Ethics & Philosophy",
+            "description": "Exploring ethical approaches to environmental responsibility."
+        },
+        {
+            "icon": "🏞️",
+            "name": "Natural Resource Management",
+            "description": "Sustainable use and conservation of natural resources."
+        },
+        {
+            "icon": "🛫",
+            "name": "Sustainable Tourism & Ecotourism",
+            "description": "Promoting responsible travel that benefits the environment."
+        },
+        {
+            "icon": "⚖️",
+            "name": "Climate Justice & Environmental Equity",
+            "description": "Addressing environmental impacts on vulnerable communities."
+        },
+        {
+            "icon": "📢",
+            "name": "Environmental Education & Awareness",
+            "description": "Raising awareness and educating people about sustainability."
+        },
+        {
+            "icon": "🌳",
+            "name": "Deforestation & Reforestation Strategies",
+            "description": "Combating deforestation through reforestation and conservation efforts."
+        },
+        {
+            "icon": "🏭",
+            "name": "Impact of Industrialization on Nature",
+            "description": "Assessing industrial activities and their environmental impact."
+        },
+        {
+            "icon": "🚮",
+            "name": "Waste Reduction & Zero-Waste Lifestyle",
+            "description": "Minimizing waste and adopting sustainable living practices."
+        },
+        {
+            "icon": "🌬️",
+            "name": "Air Quality & Emission Control",
+            "description": "Improving air quality by reducing pollutants and emissions."
+        },
+        {
+            "icon": "🔄",
+            "name": "Renewable Resource Management",
+            "description": "Ensuring sustainable use of renewable natural resources."
+        }
+    ]
+}

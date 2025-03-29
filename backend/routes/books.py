@@ -39,7 +39,7 @@ def get_all_books():
 
 
 
-@router.get("/book/{title}/content_keys", response_model=List[str])
+@router.get("/book/{title}/content_keys", response_model=List[Dict[str, str]])
 def get_content_keys(title: str):
     """Fetches the keys of the content property for a given book title."""
     conn = connect_db()
@@ -49,17 +49,24 @@ def get_content_keys(title: str):
         book_data = cur.fetchone()
         cur.close()
         conn.close()
-        if book_data:
-            content = book_data[0]  # content is jsonb type.
-            keys = list(content.keys())
-            return keys
-        else:
+        if not book_data:
             raise HTTPException(status_code=404, detail="Book not found")
+
+        content = book_data[0]  # Assuming content is stored as JSONB in PostgreSQL
+        result = [
+            {
+                "name": key,
+                "icon": value.get("icon", ""),
+                "description": value.get("description", "")
+            }
+            for key, value in content.items()
+        ]
+        return result
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
 
 
-@router.get("/book/{title}/{key}", response_model=List[Dict[str, str]])
+@router.get("/book/{title}/{key}")
 def get_content_values(title: str, key: str):
     """Fetches only steps and description of a given key within the content property for a given book title."""
     conn = connect_db()
@@ -69,11 +76,11 @@ def get_content_values(title: str, key: str):
         book_data = cur.fetchone()
         cur.close()
         conn.close()
-
+        print(book_data[0])
         if book_data:
             content = book_data[0]
             if key in content:
-                steps = content[key]
+                steps = content[key]['steps']
                 return [{"step": step["step"], "description": step["description"]} for step in steps]
             else:
                 raise HTTPException(status_code=404, detail="Key not found in content")
@@ -96,7 +103,7 @@ def get_step_details(title: str, category: str, step: str):
         if book_data:
             content = book_data[0]
             if category in content:
-                steps = content[category]
+                steps = content[category]['steps']
                 for s in steps:
                     if s["step"] == step:
                         return s  # Return full details of the step

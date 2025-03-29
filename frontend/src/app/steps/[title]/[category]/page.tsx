@@ -1,4 +1,5 @@
 "use client"
+import Slider from '@/app/components/Swipe';
 import { getBookContentValue } from '@/app/services/bookService';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -15,7 +16,7 @@ interface StepData {
 export default function Page() {
     const params = useParams<{ title?: string, category?: string }>();
     const [steps, setSteps] = useState<StepData[] | null>(null);
-
+    const [mode, setModel] = useState<String>("Swipe")
     useEffect(() => {
         const fetchCategories = async () => {
             if (!params?.title || !params?.category) return;
@@ -39,7 +40,7 @@ export default function Page() {
     };
     return (
         <div className="flex flex-col gap-4">
-            <div className="flex justify-between " >
+            {mode == "Swipe" ? <div className="text-2xl absolute font-black text-gray-600 flex justify-center container mx-auto p-3 z-40" >Insights</div> : <div className={`flex justify-between `} >
                 <h4 className="text-4xl font-black text-gray-600" >Insights</h4>
                 <form onSubmit={handleSubmit} className="flex items-center ">
                     <label htmlFor="simple-search" className="sr-only">Search</label>
@@ -54,27 +55,34 @@ export default function Page() {
                             id="simple-search"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                             placeholder="Search branch name..."
                             required
                         />
                     </div>
                 </form>
+                {/* <Link href="/swipelayout" >
+                    Swipe Layout
+                </Link> */}
+            </div>}
 
-            </div>
-            <div className="grid-cols-3 grid gap-4" >
-                {steps ? (
+            <hr className={`border-gray-300 ${mode == 'Swipe' ? "hidden" : ""}`} />
+
+            {/* <div className="grid-cols-3 grid gap-4" > */}
+            {steps && (
+                <Slider steps={steps} />
+            )}
+            {/* {steps ? (
                     steps.map((step, index) => (
                         <Link href={`/step/${params.title}/${params.category}/${step.step}`} key={index} className="bg-white rounded-xl  col-span-1 p-3 flex-col flex gap-4" >
                             <div className='flex flex-col gap-2' >
-                                <h4 className='text-gray-700 font-semibold text-2xl line-clamp-1'>
-                                    {step.step}
+                                <h4 className='text-gray-700 font-semibold text-xl line-clamp-1'>
+                                    {index + 1}. {step.step}
                                 </h4>
-                                <h6 className='text-gray-600 mt-auto text-lg'>
+                                <h6 className='text-gray-600 mt-auto line-clamp-2'>
                                     {step.description}
                                 </h6>
                             </div>
-                            {/* <hr /> */}
                             <div className="flex gap-2 justify-between">
                                 <div className='flex gap-2 '>
                                     <button
@@ -110,9 +118,9 @@ export default function Page() {
                     ))
                 ) : (
                     <p>Loading...</p>
-                )}
+                )} */}
 
-            </div>
+            {/* </div> */}
         </div>
 
     );

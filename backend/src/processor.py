@@ -32,6 +32,7 @@ class BookistProcessor:
         for chunk in text_chunks:
             extracted_steps = extract_actionable_steps(self.folder_path, self.model, chunk)
             categorized_steps = categorize_steps(self.folder_path, extracted_steps,self.metadata["Category"], self.model)
+            print("categorized_steps",categorized_steps)
             order_hierarchy(self.folder_path, categorized_steps, self.model)
         file = load_json_file(self.pdf_name,"ordered_steps.json",{})
         self.metadata["Content"] = file

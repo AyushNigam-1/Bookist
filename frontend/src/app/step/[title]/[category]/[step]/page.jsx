@@ -32,7 +32,7 @@ export default function StepPage() {
 
     return (
         <div className="prose prose-lg text-gray-700">
-            <h1 className="text-3xl font-bold text-gray-700">{stepDetails.step}</h1>
+            <h1 className="text-3xl font-bold text-gray-700 ">{stepDetails.step}</h1>
             <p className="mt-2 text-lg text-gray-600">{stepDetails.description}</p>
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
