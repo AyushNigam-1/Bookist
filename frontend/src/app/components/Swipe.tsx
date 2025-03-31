@@ -4,21 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-// const steps = [
-//     { title: "Step 1", description: "This is step 1." },
-//     { title: "Step 2", description: "This is step 2." },
-//     { title: "Step 3", description: "This is step 3." },
-// ];
 
 interface StepData {
     step: string;
-    // example: string;
     description: string;
-    // recommended_response: string;
-    // hypothetical_situation: string;
 }
 
-export default function Slider({ steps, title, category }: any) {
+export default function Slider({ steps, title, category, setMode }: any) {
     const [index, setIndex] = useState(0);
     console.log(steps)
     const swipe = (direction: any) => {
@@ -67,7 +59,7 @@ export default function Slider({ steps, title, category }: any) {
                     >
                         <div className="flex justify-between absolute  top-0 w-full p-3" >
                             <h6 className="text-2xl font-black text-gray-600   z-40" >Insights</h6>
-                            <button className="text-2xl top-0  font-black text-gray-600   z-40" ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <button onClick={() => setMode('List')} className="text-2xl top-0  font-black text-gray-600   z-40" ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
                             </svg>
                             </button>

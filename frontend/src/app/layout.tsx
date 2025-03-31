@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-gray-100">
 
-      <body className={`${montserrat.className} antialiased p-2 flex flex-col gap-4`}>
+      <body className={`${montserrat.className} antialiased p-2 flex flex-col `}>
         <Navbar />
         <div className="grid grid-cols-6 container mx-auto gap-2"  >
           {/* <div className="col-span-1" >

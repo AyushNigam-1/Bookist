@@ -35,37 +35,39 @@ const Page = () => {
         console.log("Searching for:", search);
     };
     return (
-        <div className="flex flex-col gap-4">
-            <div className="flex justify-between " >
-                <h4 className="lg:text-4xl font-black text-gray-700 text-2xl" >Categories</h4>
+        <div className="flex flex-col ">
+            <div className="sticky top-0 bg-gray-100 bg-opacity-80 backdrop-blur-md z-10 ">
+                <div className="flex justify-between py-4 items-center" >
+                    <h4 className="lg:text-4xl font-black text-gray-700 text-2xl" >Categories</h4>
 
-                <form onSubmit={handleSubmit} className="md:flex items-center hidden">
-                    <label htmlFor="simple-search" className="sr-only">Search</label>
-                    <div className="relative w-full">
-                        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
-                            </svg>
+                    <form onSubmit={handleSubmit} className="md:flex items-center hidden">
+                        <label htmlFor="simple-search" className="sr-only">Search</label>
+                        <div className="relative w-full">
+                            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
+                                </svg>
+                            </div>
+                            <input
+                                type="text"
+                                id="simple-search"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
+                                placeholder="Search branch name..."
+                                required
+                            />
                         </div>
-                        <input
-                            type="text"
-                            id="simple-search"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                            placeholder="Search branch name..."
-                            required
-                        />
-                    </div>
-                </form>
-                <button className="md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
-                </button>
+                    </form>
+                    <button className="md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                    </button>
+                </div>
             </div>
-            <hr className="border-gray-300" />
+            {/* <hr className="border-gray-300" /> */}
 
-            <ul className="grid md:grid-cols-3 gap-4" >
+            <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4" >
 
                 {categories ? (
                     categories.map((category, index) => (

@@ -22,7 +22,7 @@ const Overview = () => {
                 <img src={book?.thumbnail} className=" absolute blur-md md:hidden -p-2 rounded-xl mx-auto shadow-md h-72 w-full object-cover  md:h-56 md:w-auto" alt={book?.title} />
                 <div className="flex flex-col gap-3 md:gap-4 w-full">
                     <div className="flex flex-col gap-1 md:items-start" >
-                        <h1 className="text-gray-600 font-bold text-2xl md:text-4xl">{book?.title}</h1>
+                        <h1 className="text-gray-600 font-bold text-3xl md:text-4xl">{book?.title}</h1>
                         <p className=" text-gray-600 text-sm md:text-lg">  {book?.author}  </p>
                     </div>
 
@@ -35,12 +35,12 @@ const Overview = () => {
                             </svg>{category}
                         </h4>)}
                     </div>
-                    <span className="flex items-center text-gray-800 gap-1 px-3 border border-gray-300 w-min text-nowrap p-1 rounded-full text-sm" >
+                    {/* <span className="flex items-center text-gray-800 gap-1 px-3 border border-gray-300 w-min text-nowrap p-1 rounded-full text-sm" >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
                         </svg>
                         4.5 / 5
-                    </span>
+                    </span> */}
                     <div className="flex gap-2 justify-between w-full">
                         <div className="flex gap-2 justify-between md:justify-normal w-full">
                             <button
@@ -65,7 +65,8 @@ const Overview = () => {
                             <Link
                                 href={`/categories/${book?.title} `}
                                 type="button"
-                                className="text-white bg-gray-600  focus:outline-none  py-3 md:py-2 px-4 rounded-lg text-lg md:w-min w-[96vw] font-semibold flex md:relative bottom-4 md:bottom-0  gap-1 items-center justify-center fixed ">
+                                className="text-white bg-gray-600  focus:outline-none  py-3 md:py-2 px-4 rounded-lg md:w-min w-[96vw] font-semibold flex md:relative bottom-4 md:bottom-0  gap-2 items-center justify-center fixed ">
+
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
                                 </svg>
