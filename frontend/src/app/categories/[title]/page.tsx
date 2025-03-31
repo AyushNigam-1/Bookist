@@ -37,9 +37,9 @@ const Page = () => {
     return (
         <div className="flex flex-col gap-4">
             <div className="flex justify-between " >
-                <h4 className="text-4xl font-black text-gray-600" >Categories</h4>
+                <h4 className="lg:text-4xl font-black text-gray-700 text-2xl" >Categories</h4>
 
-                <form onSubmit={handleSubmit} className="flex items-center ">
+                <form onSubmit={handleSubmit} className="md:flex items-center hidden">
                     <label htmlFor="simple-search" className="sr-only">Search</label>
                     <div className="relative w-full">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -58,10 +58,14 @@ const Page = () => {
                         />
                     </div>
                 </form>
+                <button className="md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+                </button>
             </div>
             <hr className="border-gray-300" />
 
-            <ul className="grid grid-cols-3 gap-4" >
+            <ul className="grid md:grid-cols-3 gap-4" >
 
                 {categories ? (
                     categories.map((category, index) => (

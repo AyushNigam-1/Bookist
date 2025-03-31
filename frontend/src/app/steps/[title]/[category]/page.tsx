@@ -16,7 +16,7 @@ interface StepData {
 export default function Page() {
     const params = useParams<{ title?: string, category?: string }>();
     const [steps, setSteps] = useState<StepData[] | null>(null);
-    const [mode, setModel] = useState<String>("Swipe")
+    const [mode, setMode] = useState<String>("Swipe")
     useEffect(() => {
         const fetchCategories = async () => {
             if (!params?.title || !params?.category) return;
@@ -40,7 +40,7 @@ export default function Page() {
     };
     return (
         <div className="flex flex-col gap-4">
-            {mode == "Swipe" ? <div className="text-2xl absolute font-black text-gray-600 flex justify-center container mx-auto p-3 z-40" >Insights</div> : <div className={`flex justify-between `} >
+            {mode !== "Swipe" && <div className={`flex justify-between `} >
                 <h4 className="text-4xl font-black text-gray-600" >Insights</h4>
                 <form onSubmit={handleSubmit} className="flex items-center ">
                     <label htmlFor="simple-search" className="sr-only">Search</label>
@@ -69,10 +69,8 @@ export default function Page() {
             <hr className={`border-gray-300 ${mode == 'Swipe' ? "hidden" : ""}`} />
 
             {/* <div className="grid-cols-3 grid gap-4" > */}
-            {steps && (
-                <Slider steps={steps} />
-            )}
-            {/* {steps ? (
+            {mode == 'Swipe' ? steps && <Slider steps={steps} title={params.title} category={params.category} mode={mode} /> : <>
+                {steps ? (
                     steps.map((step, index) => (
                         <Link href={`/step/${params.title}/${params.category}/${step.step}`} key={index} className="bg-white rounded-xl  col-span-1 p-3 flex-col flex gap-4" >
                             <div className='flex flex-col gap-2' >
@@ -118,7 +116,9 @@ export default function Page() {
                     ))
                 ) : (
                     <p>Loading...</p>
-                )} */}
+                )}
+            </>}
+
 
             {/* </div> */}
         </div>

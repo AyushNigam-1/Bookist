@@ -20,9 +20,9 @@ const Card: React.FC<CardProps> = ({ book }) => {
     return (
         <div className=" rounded-lg ">
             <a href="#">
-                <img className="rounded-lg h-80" src={book.thumbnail} alt={book.title} />
+                <img className="rounded-lg " src={book.thumbnail} alt={book.title} />
             </a>
-            <div className="py-2">
+            <div className="md:py-2 py-1">
                 <button onClick={() => {
                     sessionStorage.setItem("bookData", JSON.stringify(book));
                     router.push(`/overview/${book.title}`);

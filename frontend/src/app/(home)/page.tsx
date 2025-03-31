@@ -10,6 +10,7 @@ const Page = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
+                console.log("called")
                 const books = await getAllBooks();
                 setBooks(books);
                 console.log(books)
@@ -28,9 +29,9 @@ const Page = () => {
     return (
         <div className="flex flex-col gap-4 w-full" >
             <div className="flex justify-between" >
-                <h4 className="text-4xl font-black text-gray-700" >Explore</h4>
+                <h4 className="lg:text-4xl font-black text-gray-700 text-2xl" >Explore</h4>
 
-                <form onSubmit={handleSubmit} className="flex items-center ">
+                <form onSubmit={handleSubmit} className="md:flex items-center hidden">
                     <label htmlFor="simple-search" className="sr-only">Search</label>
                     <div className="relative w-full">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -48,17 +49,15 @@ const Page = () => {
                             required
                         />
                     </div>
-                    {/* <button type="submit" className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                        <span className="sr-only">Search</span>
-                    </button> */}
-                </form>
 
+                </form>
+                <button className="md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+                </button>
             </div>
             {/* <Categories /> */}
-            < div className="flex gap-2" >
+            < div className="grid lg:grid-cols-4 grid-cols-2" >
                 {books.map((book) => (
                     <Card key={book.title} book={book} />
                 ))}
