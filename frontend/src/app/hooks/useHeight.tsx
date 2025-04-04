@@ -1,23 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const useHeight = (elementId: string) => {
-    const [remainingHeight, setRemainingHeight] = useState<number>(0);
+const useElementHeight = (elementId: string): number | null => {
+    const [height, setHeight] = useState<number | null>(null);
 
     useEffect(() => {
         const updateHeight = () => {
             const element = document.getElementById(elementId);
             if (element) {
-                const elementTop = element.getBoundingClientRect().top;
-                setRemainingHeight(window.innerHeight - elementTop - 8);
+                setHeight(window.innerHeight - element.getBoundingClientRect().top - 8);
             }
         };
 
-        updateHeight();
+        updateHeight(); // Run once on mount
+
         window.addEventListener("resize", updateHeight);
-        return () => window.removeEventListener("resize", updateHeight);
+
+        return () => {
+            window.removeEventListener("resize", updateHeight);
+        };
     }, [elementId]);
 
-    return remainingHeight;
+    return height;
 };
 
-export default useHeight;
+export default useElementHeight;

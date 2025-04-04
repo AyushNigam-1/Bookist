@@ -7,17 +7,21 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className=" border-b border-gray-300 py-1 lg:p-4 z-20 top-0 start-0 ">
+    <nav className=" border-b border-gray-300 pb-2 lg:pb-3 z-20 top-0 start-0 ">
       <div className=" flex flex-wrap items-center justify-between container mx-auto  ">
-        <Link href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-xl text-gray-700  font-semibold whitespace-nowrap ">Bevice</span>
-        </Link>
+        {/* <Link href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse"> */}
+        <span className="self-center text-2xl text-gray-700  font-semibold whitespace-nowrap ">
+          {/* <img src="logo.png" className="w-28" /> */}
+          {/* <h2 className="font-sans "></h2> */}
+          Bewise
+        </span>
+        {/* </Link> */}
 
-        <div className="flex gap-2">
-          {/* 
+        <div className="flex gap-2  ">
+
           <button
             type="button"
-            className="text-white bg-gray-600  focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center"
+            className="text-white hidden bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800 focus:outline-none rounded-lg px-4 py-2 font-semibold md:flex gap-2 items-center"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
@@ -27,18 +31,18 @@ const Navbar = () => {
           </button>
           <button
             type="button"
-            className="text-white bg-gray-600  focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center"
+            className="text-white hidden  bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800 focus:outline-none rounded-lg px-4 py-2 font-semibold md:flex  gap-2 items-center"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
             </svg>
 
             Signup
-          </button> */}
+          </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
-            className="inline-flex items-center  justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 "
+            className="inline-flex items-center justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 "
             aria-controls="navbar-sticky"
             aria-expanded={isOpen}
           >
@@ -55,7 +59,7 @@ const Navbar = () => {
 
             <button
               type="button"
-              className="text-white bg-gray-600 w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
+              className="text-white  bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
@@ -65,7 +69,7 @@ const Navbar = () => {
             </button>
             <button
               type="button"
-              className="text-white bg-gray-600 w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
+              className="text-white  bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />

@@ -17,13 +17,18 @@ const Categories = () => {
         };
         fetchBooks();
     }, []);
+    const handleGenreChange = (newGenres: string[]) => {
+        setCategories(newGenres);
+        // refetch({ genres: newGenres });
+    };
     const handleSelection = (category: string) => {
         const updatedGenres = selectedCategories.includes(category)
             ? selectedCategories.filter(g => g !== category)
             : [...selectedCategories, category];
 
-        // onGenreChange(updatedGenres);
+        handleGenreChange(updatedGenres);
     };
+
     return (
         <div>
             <div className='flex flex-col gap-4 overflow-visible ' >

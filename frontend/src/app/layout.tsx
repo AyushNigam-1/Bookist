@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+// import Sidebar from "./components/Sidebar";
 import { Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
@@ -29,18 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-gray-100">
 
-      <body className={`${montserrat.className} antialiased p-2 flex flex-col `}>
+      <body className={`${montserrat.className} antialiased p-3 flex flex-col h-screen`}>
         <Navbar />
-        <div className="grid grid-cols-6 container mx-auto gap-2"  >
-          {/* <div className="col-span-1" >
+        {/* <div className="grid grid-cols-6 container mx-auto gap-2 "  > */}
+        {/* <div className="col-span-1" >
             <Sidebar />
           </div> */}
-          <div className="col-span-6" >
-            <div className="w-full">
-              {children}
+        {/* <div className="col-span-6" > */}
+        <div className="w-full container mx-auto">
+          {children}
 
-            </div>
-          </div>
+          {/* </div> */}
+          {/* </div> */}
         </div>
       </body>
     </html>
