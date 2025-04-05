@@ -11,6 +11,7 @@ type Categories = {
     name: String,
     icon: String,
     description: String,
+    steps_count: String
 }
 
 const Page = () => {
@@ -21,6 +22,7 @@ const Page = () => {
             if (!params?.title) return;
             try {
                 const fetchedCategories = await getBookContentKeys(params.title);
+                console.log(fetchedCategories)
                 setCategories(fetchedCategories);
             } catch (error) {
                 console.error("Error fetching categories:", error);
@@ -50,16 +52,21 @@ const Page = () => {
 
                 {
                     categories?.map((category, index) => (
-                        <Link href={`/steps/${params.title}/${category.name}`} key={index} className="bg-gray-200 rounded-xl p-3 col-span-1 flex flex-col justify-center items-center gap-2" >
+                        <Link href={`/steps/${params.title}/${category.name}`} key={index} className="bg-gray-200 rounded-xl p-3 col-span-1 flex flex-col justify-center items-center gap-3" >
                             <span className="text-4xl bg-gray-100 p-4 py-5 rounded-full">
                                 {category.icon}
                             </span>
                             <h6 className="text-center text-xl font-semibold text-gray-700">
                                 {category.name}
                             </h6>
+
+
                             <h5 className="text-md text-center text-gray-500">
                                 {category.description}
                             </h5>
+                            <h6 className="text-center text-sm bg-gray-100 mt-auto p-1 rounded-lg px-2 text-gray-700">
+                                {category.steps_count} Insight Available
+                            </h6>
                         </Link>
                     ))
                 }

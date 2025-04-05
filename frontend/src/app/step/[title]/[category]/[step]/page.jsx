@@ -31,9 +31,9 @@ export default function StepPage() {
     if (!stepDetails) return <p>Loading...</p>;
 
     return (
-        <div className="prose prose-lg text-gray-700">
+        <div className="prose prose-lg text-gray-700 mt-2">
             <h1 className="text-3xl font-bold text-gray-700 ">{stepDetails.step}</h1>
-            <p className="mt-2 text-lg text-gray-600">{stepDetails.description}</p>
+            <p className=" text-lg text-gray-600">{stepDetails.description}</p>
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
 

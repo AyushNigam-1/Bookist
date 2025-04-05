@@ -57,7 +57,8 @@ def get_content_keys(title: str):
             {
                 "name": key,
                 "icon": value.get("icon", ""),
-                "description": value.get("description", "")
+                "description": value.get("description", ""),
+                "steps_count":str(len(value.get("steps")))
             }
             for key, value in content.items()
         ]
