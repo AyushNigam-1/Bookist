@@ -78,3 +78,11 @@ export const processBook = async (file: File, bookDetails: Record<string, string
         throw error;
     }
 };
+export const getBookInfoByTitle = async (title: string) => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/book/${title}/info`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};

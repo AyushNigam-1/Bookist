@@ -37,6 +37,38 @@ def get_all_books():
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
 
+@router.get("/book/{title}/info")
+def get_book_info(title: str):
+    print(title)
+
+    conn = connect_db()
+    if conn:
+        cur = conn.cursor()
+        cur.execute("SELECT content, description , author ,  thumbnail , category FROM book WHERE title = %s;", (title,))
+        result = cur.fetchone()
+        cur.close()
+        conn.close()
+
+        if not result:
+            raise HTTPException(status_code=404, detail="Book not found")
+
+        content, description , author ,  thumbnail , category = result
+
+        num_keys = len(content)
+        categories = ", ".join(category)
+        total_steps = sum(len(content[key].get("steps", [])) for key in list(content.keys()))
+
+        return {
+            "title": title,
+            "thumbnail": thumbnail,
+            "author" :author,
+            "description": description,
+            "sub_categories_count": num_keys,
+            "total_insights": total_steps,
+            "categories": categories
+        }
+    else:
+        raise HTTPException(status_code=500, detail="Database connection failed")
 
 
 @router.get("/book/{title}/content_keys", response_model=List[Dict[str, str]])

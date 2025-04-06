@@ -15,7 +15,7 @@ const Loader = () => {
             <div role="status">
                 <svg
                     aria-hidden="true"
-                    className="w-8 h-8 text-gray-400 animate-spin fill-white"
+                    className="w-8 h-8 text-gray-800 animate-spin fill-white"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

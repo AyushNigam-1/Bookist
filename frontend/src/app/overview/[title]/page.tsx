@@ -1,18 +1,22 @@
 "use client"
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import remarkGfm from "remark-gfm";
-import ReactMarkdown from 'react-markdown';
+import { getBookInfoByTitle } from "@/app/services/bookService";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 
 const Overview = () => {
     const [book, setBook] = useState<any>(null);
-
+    const params = useParams<{ title?: string }>();
     useEffect(() => {
-        const storedBook = sessionStorage.getItem("bookData");
-        if (storedBook) {
-            console.log(storedBook)
-            setBook(JSON.parse(storedBook));
+        const getBook = async () => {
+            if (!params.title) return
+            const bookInfo = await getBookInfoByTitle(params?.title)
+            if (bookInfo) {
+                console.log(bookInfo)
+                setBook(bookInfo);
+            }
         }
+        getBook()
     }, []);
     return (
         <div className="flex flex-col gap-4  w-full py-4">
@@ -25,13 +29,11 @@ const Overview = () => {
                 <div className="flex flex-col gap-6 w-full">
                     <div className="flex flex-col  md:items-start" >
                         <h1 className="text-gray-600 font-bold text-3xl md:text-4xl ">{book?.title}</h1>
-                        <p className=" text-gray-600 text-sm md:text-lg flex items-center justify-between">  {book?.author}  </p>
+                        <span className=" text-gray-600 text-sm md:text-lg flex items-center justify-between"> &bull; {book?.author} &nbsp; &bull;  {book?.sub_categories_count} Categories &nbsp; &bull;  {book?.total_insights} Insights  </span>
                     </div>
 
-
-
                     <div className="flex gap-3  flex-wrap  md:justify-normal max-w-[600px]" >
-                        {book?.category.split(/[,&]/).map((category: any, index: Number) => <h4 className=" bg-gray-200 p-1 px-3 rounded-lg w-min text-nowrap text-sm flex gap-1  text-gray-800 items-center "
+                        {book?.categories.split(/[,&]/).map((category: any, index: Number) => <h4 className=" bg-gray-200 p-1 px-3 rounded-lg w-min text-nowrap text-sm flex gap-1  text-gray-800 items-center "
                             key={String(index)} >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5" />
@@ -81,7 +83,7 @@ const Overview = () => {
                         </button>
 
                         <Link
-                            href={`/categories/${book?.title} `}
+                            href={`/steps/${book?.title} `}
                             type="button"
                             // className="text-white    focus:outline-none  py-3 md:py-2 px-4 rounded-lg md:w-min w-[96vw] font-semibold flex md:relative bottom-4 md:bottom-0  gap-2 items-center justify-center fixed "
                             className="text-white bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800 focus:outline-none  py-3 md:py-2 px-4 rounded-lg md:w-min w-[94vw] font-semibold flex md:relative bottom-4 md:bottom-0  gap-2 items-center justify-center fixed ">
@@ -93,7 +95,6 @@ const Overview = () => {
                             Open
                         </Link>
                     </div>
-                    {/* </div> */}
                 </div>
             </div>
             <hr className="border-gray-300" />
@@ -138,7 +139,6 @@ const Overview = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                 </svg>
-
                 About Author
             </p>
             <p className="text-xl text-gray-500 font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque sunt quidem nostrum inventore neque, molestiae eligendi officiis earum! Ipsa laudantium iste accusamus? Similique molestiae dolore aut alias! Dolorum molestiae voluptatibus dolorem quo deserunt et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel repellendus aspernatur reprehenderit iusto, voluptatibus tempora eum aperiam, hic laboriosam ab, enim eveniet! Aliquam libero illo nisi unde laboriosam placeat ducimus voluptate incidunt dignissimos ipsum error dolorum in necessitatibus praesentium eveniet, doloremque eos atque quasi cumque.</p>
