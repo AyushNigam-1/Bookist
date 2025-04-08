@@ -112,49 +112,45 @@ export default function Page() {
     }
     return (
         <div className="flex flex-col relative">
-            {mode !== "Swipe" && <div className="md:sticky top-0  bg-gray-100 z-10 py-2 md:py-4">
-                <div className={`flex justify-between items-center`} >
-                    <div className='flex flex-col gap-1'>
-                        <span className="lg:text-4xl font-bold text-gray-700 text-2xl text-center md:text-left flex gap-2 " >
-                            {/* <p>
-                                {selectedCategory?.icon}
-                            </p> */}
-                            <div className='justify-between flex' >
+            <div className="md:sticky top-0 z-10 py-2 md:py-4">
 
-                                <p>
-                                    {selectedCategory?.name}
-                                </p>
+                <div className='flex gap-3 justify-between'>
+                    <SearchBar responsive={true} />
 
-                            </div>
-                        </span>
-                        {/* <p className="text-sm  text-gray-500" >  {selectedCategory?.description} </p> */}
-                    </div>
-
-                    <div className='flex gap-3 '>
-                        <SearchBar responsive={true} />
-                        <button onClick={() => setMode("Swipe")} className="p-2 md:p-3  bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-full">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
-                            </svg>
-                        </button>
-                        <div className='fixed right-0 m-4 md:m-0 bottom-0 flex gap-2 flex-col md:relative ' >
-                            <button className=" p-3  bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" onClick={() => setIsOpen(true)} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                    <div className='fixed right-0 m-5 md:m-0 bottom-0 flex gap-2 flex-col md:flex-row md:relative ' >
+                        <button onClick={() => { setMode(mode == 'Swipe' ? "List" : "Swipe") }} className=" p-3  bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-full gap-2 flex items-center md:rounded-lg ">
+                            {
+                                mode == 'Swipe' ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 ">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                                </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
                                 </svg>
-                            </button>
-                            <button className=" bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800 p-3  shadow rounded-full md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                            </svg>
-                            </button>
-                        </div>
-                    </div>
 
-                </div> </div>}
+                            }
+                            <p className='text text-gray-100 font-semibold items-center hidden md:block ' >
+                                {mode == 'Swipe' ? "List" : "Swipe"} Mode
+                            </p>
+                        </button>
+                        <button onClick={() => setIsOpen(true)} className="p-3  bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-full md:rounded-lg gap-2 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                            </svg>
+                            <p className='text text-gray-100 font-semibold items-center hidden md:block ' >
+                                {selectedCategory?.name.split(" ").slice(0, 2).join(" ") + " ..."}
+                            </p>
+                        </button>
+                        <button className=" bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800 p-3  shadow rounded-full md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
             {/* <hr /> */}
 
             {
-                mode == 'Swipe' ? steps && <Slider steps={steps} setMode={setMode} icon={selectedCategory?.icon} title={selectedCategory?.name} mode={mode} /> : <>
+                mode == 'Swipe' ? steps && <Slider steps={steps} category={selectedCategory} title={params.title} /> : <>
                     {steps ? (
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4" >
                             {steps.map((step, index) => (
@@ -222,115 +218,59 @@ export default function Page() {
                     ) : (
                         <Loader />
                     )}
-                    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
-                        <DialogBackdrop className="fixed inset-0 bg-black/30" />
 
-                        <div className="fixed inset-0 w-screen  p-4 flex justify-center gap-4 items-center">
-                            <DialogPanel className="max-w-lg shadow rounded-lg bg-gray-100 p-3 flex flex-col gap-3 ">
-                                <div className='justify-between flex items-center' >
-                                    <DialogTitle className="font-bold text-lg md:text-2xl text-gray-800"> Select Categories </DialogTitle>
-                                    <button
-                                        onClick={() => setIsOpen(false)}
-                                        type="button"
-                                        className="text-gray-600 bg-gray-200  focus:outline-none rounded-full  p-2 w-min  font-semibold "
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-
-                                </div>
-                                <SearchBar responsive={false} />
-                                <div className="overflow-y-scroll h-[50vh]  flex flex-col gap-2 scrollbar-thumb-rounded-full scrollbar-track-gray-100 scrollbar scrollbar-thumb-gray-200 ">
-                                    {categories.map((category) => (
-                                        <div key={category.name} onClick={() => { setSelectedCategory(category); setIsOpen(false) }}
-                                            className={` flex flex-col gap-2  rounded-lg  select-none  hover:bg-gray-200 cursor-pointer text-gray-700 p-2 ${category.name == selectedCategory?.name ? 'bg-gray-200' : ''} `}
-                                        >
-                                            {/* {category.name == selectedCategory?.name ? <span className='bg-gray-100 rounded font-medium p-1 text-xs flex gap-1 items-center w-min flex-nowrap' > <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                        </svg>
-                                            Selected </span> : ''} */}
-                                            <div className='flex flex-col gap-1 ' >
-                                                <div className='flex gap-2 items-center justify-between'>
-                                                    <div className='flex gap-2'>
-                                                        <span className='text-lg'>
-                                                            {category.icon}
-                                                        </span>
-                                                        <h4 className='font-semibold text-gray-800 text-base md:text-xl flex items-center gap-2'>
-                                                            {category.name}
-                                                        </h4>
-                                                    </div>
-                                                    {category.name == selectedCategory?.name ? <span className='bg-gray-100  font-medium p-1 text-xs flex gap-1 items-center w-min flex-nowrap rounded' > <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                                    </svg>
-                                                        Selected </span> : ''}
-                                                </div>
-                                                <span>
-
-                                                    <h6 className="text-xs md:text-sm  rounded-lg  text-gray-500">
-                                                        {category.description}
-                                                    </h6>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                                {/* <Description>This will permanently deactivate your account</Description> */}
-                                {/* <Listbox value={selectedCategory} onChange={setSelectedCategory}>
-                                <ListboxButton
-                                    className={clsx(
-                                        'relative  text-gray-700 cursor-pointer rounded-lg bg-gray-200 p-2 text-lg md:flex items-center justify-between hidden gap-2 '
-                                    )}
-                                >
-                                    <div className='flex gap-3 items-center flex-nowrap text-nowrap line-clamp-1 w-48' >
-                                        {selectedCategory?.icon}
-                                        <span>
-                                            <h4>
-                                                {selectedCategory?.name}
-                                            </h4>
-                                           
-                                        </span>
-                                    </div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-
-                                </ListboxButton>
-                                <ListboxOptions
-                                    anchor="bottom"
-                                    transition
-                                    className={clsx(
-                                        'bg-gray-200 p-2 rounded-md mt-2 z-30 '
-                                    )}
-                                >
-                                    {categories.map((category) => (
-                                        <ListboxOption
-                                            value={category}
-                                            className=" flex flex-end gap-2 rounded-lg py-1.5 px-3 select-none  hover:bg-gray-100 cursor-pointer text-gray-700"
-                                        >
-                                      
-                                            <div className='flex gap-2 items-center' >
-                                                <span className='text-xl bg-gray-100 p-2 rounded-full'>
-                                                    {category.icon}
-                                                </span>
-                                                <span>
-                                                    <h4>
-                                                        {category.name}
-                                                    </h4>
-                                                    <h6 className="text-sm  rounded-lg  text-gray-500">
-                                                        {category.steps_count} Insight Available
-                                                    </h6>
-                                                </span>
-                                            </div>
-                                        </ListboxOption>
-                                    ))}
-                                </ListboxOptions>
-                            </Listbox> */}
-                            </DialogPanel>
-                        </div>
-                    </Dialog>
                 </>
             }
+            <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+                <DialogBackdrop className="fixed inset-0 bg-black/30" />
+                <div className="fixed inset-0 w-screen  p-4 flex justify-center gap-4 items-center">
+                    <DialogPanel className="max-w-lg shadow rounded-lg bg-gray-100 p-3 flex flex-col gap-3 ">
+                        <div className='justify-between flex items-center' >
+                            <DialogTitle className="font-bold text-lg md:text-2xl text-gray-800"> Select Categories </DialogTitle>
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                type="button"
+                                className="text-gray-600 bg-gray-200  focus:outline-none rounded-full  p-2 w-min  font-semibold "
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <SearchBar responsive={false} />
+                        <div className="overflow-y-scroll h-[50vh]  flex flex-col gap-2 scrollbar-thumb-rounded-full scrollbar-track-gray-100 scrollbar scrollbar-thumb-gray-200 ">
+                            {categories.map((category) => (
+                                <div key={category.name} onClick={() => { setSelectedCategory(category); setIsOpen(false) }}
+                                    className={` flex flex-col gap-2  rounded-lg  select-none  hover:bg-gray-200 cursor-pointer text-gray-700 p-2 ${category.name == selectedCategory?.name ? 'bg-gray-200' : ''} `}
+                                >
+                                    <div className='flex flex-col gap-1 ' >
+                                        <div className='flex gap-2 items-center justify-between'>
+                                            <div className='flex gap-2'>
+                                                <span className='text-lg'>
+                                                    {category.icon}
+                                                </span>
+                                                <h4 className='font-semibold text-gray-800 text-base md:text-xl flex items-center gap-2'>
+                                                    {category.name}
+                                                </h4>
+                                            </div>
+                                            {category.name == selectedCategory?.name ? <span className='bg-gray-100  font-medium p-1 text-xs flex gap-1 items-center w-min flex-nowrap rounded' > <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                            </svg>
+                                                Selected </span> : ''}
+                                        </div>
+                                        <span>
+
+                                            <h6 className="text-xs md:text-sm  rounded-lg  text-gray-500">
+                                                {category.description}
+                                            </h6>
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </DialogPanel>
+                </div>
+            </Dialog>
         </div >
 
     );
