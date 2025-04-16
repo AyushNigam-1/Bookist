@@ -10,6 +10,7 @@ from sklearn.cluster import DBSCAN
 def extract_text_from_pdf(pdf_path, chunk_size=5):
     doc = fitz.open(pdf_path)
     pages = [page.get_text() for page in doc][:10]  
+    print(pages)
     return ["\n".join(pages[i:i+chunk_size]) for i in range(0, len(pages), chunk_size)]
 
 def extract_json_from_markdown(markdown_text):
@@ -17,7 +18,7 @@ def extract_json_from_markdown(markdown_text):
     tokens = md.parse(markdown_text)
 
     for token in tokens:
-        if token.type == "fence" and token.info.strip().lower() == "json":
+        if token.type == "fence" :
             content = token.content.strip()  
             content = clean_json_string(content)  # Clean the extracted JSON
 

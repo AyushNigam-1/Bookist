@@ -8,11 +8,10 @@ from src.components.hierarchy import order_hierarchy
 from src.utils.file_operations import load_json_file , save_json_file
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 class BookistProcessor:
-    def __init__(self, pdf_path, title, author, description, thumbnail,category, model_name="llama-3.3-70b-specdec", chunk_size=5):
+    def __init__(self, pdf_path, title, author, description, thumbnail,category, model_name="llama3-70b-8192", chunk_size=5):
         self.pdf_name = os.path.splitext(os.path.basename(pdf_path))[0]
         self.pdf_path = pdf_path
         self.model = ChatGroq(model_name=model_name)

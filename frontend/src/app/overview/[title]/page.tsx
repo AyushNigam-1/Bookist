@@ -91,7 +91,6 @@ const Overview = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
                             </svg>
 
-
                             Open
                         </Link>
                     </div>
@@ -117,7 +116,7 @@ const Overview = () => {
                         p: ({ children }) => <p className="text-lg leading-relaxed">{children}</p>,
                     }}
                 > */}
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ducimus tenetur laboriosam ea modi consequuntur, quo illum voluptatem numquam nisi, suscipit minus ipsa! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione dolor voluptates perspiciatis, fugiat obcaecati nisi delectus iusto placeat non nulla repudiandae in. Quae maxime molestiae, minima, dolore cupiditate aliquam maiores qui natus laudantium, alias soluta.
+              {book?.description}
                 {/* ### **Summary of *Meditations* by Marcus Aurelius**
 
                 *Meditations* is a collection of personal reflections written by Roman Emperor **Marcus Aurelius** as a guide for self-improvement and inner peace. It is deeply rooted in **Stoic philosophy**, emphasizing discipline, virtue, and acceptance of life’s challenges.

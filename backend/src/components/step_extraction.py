@@ -5,10 +5,11 @@ from src.utils.prompts import step_extraction_prompt
 from src.components.duplicate_removel import remove_duplicate_steps
 def extract_actionable_steps( folder_path, model, text_chunk):
     prompt = step_extraction_prompt(text_chunk)
-
+    print(prompt)
     response = model.invoke([HumanMessage(content=prompt)])
+    print(response.content)
     new_data = extract_json_from_markdown(response.content)
-    
+    print(new_data)
     if not isinstance(new_data, dict) or "steps" not in new_data or not isinstance(new_data["steps"], list):
         raise ValueError("Invalid response format: Expected a dictionary with a 'steps' list.")
 

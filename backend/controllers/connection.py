@@ -17,7 +17,6 @@ def connect_db():
             host=host,
             port=port
         )
-        print(conn)
         return conn
     except psycopg2.DatabaseError as e:
         print(f"Database connection error: {e}")
