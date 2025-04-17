@@ -1,4 +1,4 @@
-from fastapi import APIRouter , HTTPException ,UploadFile, File, Form , Query
+from fastapi import APIRouter , HTTPException ,UploadFile, File, Form , Body
 import os
 from fastapi.responses import JSONResponse
 from typing import List, Dict , Any
@@ -98,29 +98,48 @@ def get_content_keys(title: str):
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
 
-
-@router.get("/book/{title}/{key}")
-def get_content_values(title: str, key: str):
-    """Fetches only steps and description of a given key within the content property for a given book title."""
+@router.post("/book/{title}")
+def get_content_values(title: str, category: List[str] = Body(...)):
     conn = connect_db()
-    if conn:
+    if not conn:
+        raise HTTPException(status_code=500, detail="Database connection failed")
+    
+    try:
         cur = conn.cursor()
         cur.execute("SELECT content FROM book WHERE title = %s;", (title,))
         book_data = cur.fetchone()
         cur.close()
         conn.close()
-        print(book_data[0])
-        if book_data:
-            content = book_data[0]
-            if key in content:
-                steps = content[key]['steps']
-                return [{"step": step["step"], "description": step["description"]} for step in steps]
-            else:
-                raise HTTPException(status_code=404, detail="Key not found in content")
-        else:
+        
+        if not book_data:
             raise HTTPException(status_code=404, detail="Book not found")
-    else:
-        raise HTTPException(status_code=500, detail="Database connection failed")
+
+        content = book_data[0]
+        results = []
+
+        keys_to_use = category if category else list(content.keys())
+
+        for key in keys_to_use:
+            if key in content:
+                icon = content[key].get("icon", "")
+                steps = content[key].get("steps", [])
+                results.extend([
+                    {
+                        "icon": icon,
+                        "category": key,
+                        "step": step["step"],
+                        "description": step["description"]
+                    }
+                    for step in steps
+                ])
+
+        if not results:
+            raise HTTPException(status_code=404, detail="No matching categories found")
+
+        return results
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
     
 @router.get("/book/{title}/{category}/{step}")
 def get_step_details(title: str, category: str, step: str):

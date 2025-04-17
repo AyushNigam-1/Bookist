@@ -31,16 +31,8 @@ export default function RootLayout({
 
       <body className={`${montserrat.className} antialiased p-3 flex flex-col h-screen`}>
         <Navbar />
-        {/* <div className="grid grid-cols-6 container mx-auto gap-2 "  > */}
-        {/* <div className="col-span-1" >
-            <Sidebar />
-          </div> */}
-        {/* <div className="col-span-6" > */}
         <div className="w-full container mx-auto">
           {children}
-
-          {/* </div> */}
-          {/* </div> */}
         </div>
       </body>
     </html>

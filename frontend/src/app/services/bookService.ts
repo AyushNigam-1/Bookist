@@ -28,9 +28,9 @@ export const getBookContentKeys = async (title: string) => {
     }
 };
 
-export const getBookContentValue = async (title: string, category: string) => {
+export const getBookContentValue = async (title: string, category: string[]) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/book/${title}/${category}`);
+        const response = await axios.post(`${API_BASE_URL}/book/${title}`, category);
         return response.data;
     } catch (error) {
         throw error;

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
-export default function Slider({ steps, category, title }) {
+export default function Slider({ steps, title }) {
     const wrapperRef = useRef(null)
     const [remainingHeight, setRemainingHeight] = useState('100vh')
 
@@ -34,17 +34,16 @@ export default function Slider({ steps, category, title }) {
                         <p className="text-gray-600 text-sm absolute top-3">
                             {index + 1} / {steps?.length}
                         </p>
-                        <Link
-                            href={`/step/${title}/${category?.name}/${step?.step}`}
+                        <div
                             className=" flex flex-col justify-center"
                         >
                             <div key={index} className={`rounded-2xl h-full col-span-1 flex-col flex gap-4 `}  >
-                                <Link href={`/step/${title}/${category?.name}/${step.step}`} className='flex flex-col gap-2' >
+                                <Link href={`/step/${title}/${step.category?.name}/${step.step}`} className='flex flex-col gap-2' >
                                     <div className='flex justify-between items-center'>
 
                                         <span className=' text-gray-600 font-medium  text-sm flex gap-1 items-center w-min text-nowrap flex-nowrap rounded-lg' ><span>
-                                            {category?.icon}   </span> <span>
-                                                {category?.name}  </span> </span>
+                                            {step.icon}   </span> <span>
+                                                {step.category}  </span> </span>
 
                                     </div>
                                     <h4 className='text-gray-700 font-semibold text-xl md:text-2xl line-clamp-1'>
@@ -87,7 +86,7 @@ export default function Slider({ steps, category, title }) {
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                 ))}
             </div>

@@ -23,8 +23,9 @@ const Overview = () => {
             {/* <div className="absolute  h-64 bg-gray-100 rounded-2xl " ></div> */}
 
             <div className="flex flex-col md:flex-row relative gap-4 w-full "  >
-                <img src={book?.thumbnail} className="z-30 rounded-xl  mx-auto h-64 shadow-md  md:h-56 md:w-auto" alt={book?.title} />
+                <img src={book?.thumbnail} className="z-30 rounded-xl  mx-auto h-68 shadow-md  md:w-auto " alt={book?.title} />
                 <img src={book?.thumbnail} className=" absolute blur-md md:hidden -p-2 rounded-xl mx-auto shadow-md h-64 w-full object-cover  md:h-56 md:w-auto" alt={book?.title} />
+
                 {/* <span></span> */}
                 <div className="flex flex-col gap-6 w-full">
                     <div className="flex flex-col  md:items-start" >
@@ -61,7 +62,7 @@ const Overview = () => {
 
                     {/* <div className="flex gap-2 justify-between w-full"> */}
                     <div className="flex gap-2 justify-between md:justify-normal w-full">
-                        <button
+                        {/* <button
                             type="button"
                             className="text-gray-200  bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800  w-full  flex gap-2 items-center justify-center focus:outline-none rounded-lg py-2 px-4 md:w-min  font-semibold "
                         >
@@ -70,7 +71,7 @@ const Overview = () => {
                             </svg>
 
                             Like
-                        </button>
+                        </button> */}
                         <button
                             type="button"
                             className="text-gray-200  bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800   w-full justify-center  flex gap-2 items-center  focus:outline-none rounded-lg py-2 px-4  md:w-min  font-semibold "
@@ -79,10 +80,20 @@ const Overview = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                             </svg>
 
-                            Favourite
+                            Bookmark
                         </button>
-
                         <Link
+                            href={`/steps/${book?.title} `}
+                            type="button"
+                            // className="text-white    focus:outline-none  py-3 md:py-2 px-4 rounded-lg md:w-min w-[96vw] font-semibold flex md:relative bottom-4 md:bottom-0  gap-2 items-center justify-center fixed "
+                            className="text-gray-200  bg-gradient-to-r from-gray-800 via-gray-500 to-gray-800   w-full justify-center  flex gap-2 items-center  focus:outline-none rounded-lg py-2 px-4  md:w-min  font-semibold">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                            </svg>
+
+                            Open
+                        </Link>
+                        {/* <Link
                             href={`/steps/${book?.title} `}
                             type="button"
                             // className="text-white    focus:outline-none  py-3 md:py-2 px-4 rounded-lg md:w-min w-[96vw] font-semibold flex md:relative bottom-4 md:bottom-0  gap-2 items-center justify-center fixed "
@@ -92,7 +103,7 @@ const Overview = () => {
                             </svg>
 
                             Open
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>
@@ -116,7 +127,7 @@ const Overview = () => {
                         p: ({ children }) => <p className="text-lg leading-relaxed">{children}</p>,
                     }}
                 > */}
-              {book?.description}
+                {book?.description}
                 {/* ### **Summary of *Meditations* by Marcus Aurelius**
 
                 *Meditations* is a collection of personal reflections written by Roman Emperor **Marcus Aurelius** as a guide for self-improvement and inner peace. It is deeply rooted in **Stoic philosophy**, emphasizing discipline, virtue, and acceptance of life’s challenges.
@@ -146,3 +157,5 @@ const Overview = () => {
 };
 
 export default Overview;
+
+

@@ -12,6 +12,8 @@ import Loader from '@/app/components/Loader';
 
 interface StepData {
     step: string;
+    category: string;
+    icon: string;
     // example: string;
     description: string;
     // recommended_response: string;
@@ -28,7 +30,7 @@ export default function Page() {
     const params = useParams<{ title?: string }>();
     const [steps, setSteps] = useState<StepData[] | null>(null);
     const [categories, setCategories] = useState<Categories[] | []>([]);
-    const [selectedCategory, setSelectedCategory] = useState<Categories>()
+    const [selectedCategory, setSelectedCategory] = useState<Categories[]>()
     const [mode, setMode] = useState<String>("List")
     const [query, setQuery] = useState('')
     const [isOpen, setIsOpen] = useState(false)
@@ -47,7 +49,6 @@ export default function Page() {
             try {
                 const fetchedCategories = await getBookContentKeys(params.title);
                 setCategories(fetchedCategories);
-                setSelectedCategory(fetchedCategories[0])
             } catch (error) {
                 console.error("Error fetching categories:", error);
             }
@@ -58,10 +59,9 @@ export default function Page() {
 
     useEffect(() => {
         const fetchInsights = async () => {
-            if (!selectedCategory?.name || !params.title) return;
-
+            if (!params.title) return
             try {
-                const fetchedCategories = await getBookContentValue(params.title, selectedCategory.name);
+                const fetchedCategories = await getBookContentValue(params.title, selectedCategory?.length ? selectedCategory.map(category => category.name) : []);
                 setSteps(fetchedCategories);
                 console.log(fetchedCategories);
             } catch (error) {
@@ -104,7 +104,17 @@ export default function Page() {
         "bg-gradient-to-t from-gray-900/60 via-gray-700/30 to-transparent"
 
     ];
-
+    const toggleCategory = (categoryToToggle: Categories) => {
+        setSelectedCategory((prevCat = []) => {
+            const isSelected = prevCat.some(c => c.name === categoryToToggle.name);
+            if (isSelected) {
+                return prevCat.filter(c => c.name !== categoryToToggle.name);
+            } else {
+                return [...prevCat, categoryToToggle];
+            }
+        });
+        setIsOpen(false);
+    };
 
     function getRandomColorPair() {
         const randomIndex = Math.floor(Math.random() * colorPairs.length);
@@ -122,7 +132,8 @@ export default function Page() {
                             <div className='justify-between flex' >
 
                                 <p>
-                                    {selectedCategory?.name}
+                                    Insights
+                                    {/* {selectedCategory?.name} */}
                                 </p>
 
                             </div>
@@ -137,10 +148,10 @@ export default function Page() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                                 </svg>
-                                Choose Category
+                                {/* Choose Category */}
                             </button>
                         </div>
-                        <div className='fixed right-0 m-4 md:m-0 bottom-0 flex gap-2 flex-col  md:hidden' >
+                        <div className='fixed right-0 m-4 md:m-0 bottom-0 flex gap-2 flex-col  md:hidden z-50' >
                             <button className=" p-3  bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" onClick={() => setIsOpen(true)} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
@@ -163,19 +174,23 @@ export default function Page() {
             {/* <hr /> */}
 
             {
-                mode == 'Swipe' ? steps && <Slider steps={steps} title={selectedCategory?.name} category={selectedCategory?.name} /> : <>
+                mode == 'Swipe' ? steps && <Slider title={params?.title} steps={steps} /> : <>
                     {steps ? (
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4" >
+                        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4" >
                             {steps.map((step, index) => (
                                 <div className='relative rounded-2xl   ' >
-                                    <div key={index} className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 bg-gray-200 `}  >
-                                        <Link href={`/step/${params.title}/${selectedCategory?.name}/${step.step}`} className='flex flex-col gap-2' >
+                                    <div key={index} className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
+                                        <Link href={`/step/${params.title}/${step?.category}/${step.step}`} className='flex flex-col gap-2' >
                                             <div className='flex justify-between items-center'>
-                                                <span className=' text-gray-600 font-medium  text-sm flex gap-1 items-center w-min text-nowrap flex-nowrap rounded-lg' ><span>
-                                                    {selectedCategory?.icon}   </span> <span>
-                                                        {selectedCategory?.name}  </span> </span>
+                                                <span className=' text-gray-600 font-medium  text-sm flex gap-1 items-center w-min text-nowrap flex-nowrap rounded-lg' >
+                                                    <span>
+                                                        {step?.icon}   </span>
+                                                    <span>
+                                                        {step?.category}
+                                                    </span>
+                                                </span>
                                             </div>
-                                            <h4 className='text-gray-700 font-semibold text-xl md:text-2xl line-clamp-1'>
+                                            <h4 className='text-gray-700 font-semibold text-xl md:text-2xl '>
                                                 {step.step}
                                             </h4>
                                             <h6 className='text-gray-800 mt-auto '>
@@ -184,41 +199,27 @@ export default function Page() {
 
                                         </Link>
                                         <div className="flex gap-2 justify-between mt-auto">
-                                            <span className='bg-gray-100 rounded-full p-2 items-center gap-2 flex text-gray-600'  >
-                                                <h4 className=' md:text-lg' >0</h4>
-                                                {/* <span className='bg-gray-400 h-full w-[1px]' ></span> */}
-                                                <button
-                                                    type="button"
-                                                    className="text-gray-600  focus:outline-none   w-min  font-semibold "
-                                                >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
-                                                    </svg>
 
-                                                </button>
-                                            </span>
-                                            <div className='flex gap-2 '>
-
-                                                <button
-                                                    type="button"
-                                                    className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 px-2.5 w-min  font-semibold "
-                                                >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
-                                                    </svg>
+                                            <button
+                                                type="button"
+                                                className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold "
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                                                </svg>
 
 
-                                                </button>
-                                                {/* <button
-                                                    type="button"
-                                                    className="text-gray-600 bg-gray-100  focus:outline-none rounded-lg p-2 w-min  font-semibold "
-                                                >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
-                                                    </svg>
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold "
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+                                                </svg>
 
-                                                </button> */}
-                                            </div>
+                                            </button>
+
                                         </div>
                                     </div>
                                 </div>
@@ -237,7 +238,7 @@ export default function Page() {
                                     <button
                                         onClick={() => setIsOpen(false)}
                                         type="button"
-                                        className="text-gray-600 bg-gray-200  focus:outline-none rounded-full  p-2 w-min  font-semibold "
+                                        className="text-gray-600 cursor-pointer bg-gray-200  focus:outline-none rounded-full  p-2 w-min  font-semibold "
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -246,37 +247,43 @@ export default function Page() {
 
                                 </div>
                                 <SearchBar responsive={false} />
-                                <div className="overflow-y-scroll h-[50vh]  flex flex-col gap-3  rounded-lg">
+                                <div className="overflow-y-scroll h-[50vh] gap-3 flex flex-col rounded-lg">
                                     {categories.map((category) => (
-                                        <div key={category.name} onClick={() => { setSelectedCategory(category); setIsOpen(false) }}
-                                            className={` flex flex-col gap-2  rounded-lg  select-none  hover:bg-gray-200 cursor-pointer text-gray-700 p-2 bg-gray-200 ${category.name == selectedCategory?.name ? ' border-2 border-gray-400' : ''} `}
-                                        >
-                                            {/* {category.name == selectedCategory?.name ? <span className='bg-gray-100 rounded font-medium p-1 text-xs flex gap-1 items-center w-min flex-nowrap' > <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                        </svg>
-                                            Selected </span> : ''} */}
-                                            <div className='flex flex-col gap-1 ' >
-                                                <div className='flex gap-2 items-center justify-between'>
-                                                    <div className='flex gap-2'>
-                                                        <span className='text-lg'>
-                                                            {category.icon}
-                                                        </span>
-                                                        <h4 className='font-semibold text-gray-800 text-base md:text-xl flex items-center gap-2'>
-                                                            {category.name}
-                                                        </h4>
-                                                    </div>
-                                                    {/* {category.name == selectedCategory?.name ? <span className='bg-gray-100  font-medium p-1 text-xs flex gap-1 items-center w-min flex-nowrap rounded' > <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                                    </svg>
-                                                        Selected </span> : ''} */}
-                                                </div>
-                                                <span>
+                                        <div className="relative overflow-visible inline-block">
 
-                                                    <h6 className="text-sm  rounded-lg  text-gray-500">
+                                            <button
+                                                key={category.name}
+                                                onClick={() => {
+                                                    toggleCategory(category)
+                                                    setIsOpen(false);
+                                                }}
+                                                className={`relative flex flex-col gap-2 rounded-lg select-none hover:bg-gray-200 cursor-pointer text-gray-700 p-2 bg-gray-200 w-full 
+            ${selectedCategory?.map(c => c.name).includes(category.name) ? ' border-2 border-gray-400' : ''}`}
+                                            >
+
+
+                                                <div className='flex flex-col gap-1'>
+                                                    <div className='flex gap-2  justify-between'>
+                                                        <div className='flex gap-2 text-base md:text-xl'>
+                                                            <span >{category.icon}</span>
+                                                            <h4 className='font-semibold text-gray-800  flex items-center gap-2'>
+                                                                {category.name}
+                                                            </h4>
+                                                        </div>
+                                                        {selectedCategory?.map(c => c.name).includes(category.name) && (
+                                                            <span className=' z-10 rounded-full font-medium  text-xs flex gap-1 items-center text-gray-600'>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                                </svg>
+
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                    <h6 className="text-sm md:text-base text-left rounded-lg text-gray-500">
                                                         {category.description}
                                                     </h6>
-                                                </span>
-                                            </div>
+                                                </div>
+                                            </button>
                                         </div>
                                     ))}
                                 </div>
