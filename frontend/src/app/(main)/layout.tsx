@@ -1,5 +1,4 @@
-import Navbar from "../components/Navbar";
-import "./globals.css";
+import Navbar from "./components/Navbar";
 
 export default function RootLayout({
     children,
@@ -7,7 +6,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="antialiased p-3 flex flex-col h-screen">
+        <div className="antialiased flex flex-col h-screen p-3">
             <Navbar />
             <div className="w-full container mx-auto">
                 {children}

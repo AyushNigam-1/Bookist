@@ -1,6 +1,5 @@
 "use client"
-import SearchBar from '@/app/components/SearchBar';
-import Slider from '@/app/components/Swipe';
+import SearchBar from '@/app/(main)/components/SearchBar';
 import { getBookContentKeys, getBookContentValue } from '@/app/services/bookService';
 import { DialogBackdrop, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import Link from 'next/link';
@@ -8,8 +7,8 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import clsx from 'clsx'
-import Loader from '@/app/components/Loader';
-
+import Loader from '@/app/(main)/components/Loader';
+import Slider from "@/app/(main)/components/Slider"
 interface StepData {
     step: string;
     category: string;
@@ -28,12 +27,14 @@ type Categories = {
 export default function Page() {
 
     const params = useParams<{ title?: string }>();
-    const [steps, setSteps] = useState<StepData[] | null>(null);
+    const [steps, setSteps] = useState<StepData[] | []>([]);
     const [categories, setCategories] = useState<Categories[] | []>([]);
     const [selectedCategory, setSelectedCategory] = useState<Categories[]>()
     const [mode, setMode] = useState<String>("List")
     const [query, setQuery] = useState('')
     const [isOpen, setIsOpen] = useState(false)
+    const [filteredBooks, setFilteredBooks] = useState<StepData[] | []>([]);
+    const [filteredCategories, setFilteredCategories] = useState<Categories[] | []>([]);
 
     const filteredCategory =
         query === ''
@@ -49,6 +50,7 @@ export default function Page() {
             try {
                 const fetchedCategories = await getBookContentKeys(params.title);
                 setCategories(fetchedCategories);
+                setFilteredCategories(fetchedCategories)
             } catch (error) {
                 console.error("Error fetching categories:", error);
             }
@@ -63,6 +65,7 @@ export default function Page() {
             try {
                 const fetchedCategories = await getBookContentValue(params.title, selectedCategory?.length ? selectedCategory.map(category => category.name) : []);
                 setSteps(fetchedCategories);
+                setFilteredBooks(fetchedCategories)
                 console.log(fetchedCategories);
             } catch (error) {
                 console.error("Error fetching categories:", error);
@@ -71,12 +74,7 @@ export default function Page() {
 
         fetchInsights();
     }, [params?.title, selectedCategory]);
-    // const [search, setSearch] = useState("");
 
-    // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     console.log("Searching for:", search);
-    // };
     const colorPairs = [
         "bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200",
         "bg-gradient-to-br from-sky-100 via-blue-200 to-indigo-100",
@@ -143,8 +141,8 @@ export default function Page() {
 
                     <div className=''>
                         <div className='md:flex gap-3 hidden' >
-                            <SearchBar responsive={true} />
-                            <button onClick={() => setIsOpen(true)} className=" p-3 font-semibold  bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-md flex gap-2 items-center">
+                            <SearchBar responsive={true} data={steps} propertyToSearch='step' setFilteredData={setFilteredBooks} />
+                            <button onClick={() => setIsOpen(true)} className=" p-3 font-semibold  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-md flex gap-2 items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                                 </svg>
@@ -152,17 +150,17 @@ export default function Page() {
                             </button>
                         </div>
                         <div className='fixed right-0 m-4 md:m-0 bottom-0 flex gap-2 flex-col  md:hidden z-50' >
-                            <button className=" p-3  bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-full">
+                            <button className=" p-3  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" onClick={() => setIsOpen(true)} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                                 </svg>
                             </button>
-                            <button onClick={() => setMode("Swipe")} className="p-3 bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800  shadow cursor-pointer rounded-full">
+                            <button onClick={() => setMode("Swipe")} className="p-3 bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
                                 </svg>
                             </button>
-                            <button className=" bg-gradient-to-r text-white from-gray-800 via-gray-500 to-gray-800 p-3  shadow rounded-full md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <button className=" bg-gradient-to-r text-white bg-gray-700 p-3  shadow rounded-full md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                             </svg>
                             </button>
@@ -171,13 +169,12 @@ export default function Page() {
 
                 </div> </div>
             }
-            {/* <hr /> */}
 
             {
-                mode == 'Swipe' ? steps && <Slider title={params?.title} steps={steps} /> : <>
+                mode == 'Swipe' ? steps.length && <Slider title={params?.title} steps={steps} /> : <>
                     {steps ? (
                         <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4" >
-                            {steps.map((step, index) => (
+                            {filteredBooks.map((step, index) => (
                                 <div className='relative rounded-2xl   ' >
                                     <div key={index} className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
                                         <Link href={`/step/${params.title}/${step?.category}/${step.step}`} className='flex flex-col gap-2' >
@@ -228,7 +225,7 @@ export default function Page() {
                     ) : (
                         <Loader />
                     )}
-                    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+                    <Dialog open={isOpen} onClose={() => { setIsOpen(false); setFilteredCategories(categories) }} className="relative z-50">
                         <DialogBackdrop className="fixed inset-0 bg-black/30" />
 
                         <div className="fixed inset-0 w-screen  p-4 flex justify-center gap-4 items-center">
@@ -236,7 +233,7 @@ export default function Page() {
                                 <div className='justify-between flex items-center' >
                                     <DialogTitle className="font-bold text-lg md:text-2xl text-gray-800"> Select Categories </DialogTitle>
                                     <button
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={() => { setIsOpen(false); setFilteredCategories(categories) }}
                                         type="button"
                                         className="text-gray-600 cursor-pointer bg-gray-200  focus:outline-none rounded-full  p-2 w-min  font-semibold "
                                     >
@@ -246,9 +243,9 @@ export default function Page() {
                                     </button>
 
                                 </div>
-                                <SearchBar responsive={false} />
-                                <div className="overflow-y-scroll h-[50vh] gap-3 flex flex-col rounded-lg">
-                                    {categories.map((category) => (
+                                <SearchBar responsive={false} data={categories} propertyToSearch='name' setFilteredData={setFilteredCategories} />
+                                <div className="overflow-y-scroll h-[50vh] gap-3 flex flex-col rounded-lg   scrollbar-thumb-gray-300 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
+                                    {filteredCategories.map((category) => (
                                         <div className="relative overflow-visible inline-block">
 
                                             <button

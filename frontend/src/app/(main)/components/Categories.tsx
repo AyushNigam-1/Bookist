@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAllCategories } from '../services/bookService';
+import { getAllCategories } from '../../services/bookService';
 
 const Categories = () => {
     const [categories, setCategories] = useState<string[]>([])

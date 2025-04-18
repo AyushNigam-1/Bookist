@@ -1,7 +1,6 @@
 "use client";
 
-import Loader from "@/app/components/Loader";
-import SearchBar from "@/app/components/SearchBar";
+import Loader from "@/app/(main)/components/Loader";
 import { getBookContentKeys } from "@/app/services/bookService";
 import Link from "next/link";
 import { useParams } from "next/navigation";

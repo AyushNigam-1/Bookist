@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./(main)/components/Navbar";
 // import Sidebar from "./components/Sidebar";
 import { Montserrat } from 'next/font/google';
 
@@ -28,12 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-gray-100">
-
-      <body className={`${montserrat.className} antialiased p-3 flex flex-col h-screen`}>
-        <Navbar />
-        <div className="w-full container mx-auto">
-          {children}
-        </div>
+      <body className={`${montserrat.className} antialiased  flex flex-col h-screen`}>
+        {children}
       </body>
     </html>
   );

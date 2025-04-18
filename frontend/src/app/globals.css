@@ -30,3 +30,32 @@
   display: none;
   /* Chrome, Safari, Opera */
 }
+
+/* For WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+  /* or height for horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: oklch(0.90 0 0);
+  /* scrollbar color */
+  border-radius: 20px;
+  border: 2px solid #f1f1f1;
+  /* optional border around thumb */
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+  background-color: #718096;
+} */
+
+For Firefox * {
+  scrollbar-width: thin;
+  /* auto | thin | none */
+  /* scrollbar-color: #a0aec0 #f1f1f1; */
+  /* thumb color | track color */
+}
