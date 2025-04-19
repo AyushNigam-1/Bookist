@@ -167,25 +167,90 @@ def get_step_details(title: str, category: str, step: str):
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
     
+# @router.post("/books/")
+# def create_book(book_data: Dict):
+#     conn = connect_db()
+#     if conn:
+#         cur = conn.cursor()
+#         try:
+#             cur.execute(
+#                 "INSERT INTO book (title, author, description, thumbnail,category, content) VALUES (%s, %s,%s, %s, %s, %s);",
+#                 (
+#                     book_data["Title"],
+#                     book_data["Author"],
+#                     book_data["Description"],
+#                     book_data["Thumbnail"],
+#                     book_data["Category"],
+#                     json.dumps(book_data["Content"]),
+#                 ),
+#             )
+#             conn.commit()
+#             return JSONResponse(content={"message": "Book created successfully"}, status_code=201)
+#         except Exception as e:
+#             conn.rollback()
+#             raise HTTPException(status_code=500, detail=f"Database error: {e}")
+#         finally:
+#             cur.close()
+#             conn.close()
+#     else:
+#         raise HTTPException(status_code=500, detail="Database connection failed")
+
+# import json
+# from typing import Dict, List
+# from fastapi import HTTPException
+# from fastapi.responses import JSONResponse
+# # Assuming you have a function to connect to your database
+# from your_database_module import connect_db
+
 @router.post("/books/")
 def create_book(book_data: Dict):
     conn = connect_db()
     if conn:
         cur = conn.cursor()
-        try:
-            cur.execute(
-                "INSERT INTO book (title, author, description, thumbnail,category, content) VALUES (%s, %s,%s, %s, %s, %s);",
+        try:            
+            # book_id = cur.lastrowid  # Get the ID of the newly inserted book
+            book_title = book_data["Title"]
+            content_with_step_ids = {}
+
+            # Loop through categories and their steps to insert into the steps table
+            if "Content" in book_data and isinstance(book_data["Content"], dict):
+                for category_name, category_data in book_data["Content"].items():
+                    content_with_step_ids[category_name] = {
+                        "icon": category_data.get("icon"),
+                        "description": category_data.get("description"),
+                        "steps": []
+                    }
+                    
+                    steps = category_data.get("steps", [])
+
+                    for step in steps:
+                        cur.execute(
+                            "INSERT INTO insights (book_name, category_name, title, description, detailed_breakdown) VALUES (%s, %s, %s, %s, %s) RETURNING id;",
+                            (
+                                book_title,
+                                category_name,
+                                step["step"],
+                                step["description"],
+                                step["detailed_breakdown"],
+                            ),
+                        )
+                        step_id = cur.fetchone()[0]
+                        content_with_step_ids[category_name]["steps"].append(step_id)
+
+                cur.execute(
+                "INSERT INTO book (title, author, description, thumbnail, category, content) VALUES (%s, %s, %s, %s, %s, %s);",
                 (
                     book_data["Title"],
                     book_data["Author"],
                     book_data["Description"],
                     book_data["Thumbnail"],
                     book_data["Category"],
-                    json.dumps(book_data["Content"]),
+                    json.dumps(content_with_step_ids),
                 ),
             )
+
             conn.commit()
-            return JSONResponse(content={"message": "Book created successfully"}, status_code=201)
+            return JSONResponse(content={"message": "Book and associated steps created successfully"}, status_code=201)
         except Exception as e:
             conn.rollback()
             raise HTTPException(status_code=500, detail=f"Database error: {e}")

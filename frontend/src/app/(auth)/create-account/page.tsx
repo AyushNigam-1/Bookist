@@ -99,7 +99,7 @@ const CreateAccount = () => {
             <div className=" text-gray-600 text-center">
                 <p>
                     Already have an account ?
-                    <Link href="/login" className="text-lg text-gray-800 hover:underline font-semibold"> Login here</Link>
+                    <Link href="/login" className="text-lg text-gray-800 hover:underline font-semibold"> Login </Link>
                 </p>
             </div>
         </div>

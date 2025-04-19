@@ -1,4 +1,5 @@
 "use client"
+import useElementHeight from '@/app/hooks/useHeight';
 import Link from 'next/link';
 import React, { useState } from 'react'
 // import { Link } from 'react-router-dom'
@@ -7,6 +8,7 @@ import React, { useState } from 'react'
 // import { toast } from 'react-toastify';
 // import { LOGIN_MUTATION } from '../../graphql/mutation/userMutations';
 const Login = () => {
+    const height = useElementHeight("main")
     // const nav = useNavigate()
     const [formData, setFormData] = useState({
         username: "",
@@ -34,7 +36,7 @@ const Login = () => {
     // };
 
     return (
-        <div className="max-w-md  md:w-full flex flex-col gap-4 ">
+        <div id='main' className="max-w-md  md:w-full flex flex-col gap-4 " >
             <div className='bg-white rounded-full p-2 w-min mx-auto' >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12 text-gray-600">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -83,7 +85,7 @@ const Login = () => {
             </form>
             <div className=" text-gray-600 text-center">
                 <p>
-                    Don't have an account? <Link href="/create-account" className="text-lg text-gray-800 hover:underline font-semibold">Sign up here</Link>
+                    Don't have an account? <Link href="/create-account" className="text-lg text-gray-800 hover:underline font-semibold">Create Account</Link>
                 </p>
             </div>
         </div>

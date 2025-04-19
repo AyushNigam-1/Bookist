@@ -104,9 +104,11 @@ def categorization_prompt(categories,steps_only):
     prompt = (
         f"""
         Categorize the following actionable steps into the predefined categories. 
-        - Only use the given categories; do not create new ones.
-        - If a step fits into an existing category, append it to that category.
-        - If a step does not clearly belong to any category, return it under "Uncategorized".
+        🔒 **Rules**:
+        - Only use the category names **as they are written** in the list below.
+        - ❌ Do not modify, reword, or create new category names.
+        - ✅ If a step fits, add it under the exact category name.
+        - ❓ If it doesn't clearly belong anywhere, return it under "Uncategorized".
 
         Categories:
         {categories}
@@ -134,10 +136,15 @@ def categorization_prompt(categories,steps_only):
 def hierarchy_prompt(categorized_steps):
     prompt = (
         f"""
-    Given the following list of topics, arrange them in a logical learning hierarchy.
-    The ordering should reflect the most natural progression for understanding the subject, where foundational topics come first, followed by intermediate, and then advanced topics.
-    The output must be a **structured sequence**, ensuring that each topic is positioned based on its prerequisites and dependencies.
+    🧠 Goal:
+        Order the topics from the most foundational to the most advanced, based on how a learner would best understand them. Topics that require prior knowledge must come later.
 
+        ⚠️ Rules:
+        - ❌ Do NOT change, reword, or merge any topic names.
+        - ✅ Use only the exact topic names provided.
+        - ❌ Do NOT add or remove topics.
+        - ✅ Maintain full coverage by reusing all topics in the list exactly once.
+        - 📌 If unsure about order, place the more general/basic topic earlier.
 
     Topics:
     {json.dumps(list(categorized_steps.keys()))}

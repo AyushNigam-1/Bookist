@@ -19,7 +19,8 @@ const Navbar = () => {
 
         <div className="flex gap-2  ">
 
-          <button
+          <Link
+            href="/login"
             type="button"
             className="text-white hidden bg-gray-700 focus:outline-none rounded-lg px-4 py-2 font-semibold md:flex gap-2 items-center"
           >
@@ -28,8 +29,9 @@ const Navbar = () => {
             </svg>
 
             Login
-          </button>
-          <button
+          </Link>
+          <Link
+            href="/create-account"
             type="button"
             className="text-white hidden  bg-gray-700 focus:outline-none rounded-lg px-4 py-2 font-semibold md:flex  gap-2 items-center"
           >
@@ -38,7 +40,7 @@ const Navbar = () => {
             </svg>
 
             Signup
-          </button>
+          </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
@@ -57,7 +59,9 @@ const Navbar = () => {
         <div className={`items-center justify-between ${isOpen ? "flex" : "hidden"} w-full `} id="navbar-sticky">
           <ul className="flex flex-col justify-center items-center w-full py-2 gap-2">
 
-            <button
+
+            <Link
+              href="/login"
               type="button"
               className="text-white  bg-gray-700w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
             >
@@ -66,9 +70,10 @@ const Navbar = () => {
               </svg>
 
               Login
-            </button>
-            <button
-              type="button"
+            </Link>
+
+            <Link
+              href="/create-account"
               className="text-white  bg-gray-700w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
@@ -76,7 +81,7 @@ const Navbar = () => {
               </svg>
 
               Signup
-            </button>
+            </Link>
             {/* <li>
               <Link href="#" className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">
                 Home

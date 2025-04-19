@@ -40,7 +40,7 @@ const Page = () => {
                     Swipe Layout
                 </Link> */}
             </div>
-            < div className="grid lg:grid-cols-5 grid-cols-2" >
+            < div className="grid lg:grid-cols-6 grid-cols-2 gap-4" >
                 {books.map((book) => (
                     <Card key={book.title} book={book} />
                 ))}

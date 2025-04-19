@@ -27,7 +27,7 @@ const Overview = () => {
                 <img src={book?.thumbnail} className=" absolute blur-md md:hidden -p-2 rounded-xl mx-auto shadow-md h-64 w-full object-cover  md:h-56 md:w-auto" alt={book?.title} />
 
                 {/* <span></span> */}
-                <div className="flex flex-col gap-6 w-full">
+                <div className="flex flex-col justify-between w-full">
                     <div className="flex flex-col  md:items-start" >
                         <h1 className="text-gray-600 font-bold text-3xl md:text-4xl ">{book?.title}</h1>
                         <span className=" text-gray-600 text-sm md:text-lg flex items-center justify-between"> &bull; {book?.author} &nbsp; &bull;  {book?.sub_categories_count} Categories &nbsp; &bull;  {book?.total_insights} Insights  </span>
