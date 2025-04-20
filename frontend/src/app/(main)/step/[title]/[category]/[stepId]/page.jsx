@@ -7,17 +7,18 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 
 export default function StepPage() {
-    const { title, category, step } = useParams();
+    const { stepId } = useParams();
     const [stepDetails, setStepDetails] = useState(null);
     const [error, setError] = useState(null);
 
 
     useEffect(() => {
-        if (!title || !category || !step) return;
+        if (!stepId) return;
 
         const fetchStepDetails = async () => {
             try {
-                const data = await getStepDetails(title, category, step);
+                const data = await getStepDetails(stepId);
+                console.log(data)
                 setStepDetails(data);
             } catch (err) {
                 setError(err.message);
@@ -25,14 +26,14 @@ export default function StepPage() {
         };
 
         fetchStepDetails();
-    }, [title, category, step]);
+    }, [stepId]);
 
     if (error) return <p>Error: {error}</p>;
     if (!stepDetails) return <p>Loading...</p>;
 
     return (
         <div className="prose prose-lg text-gray-700 mt-2">
-            <h1 className="text-3xl font-bold text-gray-700 ">{stepDetails.step}</h1>
+            <h1 className="text-3xl font-bold text-gray-700 ">{stepDetails.title}</h1>
             <p className=" text-lg text-gray-600">{stepDetails.description}</p>
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}

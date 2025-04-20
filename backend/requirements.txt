@@ -9,3 +9,5 @@ uvicorn
 psycopg2-binary
 python-multipart
 sentence-transformers
+python-jose[cryptography]
+passlib[bcrypt]

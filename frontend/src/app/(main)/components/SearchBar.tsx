@@ -18,6 +18,7 @@ const SearchBar = ({
     propertyToSearch: keyof any;
     setFilteredData: React.Dispatch<React.SetStateAction<any[]>>;
 }) => {
+    const [maximize, setMaximize] = useState(false);
     const [search, setSearch] = useState('');
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
@@ -27,13 +28,46 @@ const SearchBar = ({
     };
 
     return (
-        <form className={`${responsive ? 'md:flex hidden' : 'flex'} items-center`}>
-            <label htmlFor="simple-search" className="sr-only">Search</label>
-            <div className="relative w-full">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg
+        <div className={`${responsive ? maximize ? ' w-full absolute left-0 top-1.5  ' : '' : ""} items-center `} >
+
+            <form className={`${responsive ? maximize ? "" : "hidden md:flex" : ""}`} >
+                <label htmlFor="simple-search" className="sr-only">Search</label>
+                <div className="relative w-full flex items-center">
+                    <div className="absolute  start-0 flex items-center ps-3 pointer-events-none">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="size-5 text-gray-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                            />
+                        </svg>
+                    </div>
+                    <input
+                        type="text"
+                        id="simple-search"
+                        value={search}
+                        onChange={handleChange}
+                        className={`bg-gray-200 text-gray-900 md:text-lg outline-none rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5`}
+                        placeholder="Search"
+                    />
+                </div>
+            </form>
+            <button
+                className={`md:hidden p-2 rounded-full text-gray-800  ${responsive ? maximize ? "absolute right-0.5 top-0.5" : "" : "hidden"} `}
+                type="button"
+                onClick={() => setMaximize(!maximize)}>{maximize ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                    : <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="size-5 text-gray-400"
+                        className="size-6 "
+                        strokeWidth={1.5}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -43,18 +77,9 @@ const SearchBar = ({
                             strokeLinejoin="round"
                             d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
                         />
-                    </svg>
-                </div>
-                <input
-                    type="text"
-                    id="simple-search"
-                    value={search}
-                    onChange={handleChange}
-                    className="bg-gray-200 text-gray-900 md:text-lg outline-none rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
-                    placeholder="Search"
-                />
-            </div>
-        </form>
+                    </svg>}</button>
+        </div>
+
     );
 };
 

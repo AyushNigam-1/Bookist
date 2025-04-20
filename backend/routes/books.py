@@ -98,6 +98,49 @@ def get_content_keys(title: str):
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
 
+# @router.post("/book/{title}")
+# def get_content_values(title: str, category: List[str] = Body(...)):
+#     conn = connect_db()
+#     if not conn:
+#         raise HTTPException(status_code=500, detail="Database connection failed")
+    
+#     try:
+#         cur = conn.cursor()
+#         cur.execute("SELECT content FROM book WHERE title = %s;", (title,))
+#         book_data = cur.fetchone()
+#         cur.close()
+#         conn.close()
+        
+#         if not book_data:
+#             raise HTTPException(status_code=404, detail="Book not found")
+
+#         content = book_data[0]
+#         results = []
+
+#         keys_to_use = category if category else list(content.keys())
+
+#         for key in keys_to_use:
+#             if key in content:
+#                 icon = content[key].get("icon", "")
+#                 steps = content[key].get("steps", [])
+#                 results.extend([
+#                     {
+#                         "icon": icon,
+#                         "category": key,
+#                         "step": step["step"],
+#                         "description": step["description"]
+#                     }
+#                     for step in steps
+#                 ])
+
+#         if not results:
+#             raise HTTPException(status_code=404, detail="No matching categories found")
+
+#         return results
+
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
+    
 @router.post("/book/{title}")
 def get_content_values(title: str, category: List[str] = Body(...)):
     conn = connect_db()
@@ -107,14 +150,15 @@ def get_content_values(title: str, category: List[str] = Body(...)):
     try:
         cur = conn.cursor()
         cur.execute("SELECT content FROM book WHERE title = %s;", (title,))
-        book_data = cur.fetchone()
-        cur.close()
-        conn.close()
+        row = cur.fetchone()
         
-        if not book_data:
+        if not row:
             raise HTTPException(status_code=404, detail="Book not found")
+        
+        content = row[0]
+        if isinstance(content, str):
+            content = json.loads(content)
 
-        content = book_data[0]
         results = []
 
         keys_to_use = category if category else list(content.keys())
@@ -122,85 +166,72 @@ def get_content_values(title: str, category: List[str] = Body(...)):
         for key in keys_to_use:
             if key in content:
                 icon = content[key].get("icon", "")
-                steps = content[key].get("steps", [])
-                results.extend([
-                    {
+                step_ids = content[key].get("steps", [])
+
+                if not step_ids:
+                    continue
+
+                cur.execute(
+                    "SELECT id, title, description FROM insights WHERE id = ANY(%s);",
+                    (step_ids,)
+                )
+                steps_data = cur.fetchall()
+
+                for step in steps_data:
+                    step_id, step_title, step_description = step
+                    results.append({
                         "icon": icon,
                         "category": key,
-                        "step": step["step"],
-                        "description": step["description"]
-                    }
-                    for step in steps
-                ])
+                        "step_id": step_id,
+                        "step": step_title,
+                        "description": step_description
+                    })
+
+        cur.close()
+        conn.close()
 
         if not results:
-            raise HTTPException(status_code=404, detail="No matching categories found")
+            raise HTTPException(status_code=404, detail="No matching categories or steps found")
 
         return results
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
-@router.get("/book/{title}/{category}/{step}")
-def get_step_details(title: str, category: str, step: str):
-    """Fetches full details of a specific step within a category for a given book."""
+
+
+@router.get("/insights/{step_id}")
+def get_step_details(step_id: int):
+    """Fetches full details of a step by its unique ID."""
     conn = connect_db()
-    if conn:
+    if not conn:
+        raise HTTPException(status_code=500, detail="Database connection failed")
+
+    try:
         cur = conn.cursor()
-        cur.execute("SELECT content FROM book WHERE title = %s;", (title,))
-        book_data = cur.fetchone()
+
+        cur.execute(
+            "SELECT id, book_name, category_name, title, description, detailed_breakdown FROM insights WHERE id = %s;",
+            (step_id,)
+        )
+        row = cur.fetchone()
         cur.close()
         conn.close()
 
-        if book_data:
-            content = book_data[0]
-            if category in content:
-                steps = content[category]['steps']
-                for s in steps:
-                    if s["step"] == step:
-                        return s  # Return full details of the step
-                raise HTTPException(status_code=404, detail="Step not found")
-            else:
-                raise HTTPException(status_code=404, detail="Category not found in content")
-        else:
-            raise HTTPException(status_code=404, detail="Book not found")
-    else:
-        raise HTTPException(status_code=500, detail="Database connection failed")
-    
-# @router.post("/books/")
-# def create_book(book_data: Dict):
-#     conn = connect_db()
-#     if conn:
-#         cur = conn.cursor()
-#         try:
-#             cur.execute(
-#                 "INSERT INTO book (title, author, description, thumbnail,category, content) VALUES (%s, %s,%s, %s, %s, %s);",
-#                 (
-#                     book_data["Title"],
-#                     book_data["Author"],
-#                     book_data["Description"],
-#                     book_data["Thumbnail"],
-#                     book_data["Category"],
-#                     json.dumps(book_data["Content"]),
-#                 ),
-#             )
-#             conn.commit()
-#             return JSONResponse(content={"message": "Book created successfully"}, status_code=201)
-#         except Exception as e:
-#             conn.rollback()
-#             raise HTTPException(status_code=500, detail=f"Database error: {e}")
-#         finally:
-#             cur.close()
-#             conn.close()
-#     else:
-#         raise HTTPException(status_code=500, detail="Database connection failed")
+        if not row:
+            raise HTTPException(status_code=404, detail="Step not found")
 
-# import json
-# from typing import Dict, List
-# from fastapi import HTTPException
-# from fastapi.responses import JSONResponse
-# # Assuming you have a function to connect to your database
-# from your_database_module import connect_db
+        return {
+            "step_id": row[0],
+            "book_name": row[1],
+            "category": row[2],
+            "title": row[3],
+            "description": row[4],
+            "detailed_breakdown": row[5]
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 @router.post("/books/")
 def create_book(book_data: Dict):

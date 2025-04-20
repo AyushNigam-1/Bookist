@@ -37,14 +37,13 @@ export const getBookContentValue = async (title: string, category: string[]) => 
     }
 };
 
-export async function getStepDetails(title: string, category: string, step: string) {
+export async function getStepDetails(stepId: string) {
     try {
-        const response = await axios.get(`${API_BASE_URL}/book/${title}/${category}/${step}`);
+        const response = await axios.get(`${API_BASE_URL}/insights/${stepId}`);
         return response.data
     } catch (error) {
         throw error;
     }
-
 }
 
 export const createBook = async (bookData: {
