@@ -1,9 +1,10 @@
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import APIRouter, HTTPException, Response, status , Body , Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Optional, List, Union
 from passlib.hash import bcrypt
 from jose import JWTError, jwt
+import json
 from datetime import datetime, timedelta
 from controllers.connection import connect_db
 
@@ -62,12 +63,22 @@ def register_user(user: UserRegister):
     try:
         cur = conn.cursor()
         cur.execute(
-            "INSERT INTO \"user\" (name, email, password) VALUES (%s, %s, %s)",
+            "INSERT INTO \"user\" (name, email, password) VALUES (%s, %s, %s) RETURNING id",
             (user.name, user.email, hashed_pw)
         )
+        user_id = cur.fetchone()[0]
         conn.commit()
+
+        # Default favourites
+        favourite_books = []
+        favourite_insights = {}
+
         cur.close()
-        return {"message": "User registered successfully"}
+        return {
+            "user_id": user_id,
+            "favourite_books": favourite_books,
+            "favourite_insights": favourite_insights
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
     finally:
@@ -80,26 +91,40 @@ def login_user(user: UserLogin, response: Response):
         raise HTTPException(status_code=500, detail="Database connection failed")
 
     db_user = get_user_by_email(conn, user.email)
-    conn.close()
-
     if not db_user or not bcrypt.verify(user.password, db_user[3]):
+        conn.close()
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    token = create_access_token(data={"sub": user.email}, expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    user_id = db_user[0]
+    favourite_insights = db_user[4] or {}
+    favourite_books = db_user[5] or []
+    print(db_user)
+    conn.close()
 
-    response = JSONResponse(
-        content={"access_token": token, "token_type": "bearer"},
+    token = create_access_token(
+        data={"sub": user.email},
+        expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    )
+
+    res = JSONResponse(
+        content={
+            "user_id": user_id,
+            "favourite_books": favourite_books,
+            "favourite_insights": favourite_insights
+        },
         status_code=status.HTTP_200_OK
     )
 
-    response.set_cookie(
+    res.set_cookie(
         key="access_token",
         value=token,
         httponly=False,
         secure=False,
         samesite="Lax"
     )
-    return response
+
+    return res
+
 
 
 @router.get("/profile/{email}", response_model=UserProfile)
@@ -127,106 +152,141 @@ def get_profile(email: str):
         conn.close()
 
 
-# @router.post("/favourite/book/add")
-# def add_fav_book(email: str = Body(...), book_id: int = Body(...)):
-#     conn = connect_db()
-#     try:
-#         cur = conn.cursor()
-#         cur.execute("""
-#             UPDATE "user"
-#             SET favourite_books = array_append(favourite_books, %s)
-#             WHERE email = %s AND NOT (%s = ANY(favourite_books))
-#         """, (book_id, email, book_id))
-#         conn.commit()
-#         cur.close()
-#         return {"message": "Book added to favourites"}
-#     except Exception as e:
-#         raise HTTPException(status_code=400, detail=str(e))
-#     finally:
-#         conn.close()
+@router.post("/favourite/insight/add")
+def add_fav_insight(
+    user_id: int = Body(...),
+    insight: dict  = Body(...)
+):
+    """
+    insight should be { "category": "XYZ", "id": 123 }
+    """
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(500, "DB connection failed")
+    cur = conn.cursor()
+
+    try:
+        # 1) fetch existing JSONB
+        cur.execute('SELECT favourite_insights FROM "user" WHERE id=%s;', (user_id,))
+        row = cur.fetchone()
+        favs = row[0] if row and row[0] is not None else {}
+        print(favs)
+        # 2) mutate in Python
+        cat = insight["category"]
+        step_id = insight["id"]
+
+        # Get the existing list of IDs for the category, or initialize as empty list
+        arr = favs.get(cat, [])
+        print("arr",arr)
+        # Remove the ID if it exists in the category
+        if step_id in arr:
+            arr.remove(step_id)
+
+        # Add the new ID if it isn't already present
+        if step_id not in arr:
+            arr.append(step_id)
+
+        # If the category has no IDs left, remove it
+        if not arr:
+            del favs[cat]
+        else:
+            favs[cat] = arr
+
+        # 3) write it back to the database
+        print(arr)
+        cur.execute(
+            'UPDATE "user" SET favourite_insights = %s WHERE id=%s;',
+            (json.dumps(favs), user_id)
+        )
+        conn.commit()
+        return {"message": "Insight updated in favourites"}
+
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(400, str(e))
+
+    finally:
+        cur.close()
+        conn.close()
+
+@router.get("/favourite/insights/ids")
+def get_all_fav_insight_ids(user_id: int = Query(...)):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="Database connection failed")
+
+    try:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT favourite_insights
+            FROM "user"
+            WHERE id = %s
+        """, (user_id,))
+        row = cur.fetchone()
+        cur.close()
+
+        if not row or not row[0]:
+            return {"favourite_ids": []}
+
+        favourite_insights = row[0]  # a dict like {"Cat1": [1,2], "Cat2": [3]}
+
+        all_ids = []
+        for id_list in favourite_insights.values():
+            all_ids.extend(id_list)
+
+        return {"favourite_ids": all_ids}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        conn.close()
 
 
-# @router.post("/favourite/book/remove")
-# def remove_fav_book(email: str = Body(...), book_id: int = Body(...)):
-#     conn = connect_db()
-#     try:
-#         cur = conn.cursor()
-#         cur.execute("""
-#             UPDATE "user"
-#             SET favourite_books = array_remove(favourite_books, %s)
-#             WHERE email = %s
-#         """, (book_id, email))
-#         conn.commit()
-#         cur.close()
-#         return {"message": "Book removed from favourites"}
-#     except Exception as e:
-#         raise HTTPException(status_code=400, detail=str(e))
-#     finally:
-#         conn.close()
+@router.post("/favourite/insight/add")
+def add_fav_insight(
+    user_id: int = Body(...),
+    insight: dict  = Body(...)
+):
+    """
+    insight should be { "category": "XYZ", "id": 123 }
+    """
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(500, "DB connection failed")
+    cur = conn.cursor()
 
+    try:
+        cur.execute('SELECT favourite_insights FROM "user" WHERE id=%s;', (user_id,))
+        row = cur.fetchone()
+        favs = row[0] if row and row[0] is not None else {}
+        print(favs)
+        # 2) mutate in Python
+        cat = insight["category"]
+        step_id = insight["id"]
 
-# @router.post("/favourite/insight/add")
-# def add_fav_insight(user_id: int = Body(...), insight: Union[dict, str] = Body(...)):
-#     conn = connect_db()
-#     if not conn:
-#         raise HTTPException(status_code=500, detail="Database connection failed")
+        arr = favs.get(cat, [])
 
-#     try:
-#         if isinstance(insight, str):
-#             insight = json.loads(insight)
+        if step_id not in arr:
+            arr.append(step_id)
+        else:
+            arr.remove(step_id)
 
-#         category = insight["category"]
-#         insight_id = insight["id"]
+        if not arr:
+            del favs[cat]
+            print("category deleted",cat)
+        else:
+            favs[cat] = arr
+            print("favs",favs , "arr",arr)
 
-#         cur = conn.cursor()
-
-#         cur.execute("""
-#             UPDATE "user"
-#             SET favourite_insights = jsonb_set(
-#                 favourite_insights,
-#                 %s,
-#                 COALESCE(
-#                     (favourite_insights->%s)::jsonb || to_jsonb(%s::text),
-#                     to_jsonb(ARRAY[%s])
-#                 ),
-#                 true
-#             )
-#             WHERE id = %s
-#         """, (
-#             '{' + category + '}',
-#             category,
-#             insight_id,
-#             insight_id,
-#             user_id
-#         ))
-
-#         conn.commit()
-#         cur.close()
-#         return {"message": "Insight added to favourites"}
-#     except Exception as e:
-#         raise HTTPException(status_code=400, detail=str(e))
-#     finally:
-#         conn.close()
-
-
-# @router.post("/favourite/insight/remove")
-# def remove_fav_insight(email: str = Body(...), insight: Union[dict, str] = Body(...)):
-#     conn = connect_db()
-#     try:
-#         cur = conn.cursor()
-#         cur.execute("""
-#             UPDATE "user"
-#             SET favourite_insights = (
-#                 SELECT jsonb_agg(elem)
-#                 FROM jsonb_array_elements(favourite_insights) AS elem
-#                 WHERE elem != %s::jsonb
-#             )
-#             WHERE email = %s
-#         """, (json.dumps(insight), email))
-#         conn.commit()
-#         cur.close()
-#         return {"message": "Insight removed from favourites"}
-#     except Exception as e:
-#         raise HTTPException(status_code=400, detail=str(e))
-#     finally:
-#         conn.close()
+        cur.execute(
+            'UPDATE "user" SET favourite_insights = %s WHERE id=%s;',
+            (json.dumps(favs), user_id)
+        )
+        conn.commit()
+        return {"message": "Insight updated in favourites"}
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(400, str(e))
+    finally:
+        cur.close()
+        conn.close()

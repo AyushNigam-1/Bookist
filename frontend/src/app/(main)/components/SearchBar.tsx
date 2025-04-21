@@ -18,8 +18,10 @@ const SearchBar = ({
     propertyToSearch: keyof any;
     setFilteredData: React.Dispatch<React.SetStateAction<any[]>>;
 }) => {
+
     const [maximize, setMaximize] = useState(false);
     const [search, setSearch] = useState('');
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         setSearch(val);
@@ -59,7 +61,7 @@ const SearchBar = ({
                 </div>
             </form>
             <button
-                className={`md:hidden p-2 rounded-full text-gray-800  ${responsive ? maximize ? "absolute right-0.5 top-0.5" : "" : "hidden"} `}
+                className={`md:hidden p-2 rounded-full bg-gray-200 text-gray-800  ${responsive ? maximize ? "absolute right-0.5 top-0.5" : "" : "hidden"} `}
                 type="button"
                 onClick={() => setMaximize(!maximize)}>{maximize ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />

@@ -85,3 +85,38 @@ export const getBookInfoByTitle = async (title: string) => {
         throw error;
     }
 };
+
+export const addFavouriteInsight = async (userId: number, insight: {
+    id: number;
+    category: string;
+}) => {
+    try {
+        console.log(userId, insight)
+        const response = await axios.post(`${API_BASE_URL}/favourite/insight/add`, {
+            user_id: userId,
+            insight: insight
+        });
+        console.log(response)
+        return response.data;
+    } catch (error: any) {
+        throw new Error(error.response?.data?.detail || 'Failed to add favourite insight');
+    }
+};
+
+export const removeFavouriteInsight = async (
+    email: string,
+    insight: {
+        id: string;
+        category: string;
+    }
+): Promise<{ message: string }> => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/favourite/insight/remove`, {
+            email: email,
+            insight: insight
+        });
+        return response.data;
+    } catch (error: any) {
+        throw new Error(error.response?.data?.detail || 'Failed to remove favourite insight');
+    }
+};

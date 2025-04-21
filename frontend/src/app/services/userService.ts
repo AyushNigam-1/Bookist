@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://192.168.129.43:8000"; // Change this to your backend URL
+const API = "http://192.168.129.43:8000" // Update based on your FastAPI server
 
 export const registerUser = async (user: {
     name: string;
@@ -48,6 +48,7 @@ export const addFavouriteInsight = async (
     user_id: number,
     insight: { id: string; category: string }
 ) => {
+    console.log("called")
     const res = await axios.post(`${API}/favourite/insight/add`, {
         user_id,
         insight,

@@ -24,13 +24,12 @@ const CreateAccount = () => {
         setLoading(true);
 
         try {
-            const res = await registerUser({
+            const data = await registerUser({
                 name: formData.username,
                 email: formData.email,
                 password: formData.password
             });
-
-            console.log("Registration successful:", res);
+            localStorage.setItem("user", JSON.stringify(data))
             router.push('/');
         } catch (err: any) {
             console.error("Registration failed:", err?.response?.data?.message || err.message);

@@ -1,6 +1,6 @@
 "use client"
 import SearchBar from '@/app/(main)/components/SearchBar';
-import { getBookContentKeys, getBookContentValue } from '@/app/services/bookService';
+import { addFavouriteInsight, getBookContentKeys, getBookContentValue } from '@/app/services/bookService';
 import { DialogBackdrop, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -36,17 +36,19 @@ export default function Page() {
     const [isOpen, setIsOpen] = useState(false)
     const [filteredBooks, setFilteredBooks] = useState<StepData[] | []>([]);
     const [filteredCategories, setFilteredCategories] = useState<Categories[] | []>([]);
+    const user = JSON.parse(localStorage.getItem("user") || "{}")
+    const [bookmarked, setBookmarked] = useState<number[] | []>([])
 
-    const filteredCategory =
-        query === ''
-            ? categories
-            : categories.filter((category) => {
-                return category.name.toLowerCase().includes(query.toLowerCase())
-            })
-
+    const updateBookmarks = () => {
+        if (!user.favourite_insights) return
+        const bookmarkedIds = Object.keys(user.favourite_insights).map(key => user.favourite_insights[key]).flatMap(arr => arr)
+        setBookmarked(bookmarkedIds)
+        console.log("bookmarked", bookmarkedIds)
+    }
 
     useEffect(() => {
         const fetchCategories = async () => {
+            updateBookmarks()
             if (!params?.title) return;
             try {
                 const fetchedCategories = await getBookContentKeys(params.title);
@@ -114,12 +116,39 @@ export default function Page() {
         });
         setIsOpen(false);
     };
-    const [maximize, setMaximize] = useState(false);
+    const handleAdd = async (id: number, category: string) => {
+        try {
+            const result = await addFavouriteInsight(user.user_id, { id, category });
 
-    function getRandomColorPair() {
-        const randomIndex = Math.floor(Math.random() * colorPairs.length);
-        return colorPairs[randomIndex];
-    }
+            const localFavourites = user.favourite_insights;
+
+            if (!localFavourites[category]) {
+                console.log("no category")
+                localFavourites[category] = [];
+            }
+
+            if (!localFavourites[category].includes(id)) {
+                console.log("adding ID ")
+                localFavourites[category].push(id);
+            }
+            else {
+                console.log("removing ID ")
+                localFavourites[category] = localFavourites[category].filter((ids: number) => ids != id)
+                if (!localFavourites[category].length) delete localFavourites[category]
+            }
+            localStorage.setItem("user", JSON.stringify(user));
+            updateBookmarks()
+            console.log("Added to favourites:", result);
+        } catch (err: any) {
+            console.error(err.message);
+        }
+    };
+
+
+    // function getRandomColorPair() {
+    //     const randomIndex = Math.floor(Math.random() * colorPairs.length);
+    //     return colorPairs[randomIndex];
+    // }
     return (
         <div className="flex flex-col relative">
             {mode !== "Swipe" && <div className="sticky top-0 w-full bg-gray-100 z-10 h-14 md:h-20">
@@ -136,31 +165,22 @@ export default function Page() {
                     <div className=''>
                         <div className='md:flex gap-3' >
                             <SearchBar responsive={true} data={steps} propertyToSearch='step' setFilteredData={setFilteredBooks} />
-                            {/* <button onClick={() => setIsOpen(true)} className=" p-3 font-semibold  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-md flex gap-2 items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                                </svg>
-                            </button> */}
-                        </div>
-                        <div className='fixed right-0 m-4 md:m-0 bottom-0 flex gap-2 flex-col  md:hidden z-50' >
-                            <button className=" p-3  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" onClick={() => setIsOpen(true)} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                                </svg>
-                            </button>
-                            <button onClick={() => setMode("Swipe")} className="p-3 bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
-                                </svg>
-                            </button>
-                            {/* <button className=" bg-gradient-to-r text-white bg-gray-700 p-3  shadow rounded-full md:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                            </svg>
-                            </button> */}
+                            <div className='flex flex-col gap-3 md:relative fixed right-0 m-4 md:m-0 bottom-0' >
+                                <button onClick={() => setIsOpen(true)} className=" p-3 font-semibold  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full md:rounded-md flex gap-2 items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                                    </svg>
+                                </button>
+                                <button onClick={() => setMode("Swipe")} className="md:hidden p-3 bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
-
-                </div> </div>
+                </div>
+            </div>
             }
 
             {
@@ -190,15 +210,14 @@ export default function Page() {
                                         </Link>
                                         <div className="flex gap-2 justify-between mt-auto">
 
-                                            <button
+                                            <button onClick={() => handleAdd(step.step_id, step.category)}
                                                 type="button"
-                                                className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold "
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
-                                                </svg>
-
-
+                                                className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold ${bookmarked.includes(step.step_id) ? 'outline-gray-800 outline-1 text-gray-500' : ''} `}
+                                            >{bookmarked.includes(step.step_id) ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
+                                            </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                                            </svg>}
                                             </button>
                                             <button
                                                 type="button"
