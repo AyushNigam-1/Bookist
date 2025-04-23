@@ -89,6 +89,7 @@ export const getBookInfoByTitle = async (title: string) => {
 export const addFavouriteInsight = async (userId: number, insight: {
     id: number;
     category: string;
+    description: string
 }) => {
     try {
         console.log(userId, insight)

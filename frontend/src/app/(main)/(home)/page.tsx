@@ -30,7 +30,7 @@ const Page = () => {
     return (
         <div className="flex flex-col w-full" >
             <div className={`flex justify-between items-center h-14 md:h-18 sticky top-0 bg-gray-100`} >
-                <h4 className="lg:text-4xl font-black text-gray-700 text-2xl" >Explore</h4>
+                <h4 className="justify-between flex lg:text-4xl font-bold text-gray-700 text-2xl text-center md:text-left  gap-2" >Explore</h4>
                 <SearchBar responsive={true} data={books} propertyToSearch='title' setFilteredData={setFilteredBooks} />
             </div>
             < div className="grid lg:grid-cols-6 grid-cols-2 gap-4" >

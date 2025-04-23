@@ -2,6 +2,14 @@ import axios from "axios";
 
 const API = "http://192.168.129.43:8000" // Update based on your FastAPI server
 
+export interface Insight {
+    id: number;
+    title: string;
+    content: string;
+    category: string;
+    // add other fields here based on your DB structure
+}
+
 export const registerUser = async (user: {
     name: string;
     email: string;
@@ -46,7 +54,7 @@ export const removeFavouriteBook = async (email: string, book_id: number) => {
 
 export const addFavouriteInsight = async (
     user_id: number,
-    insight: { id: string; category: string }
+    insight: { id: number; category: string, description: string }
 ) => {
     console.log("called")
     const res = await axios.post(`${API}/favourite/insight/add`, {
@@ -56,13 +64,16 @@ export const addFavouriteInsight = async (
     return res.data;
 };
 
-export const removeFavouriteInsight = async (
-    email: string,
-    insight: { id: string; category: string }
-) => {
-    const res = await axios.post(`${API}/favourite/insight/remove`, {
-        email,
-        insight,
-    });
-    return res.data;
-};
+
+export async function getFavouriteCategories(userId: number) {
+    // console.log(userId)
+    const response = await axios.get(`${API}/favourite/insight/categories/${userId}`);
+    return response.data.categories;
+}
+
+export async function getFavouriteInsights(userId: number, category?: string[]) {
+    console.log(userId, category)
+    const response = await axios.post(`${API}/favourite/insight/list/${userId}`, category);
+
+    return response.data.insights;
+}

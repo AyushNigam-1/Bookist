@@ -17,7 +17,7 @@ const Navbar = () => {
     }
   }, []);
   return (
-    <nav className=" border-b border-gray-300 pb-2 lg:pb-3 z-20 top-0 start-0 ">
+    <nav className=" border-b border-gray-300 pb-2 z-20 top-0 start-0 ">
       <div className=" flex flex-wrap items-center justify-between container mx-auto  ">
         {/* <Link href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse"> */}
         <span className="self-center text-2xl text-gray-700  font-semibold whitespace-nowrap ">
@@ -28,7 +28,7 @@ const Navbar = () => {
         {/* </Link> */}
         {isLoggedIn ? <>
           <Menu>
-            <MenuButton className="inline-flex items-center gap-2 bg-gray-700 p-2 text-sm/6 font-semibold text-white  rounded-full">
+            <MenuButton className="inline-flex items-center gap-2 bg-gray-700 p-2 md:p-3 text-sm/6 font-semibold text-white  rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5  md:size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
@@ -51,16 +51,14 @@ const Navbar = () => {
                 </button>
               </MenuItem> */}
               <MenuItem>
-                <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 font-semibold md:font-medium md:text-xl">
-                  {/* <PencilIcon className="size-4 fill-white/30" /> */}
+                <Link href="/bookmarks" className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 font-semibold md:font-medium md:text-xl">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5 md:size-7">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                   </svg>
                   Bookmarks
 
-                </button>
+                </Link>
               </MenuItem>
-              {/* <hr className=" border-gray-200" /> */}
               <MenuItem>
                 <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 font-semibold md:font-medium md:text-xl">
                   {/* <PencilIcon className="size-4 fill-white/30" /> */}
@@ -121,7 +119,7 @@ const Navbar = () => {
               <Link
                 href="/login"
                 type="button"
-                className="text-white  bg-gray-700w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
+                className="text-white  bg-gray-700 w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
@@ -132,7 +130,7 @@ const Navbar = () => {
 
               <Link
                 href="/create-account"
-                className="text-white  bg-gray-700w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
+                className="text-white  bg-gray-700 w-full focus:outline-none rounded-lg px-4 py-2 font-semibold flex gap-2 items-center justify-center"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />

@@ -28,7 +28,7 @@ const Overview = () => {
 
                 {/* <span></span> */}
                 <div className="flex flex-col gap-4 md:justify-between w-full">
-                    <div className="flex flex-col  md:items-start" >
+                    <div className="flex flex-col  md:items-start gap-1" >
                         <h1 className="text-gray-600 font-bold text-3xl md:text-4xl ">{book?.title}</h1>
                         <span className=" text-gray-600 text-sm md:text-lg flex items-center justify-between"> &bull; {book?.author} &nbsp; &bull;  {book?.sub_categories_count} Categories &nbsp; &bull;  {book?.total_insights} Insights  </span>
                     </div>
@@ -83,7 +83,7 @@ const Overview = () => {
                             Bookmark
                         </button>
                         <Link
-                            href={`/steps/${book?.title} `}
+                            href={`/insights/${book?.title} `}
                             type="button"
                             // className="text-white    focus:outline-none  py-3 md:py-2 px-4 rounded-lg md:w-min w-[96vw] font-semibold flex md:relative bottom-4 md:bottom-0  gap-2 items-center justify-center fixed "
                             className="text-gray-200  bg-gray-700   w-full justify-center  flex gap-2 items-center  focus:outline-none rounded-lg py-2 px-4  md:w-min  font-semibold">

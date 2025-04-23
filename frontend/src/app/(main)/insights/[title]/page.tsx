@@ -21,134 +21,136 @@ interface StepData {
 }
 type Categories = {
     name: string,
-    icon: String,
-    description: String,
-    steps_count: String
+    icon: string,
+    description: string,
+    steps_count: string
 }
 export default function Page() {
-
-    const params = useParams<{ title?: string }>();
-    const [steps, setSteps] = useState<StepData[] | []>([]);
-    const [categories, setCategories] = useState<Categories[] | []>([]);
-    const [selectedCategory, setSelectedCategory] = useState<Categories[]>()
-    const [mode, setMode] = useState<String>("List")
-    const [query, setQuery] = useState('')
+    const params = useParams<{ title?: string }>()
+    const [steps, setSteps] = useState<StepData[]>([])
+    const [categories, setCategories] = useState<Categories[]>([])
+    const [selectedCategory, setSelectedCategory] = useState<Categories[]>([])
+    const [filteredBooks, setFilteredBooks] = useState<StepData[]>([])
+    const [filteredCategories, setFilteredCategories] = useState<Categories[]>([])
+    const [bookmarked, setBookmarked] = useState<number[]>([])
+    const [mode, setMode] = useState("List")
+    const [query, setQuery] = useState("")
     const [isOpen, setIsOpen] = useState(false)
-    const [filteredBooks, setFilteredBooks] = useState<StepData[] | []>([]);
-    const [filteredCategories, setFilteredCategories] = useState<Categories[] | []>([]);
-    const user = JSON.parse(localStorage.getItem("user") || "{}")
-    const [bookmarked, setBookmarked] = useState<number[] | []>([])
+    const [user, setUser] = useState<any>({})
 
-    const updateBookmarks = () => {
-        if (!user.favourite_insights) return
-        const bookmarkedIds = Object.keys(user.favourite_insights).map(key => user.favourite_insights[key]).flatMap(arr => arr)
-        setBookmarked(bookmarkedIds)
-        console.log("bookmarked", bookmarkedIds)
-    }
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem("user") || "{}")
+        setUser(storedUser)
+
+        if (storedUser.favourite_insights) {
+            const bookmarkedIds = Object.values(storedUser.favourite_insights).flat()
+            setBookmarked(bookmarkedIds as number[])
+        }
+    }, [])
 
     useEffect(() => {
         const fetchCategories = async () => {
-            updateBookmarks()
-            if (!params?.title) return;
+            if (!params?.title) return
             try {
-                const fetchedCategories = await getBookContentKeys(params.title);
-                setCategories(fetchedCategories);
-                setFilteredCategories(fetchedCategories)
+                const data = await getBookContentKeys(params.title)
+                setCategories(data)
+                setFilteredCategories(data)
+                console.log(data)
             } catch (error) {
-                console.error("Error fetching categories:", error);
+                console.error("Error fetching categories:", error)
             }
-        };
+        }
 
-        fetchCategories();
-    }, [params?.title]);
+        fetchCategories()
+    }, [params?.title])
 
     useEffect(() => {
         const fetchInsights = async () => {
             if (!params.title) return
             try {
-                const fetchedCategories = await getBookContentValue(params.title, selectedCategory?.length ? selectedCategory.map(category => category.name) : []);
-                setSteps(fetchedCategories);
-                setFilteredBooks(fetchedCategories)
-                console.log(fetchedCategories);
+                const data = await getBookContentValue(
+                    params.title,
+                    selectedCategory.length ? selectedCategory.map(cat => cat.name) : []
+                )
+                setSteps(data)
+                setFilteredBooks(data)
             } catch (error) {
-                console.error("Error fetching categories:", error);
+                console.error("Error fetching steps:", error)
             }
-        };
+        }
 
-        fetchInsights();
-    }, [params?.title, selectedCategory]);
+        fetchInsights()
+    }, [params?.title, selectedCategory])
 
-    const colorPairs = [
-        "bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200",
-        "bg-gradient-to-br from-sky-100 via-blue-200 to-indigo-100",
-        "bg-gradient-to-tr from-rose-100 via-pink-200 to-fuchsia-100",
-        "bg-gradient-to-r from-teal-100 via-green-200 to-lime-100",
-        "bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300",
-        "bg-gradient-to-r from-purple-600 via-pink-500 to-red-500",
-        "bg-gradient-to-br from-blue-500 via-green-400 to-yellow-300",
-        "bg-gradient-to-r from-rose-500 via-red-400 to-orange-300",
-        "bg-gradient-to-tl from-amber-400 via-orange-500 to-red-600",
-        "bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600",
-        "bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-700",
-        "bg-gradient-to-r from-blue-900 via-blue-600 to-indigo-700",
-        "bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900",
-        "bg-gradient-to-tr from-teal-600 via-cyan-500 to-blue-500",
-        "bg-gradient-to-bl from-indigo-600 via-violet-500 to-purple-400",
-        "bg-gradient-to-br from-yellow-200 via-pink-300 to-rose-400",
-        "bg-gradient-to-tr from-rose-200 via-violet-200 to-indigo-200",
-        "bg-gradient-to-r from-amber-300 via-orange-200 to-yellow-300",
-        "bg-gradient-to-r from-zinc-100 via-gray-100 to-neutral-100",
-        "bg-gradient-to-r from-rose-500 via-fuchsia-500 to-indigo-500",
-        "bg-gradient-to-t from-black/60 via-black/30 to-transparent",
-        "bg-gradient-to-t from-black/70 via-black/40 to-transparent",
-        "bg-gradient-to-t from-white/70 via-white/40 to-transparent",
-        "bg-gradient-to-t from-gray-900/60 via-gray-700/30 to-transparent"
+    const toggleCategory = (category: Categories) => {
+        setSelectedCategory(prev =>
+            prev.some(c => c.name === category.name)
+                ? prev.filter(c => c.name !== category.name)
+                : [...prev, category]
+        )
+        setIsOpen(false)
+    }
 
-    ];
-    const toggleCategory = (categoryToToggle: Categories) => {
-        setSelectedCategory((prevCat = []) => {
-            const isSelected = prevCat.some(c => c.name === categoryToToggle.name);
-            if (isSelected) {
-                return prevCat.filter(c => c.name !== categoryToToggle.name);
-            } else {
-                return [...prevCat, categoryToToggle];
-            }
-        });
-        setIsOpen(false);
-    };
     const handleAdd = async (id: number, category: string) => {
         try {
-            const result = await addFavouriteInsight(user.user_id, { id, category });
+            let desc = categories.find((cate) => cate.name === category)?.description
+            await addFavouriteInsight(user.user_id, { id, category, description: desc ? desc : "" })
+            const updatedUser = { ...user }
 
-            const localFavourites = user.favourite_insights;
-
-            if (!localFavourites[category]) {
-                console.log("no category")
-                localFavourites[category] = [];
+            if (!updatedUser.favourite_insights[category]) {
+                updatedUser.favourite_insights[category] = []
             }
 
-            if (!localFavourites[category].includes(id)) {
-                console.log("adding ID ")
-                localFavourites[category].push(id);
+            const index = updatedUser.favourite_insights[category].indexOf(id)
+            if (index === -1) {
+                updatedUser.favourite_insights[category].push(id)
+            } else {
+                updatedUser.favourite_insights[category].splice(index, 1)
+                if (updatedUser.favourite_insights[category].length === 0) {
+                    delete updatedUser.favourite_insights[category]
+                }
             }
-            else {
-                console.log("removing ID ")
-                localFavourites[category] = localFavourites[category].filter((ids: number) => ids != id)
-                if (!localFavourites[category].length) delete localFavourites[category]
-            }
-            localStorage.setItem("user", JSON.stringify(user));
-            updateBookmarks()
-            console.log("Added to favourites:", result);
+
+            localStorage.setItem("user", JSON.stringify(updatedUser))
+            setUser(updatedUser)
+            const updatedBookmarked = Object.values(updatedUser.favourite_insights).flat()
+            setBookmarked(updatedBookmarked as number[])
         } catch (err: any) {
-            console.error(err.message);
+            console.error("Bookmarking failed:", err.message)
         }
-    };
-
+    }
 
     // function getRandomColorPair() {
     //     const randomIndex = Math.floor(Math.random() * colorPairs.length);
     //     return colorPairs[randomIndex];
     // }
+    // const colorPairs = [
+    //     "bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200",
+    //     "bg-gradient-to-br from-sky-100 via-blue-200 to-indigo-100",
+    //     "bg-gradient-to-tr from-rose-100 via-pink-200 to-fuchsia-100",
+    //     "bg-gradient-to-r from-teal-100 via-green-200 to-lime-100",
+    //     "bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300",
+    //     "bg-gradient-to-r from-purple-600 via-pink-500 to-red-500",
+    //     "bg-gradient-to-br from-blue-500 via-green-400 to-yellow-300",
+    //     "bg-gradient-to-r from-rose-500 via-red-400 to-orange-300",
+    //     "bg-gradient-to-tl from-amber-400 via-orange-500 to-red-600",
+    //     "bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600",
+    //     "bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-700",
+    //     "bg-gradient-to-r from-blue-900 via-blue-600 to-indigo-700",
+    //     "bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900",
+    //     "bg-gradient-to-tr from-teal-600 via-cyan-500 to-blue-500",
+    //     "bg-gradient-to-bl from-indigo-600 via-violet-500 to-purple-400",
+    //     "bg-gradient-to-br from-yellow-200 via-pink-300 to-rose-400",
+    //     "bg-gradient-to-tr from-rose-200 via-violet-200 to-indigo-200",
+    //     "bg-gradient-to-r from-amber-300 via-orange-200 to-yellow-300",
+    //     "bg-gradient-to-r from-zinc-100 via-gray-100 to-neutral-100",
+    //     "bg-gradient-to-r from-rose-500 via-fuchsia-500 to-indigo-500",
+    //     "bg-gradient-to-t from-black/60 via-black/30 to-transparent",
+    //     "bg-gradient-to-t from-black/70 via-black/40 to-transparent",
+    //     "bg-gradient-to-t from-white/70 via-white/40 to-transparent",
+    //     "bg-gradient-to-t from-gray-900/60 via-gray-700/30 to-transparent"
+
+    // ];
     return (
         <div className="flex flex-col relative">
             {mode !== "Swipe" && <div className="sticky top-0 w-full bg-gray-100 z-10 h-14 md:h-20">
@@ -166,7 +168,7 @@ export default function Page() {
                         <div className='md:flex gap-3' >
                             <SearchBar responsive={true} data={steps} propertyToSearch='step' setFilteredData={setFilteredBooks} />
                             <div className='flex flex-col gap-3 md:relative fixed right-0 m-4 md:m-0 bottom-0' >
-                                <button onClick={() => setIsOpen(true)} className=" p-3 font-semibold  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full md:rounded-md flex gap-2 items-center">
+                                <button onClick={() => setIsOpen(true)} className=" p-3 font-semibold  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full  flex gap-2 items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                                     </svg>
@@ -189,8 +191,8 @@ export default function Page() {
                         <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4" >
                             {filteredBooks.map((step, index) => (
                                 <div className='relative rounded-2xl   ' >
-                                    <div key={index} className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
-                                        <Link href={`/step/${params.title}/${step?.category}/${step.step_id}`} className='flex flex-col gap-2' >
+                                    <div key={`${step.step_id}-${bookmarked.includes(step.step_id)}`} className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
+                                        <Link href={`/insight/${params.title}/${step?.category}/${step.step_id}`} className='flex flex-col gap-2' >
                                             <div className='flex justify-between items-center'>
                                                 <span className=' text-gray-600 font-medium  text-sm flex gap-1 items-center w-min text-nowrap flex-nowrap rounded-lg' >
                                                     <span>

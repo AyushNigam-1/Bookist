@@ -143,6 +143,7 @@ def get_content_keys(title: str):
     
 @router.post("/book/{title}")
 def get_content_values(title: str, category: List[str] = Body(...)):
+    # console.log
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Database connection failed")
