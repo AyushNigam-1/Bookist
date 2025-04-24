@@ -9,6 +9,8 @@ import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react
 import clsx from 'clsx'
 import Loader from '@/app/(main)/components/Loader';
 import Slider from "@/app/(main)/components/Slider"
+import { get } from 'http';
+import { getFavouriteIds } from '@/app/services/userService';
 interface StepData {
     step: string;
     category: string;
@@ -36,16 +38,15 @@ export default function Page() {
     const [mode, setMode] = useState("List")
     const [query, setQuery] = useState("")
     const [isOpen, setIsOpen] = useState(false)
-    const [user, setUser] = useState<any>({})
+    const user = JSON.parse(localStorage.getItem("user") || "{}")
 
     useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem("user") || "{}")
-        setUser(storedUser)
 
-        if (storedUser.favourite_insights) {
-            const bookmarkedIds = Object.values(storedUser.favourite_insights).flat()
-            setBookmarked(bookmarkedIds as number[])
+        const getBookmarkedIds = async () => {
+            const bookmarkedIds = await getFavouriteIds(user.user_id)
+            setBookmarked(bookmarkedIds)
         }
+        getBookmarkedIds()
     }, [])
 
     useEffect(() => {
@@ -94,27 +95,16 @@ export default function Page() {
     const handleAdd = async (id: number, category: string) => {
         try {
             let desc = categories.find((cate) => cate.name === category)?.description
+            console.log(id, category, desc, user.user_id)
             await addFavouriteInsight(user.user_id, { id, category, description: desc ? desc : "" })
-            const updatedUser = { ...user }
 
-            if (!updatedUser.favourite_insights[category]) {
-                updatedUser.favourite_insights[category] = []
+            if (!bookmarked.includes(id)) {
+                setBookmarked((bookmarks) => ([...bookmarks, id]))
+            }
+            else {
+                setBookmarked((bookmarks) => bookmarks.filter((bookmark) => bookmark !== id))
             }
 
-            const index = updatedUser.favourite_insights[category].indexOf(id)
-            if (index === -1) {
-                updatedUser.favourite_insights[category].push(id)
-            } else {
-                updatedUser.favourite_insights[category].splice(index, 1)
-                if (updatedUser.favourite_insights[category].length === 0) {
-                    delete updatedUser.favourite_insights[category]
-                }
-            }
-
-            localStorage.setItem("user", JSON.stringify(updatedUser))
-            setUser(updatedUser)
-            const updatedBookmarked = Object.values(updatedUser.favourite_insights).flat()
-            setBookmarked(updatedBookmarked as number[])
         } catch (err: any) {
             console.error("Bookmarking failed:", err.message)
         }
@@ -188,10 +178,10 @@ export default function Page() {
             {
                 mode == 'Swipe' ? steps.length && <Slider title={params?.title} steps={steps} /> : <>
                     {steps ? (
-                        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4" >
+                        <div className="columns-1 md:columns-2 lg:columns-3 gap-3 space-y-3 md:gap-4 md:space-y-4" >
                             {filteredBooks.map((step, index) => (
-                                <div className='relative rounded-2xl   ' >
-                                    <div key={`${step.step_id}-${bookmarked.includes(step.step_id)}`} className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
+                                <div className='relative rounded-2xl   ' key={`${step.step_id}-${bookmarked.includes(step.step_id)}`} >
+                                    <div className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
                                         <Link href={`/insight/${params.title}/${step?.category}/${step.step_id}`} className='flex flex-col gap-2' >
                                             <div className='flex justify-between items-center'>
                                                 <span className=' text-gray-600 font-medium  text-sm flex gap-1 items-center w-min text-nowrap flex-nowrap rounded-lg' >
@@ -220,6 +210,7 @@ export default function Page() {
                                             </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                                             </svg>}
+
                                             </button>
                                             <button
                                                 type="button"

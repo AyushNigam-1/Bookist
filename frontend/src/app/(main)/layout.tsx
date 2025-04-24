@@ -6,7 +6,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="antialiased flex flex-col h-screen p-3">
+        <div className="antialiased flex flex-col h-screen p-2">
             <Navbar />
             <div className="w-full container mx-auto">
                 {children}

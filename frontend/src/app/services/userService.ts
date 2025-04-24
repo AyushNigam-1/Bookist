@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://192.168.129.43:8000" // Update based on your FastAPI server
+const API = "http://192.168.235.43:8000" // Update based on your FastAPI server
 
 export interface Insight {
     id: number;
@@ -69,6 +69,11 @@ export async function getFavouriteCategories(userId: number) {
     // console.log(userId)
     const response = await axios.get(`${API}/favourite/insight/categories/${userId}`);
     return response.data.categories;
+}
+
+export async function getFavouriteIds(userId: number) {
+    const response = await axios.get(`${API}/favourite/insights/ids/${userId}`);
+    return response.data.favourite_ids;
 }
 
 export async function getFavouriteInsights(userId: number, category?: string[]) {

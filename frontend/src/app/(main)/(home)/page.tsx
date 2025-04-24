@@ -10,7 +10,6 @@ const Page = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                console.log("called")
                 const books = await getAllBooks();
                 setBooks(books);
                 setFilteredBooks(books);
@@ -33,7 +32,7 @@ const Page = () => {
                 <h4 className="justify-between flex lg:text-4xl font-bold text-gray-700 text-2xl text-center md:text-left  gap-2" >Explore</h4>
                 <SearchBar responsive={true} data={books} propertyToSearch='title' setFilteredData={setFilteredBooks} />
             </div>
-            < div className="grid lg:grid-cols-6 grid-cols-2 gap-4" >
+            < div className="columns-1 gap-3 lg:columns-3 space-y-3" >
                 {filteredBooks.map((book) => (
                     <Card key={book.title} book={book} />
                 ))}

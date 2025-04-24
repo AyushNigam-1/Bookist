@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { addFavouriteInsight, getFavouriteCategories, getFavouriteInsights } from '@/app/services/userService';
 import React, { use, useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar';
@@ -28,16 +29,15 @@ const page = () => {
 
     const [insights, setInsights] = React.useState<any[]>([]);
     const [categories, setCategories] = useState<Categories[]>([])
-    const user = JSON.parse(localStorage.getItem("user") || "")
     const [isOpen, setIsOpen] = useState(false)
     // const [user, setUser] = useState<any>({})
+    const user = JSON.parse(localStorage.getItem("user") || "{}")
 
     useEffect(() => {
         const fetchCategories = async () => {
             const categories = await getFavouriteCategories(user.user_id)
             setCategories(categories)
             setFilteredCategories(categories)
-            console.log(categories)
         }
         fetchCategories()
     }, [])
@@ -59,7 +59,6 @@ const page = () => {
                 )
                 setInsights(data)
                 setFilteredInsights(data)
-                console.log(data)
             } catch (error) {
                 console.error("Error fetching steps:", error)
             }
@@ -68,22 +67,13 @@ const page = () => {
         fetchInsights()
     }, [selectedCategory])
     const handleAdd = async (id: number, category: string) => {
-        console.log(id, category)
         try {
             let desc = categories.find((cate) => cate.name === category)?.description
+            console.log(desc, id, category)
             await addFavouriteInsight(user.user_id, { id, category, description: desc ? desc : "" })
-            const updatedUser = { ...user }
 
-            const index = updatedUser.favourite_insights[category].indexOf(id)
-
-            updatedUser.favourite_insights[category].splice(index, 1)
-            if (updatedUser.favourite_insights[category].length === 0) {
-                delete updatedUser.favourite_insights[category]
-            }
             setFilteredInsights(filteredInsights.filter((insight) => insight.id !== id))
             setInsights(insights.filter((insight) => insight.id !== id))
-            localStorage.setItem("user", JSON.stringify(updatedUser))
-            const updatedBookmarked = Object.values(updatedUser.favourite_insights).flat()
 
         } catch (err: any) {
             console.error("Bookmarking failed:", err.message)
@@ -119,8 +109,8 @@ const page = () => {
                     </div>
                 </div>
             </div>
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4" >
-                {filteredInsights.map((step, index) => (
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-3 space-y-3 md:gap-4 md:space-y-4" >
+                {filteredInsights?.map((step, index) => (
                     <div className='relative rounded-2xl' key={step.id} >
                         <div className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
                             <Link href={`/insight/${step?.title}/${step?.category}/${step.id}`} className='flex flex-col gap-2' >
@@ -185,7 +175,7 @@ const page = () => {
                         </div>
                         <SearchBar responsive={false} data={categories} propertyToSearch='name' setFilteredData={setFilteredCategories} />
                         <div className="overflow-y-scroll h-[50vh] gap-3 flex flex-col rounded-lg   scrollbar-thumb-gray-300 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
-                            {filteredCategories.map((category) => (
+                            {filteredCategories?.map((category) => (
                                 <div className="relative overflow-visible inline-block">
 
                                     <button

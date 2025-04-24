@@ -120,7 +120,8 @@ def login_user(user: UserLogin, response: Response):
         value=token,
         httponly=False,
         secure=False,
-        samesite="Lax"
+        samesite="Lax",
+        max_age=60 * 60 * 24 * 365 * 10  
     )
 
     return res
@@ -151,66 +152,8 @@ def get_profile(email: str):
     finally:
         conn.close()
 
-
-# @router.post("/favourite/insight/add")
-# def add_fav_insight(
-#     user_id: int = Body(...),
-#     insight: dict  = Body(...)
-# ):
-#     """
-#     insight should be { "category": "XYZ", "id": 123 }
-#     """
-#     conn = connect_db()
-#     if not conn:
-#         raise HTTPException(500, "DB connection failed")
-#     cur = conn.cursor()
-
-#     try:
-#         # 1) fetch existing JSONB
-#         cur.execute('SELECT favourite_insights FROM "user" WHERE id=%s;', (user_id,))
-#         row = cur.fetchone()
-#         favs = row[0] if row and row[0] is not None else {}
-#         print(favs)
-#         # 2) mutate in Python
-#         cat = insight["category"]
-#         step_id = insight["id"]
-
-#         # Get the existing list of IDs for the category, or initialize as empty list
-#         arr = favs.get(cat, [])
-#         print("arr",arr)
-#         # Remove the ID if it exists in the category
-#         if step_id in arr:
-#             arr.remove(step_id)
-
-#         # Add the new ID if it isn't already present
-#         if step_id not in arr:
-#             arr.append(step_id)
-
-#         # If the category has no IDs left, remove it
-#         if not arr:
-#             del favs[cat]
-#         else:
-#             favs[cat] = arr
-
-#         # 3) write it back to the database
-#         print(arr)
-#         cur.execute(
-#             'UPDATE "user" SET favourite_insights = %s WHERE id=%s;',
-#             (json.dumps(favs), user_id)
-#         )
-#         conn.commit()
-#         return {"message": "Insight updated in favourites"}
-
-#     except Exception as e:
-#         conn.rollback()
-#         raise HTTPException(400, str(e))
-
-#     finally:
-#         cur.close()
-#         conn.close()
-
-@router.get("/favourite/insights/ids")
-def get_all_fav_insight_ids(user_id: int = Query(...)):
+@router.get("/favourite/insights/ids/{user_id}")
+def get_all_fav_insight_ids(user_id: int):
     conn = connect_db()
     if not conn:
         raise HTTPException(status_code=500, detail="Database connection failed")
@@ -228,11 +171,12 @@ def get_all_fav_insight_ids(user_id: int = Query(...)):
         if not row or not row[0]:
             return {"favourite_ids": []}
 
-        favourite_insights = row[0]  # a dict like {"Cat1": [1,2], "Cat2": [3]}
+        favourite_insights = row[0]  # dict of categories with insights and descriptions
 
         all_ids = []
-        for id_list in favourite_insights.values():
-            all_ids.extend(id_list)
+        for value in favourite_insights.values():
+            ids = value.get("insights", [])
+            all_ids.extend(ids)
 
         return {"favourite_ids": all_ids}
 
@@ -240,6 +184,7 @@ def get_all_fav_insight_ids(user_id: int = Query(...)):
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         conn.close()
+
 
 
 @router.post("/favourite/insight/add")
