@@ -34,8 +34,8 @@ const SearchBar = ({
 
             <form className={`${responsive ? maximize ? "" : "hidden md:flex" : ""}`} >
                 <label htmlFor="simple-search" className="sr-only">Search</label>
-                <div className="relative w-full flex items-center">
-                    <div className="absolute  start-0 flex items-center ps-3 pointer-events-none">
+                <div className="relative w-full flex items-center gap-2 bg-gray-200 rounded-xl p-2 md:p-2.5">
+                    <div className=" flex items-center  pointer-events-none">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="size-5 text-gray-400"
@@ -55,7 +55,7 @@ const SearchBar = ({
                         id="simple-search"
                         value={search}
                         onChange={handleChange}
-                        className={`bg-gray-200 text-gray-900 md:text-lg outline-none rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 py-2 md:p-2.5`}
+                        className={` text-gray-900 md:text-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full `}
                         placeholder="Search"
                     />
                 </div>

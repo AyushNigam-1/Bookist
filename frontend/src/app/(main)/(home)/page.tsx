@@ -27,12 +27,12 @@ const Page = () => {
         console.log("Searching for:", search);
     };
     return (
-        <div className="flex flex-col w-full" >
-            <div className={`flex justify-between items-center h-14 md:h-18 sticky top-0 bg-gray-100`} >
+        <div className="flex flex-col w-full " >
+            <div className={`flex justify-between items-center h-14 md:h-18 sticky top-0 bg-gray-100 z-30`} >
                 <h4 className="justify-between flex lg:text-4xl font-bold text-gray-700 text-2xl text-center md:text-left  gap-2" >Explore</h4>
                 <SearchBar responsive={true} data={books} propertyToSearch='title' setFilteredData={setFilteredBooks} />
             </div>
-            < div className="columns-1 gap-3 lg:columns-3 space-y-3" >
+            < div className="columns-1 gap-3 lg:columns-4 space-y-4" >
                 {filteredBooks.map((book) => (
                     <Card key={book.title} book={book} />
                 ))}

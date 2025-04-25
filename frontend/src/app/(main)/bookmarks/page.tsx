@@ -132,14 +132,6 @@ const page = () => {
 
                             </Link>
                             <div className="flex gap-2 justify-between mt-auto">
-
-                                <button onClick={() => handleAdd(step.id, step.category)}
-                                    type="button"
-                                    className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold  outline-gray-800 outline-1`}
-                                ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
-                                    </svg>
-                                </button>
                                 <button
                                     type="button"
                                     className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold "
@@ -149,7 +141,13 @@ const page = () => {
                                     </svg>
 
                                 </button>
-
+                                <button onClick={() => handleAdd(step.id, step.category)}
+                                    type="button"
+                                    className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold  outline-gray-800 outline-1`}
+                                ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
