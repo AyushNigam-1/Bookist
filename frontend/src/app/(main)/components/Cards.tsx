@@ -25,9 +25,9 @@ const Card: React.FC<CardProps> = ({ book }) => {
             sessionStorage.setItem("bookData", JSON.stringify(book));
             router.push(`/overview/${book.title}`);
         }}>
-            <div className="flex flex-col gap-1.5 w-full">
-                <div className="relative w-full flex justify-center items-center overflow-clip rounded-xl bg-gray-100 ">
-                    <div className="flex gap-2 justify-between mt-auto w-full absolute bottom-0 p-2">
+            <div className="flex flex-col gap-4 w-full">
+                <div className="relative w-full flex justify-center items-center overflow-clip rounded-xl  ">
+                    {/* <div className="flex gap-2 justify-between mt-auto w-full absolute bottom-0 p-2">
                         <button
                             type="button"
                             className="text-gray-600 bg-gray-200  focus:outline-none rounded-full p-2 w-min  font-semibold "
@@ -49,12 +49,29 @@ const Card: React.FC<CardProps> = ({ book }) => {
                         </button>
 
 
+                    </div> */}
+                    <div className="relative w-full max-w-xs h-80 mx-auto">
+                        {/* Book shape with 3D-like shadow */}
+                        <div
+                            className="absolute top-0 left-4 w-full h-full rounded-md shadow-2xl transform -rotate-y-6 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300"
+                            style={{ zIndex: 0 }}
+                        />
+
+                        {/* Main book front cover */}
+                        <div
+                            className="relative w-full h-full rounded-md bg-gradient-to-br from-gray-100 to-gray-200 border border-gray-300 shadow-md flex flex-col justify-center items-center text-center px-4"
+                            style={{ zIndex: 10 }}
+                        >
+                            <h2 className="text-xl font-bold text-gray-800 line-clamp-2">{book.title}</h2>
+                            <p className="text-sm text-gray-600 mt-2">{book.author}</p>
+                        </div>
                     </div>
-                    <img
+
+                    {/* <img
                         src={book.thumbnail}
                         className="relative z-10 h-60 m-3 shadow-lg rounded-xl  object-contain"
                         alt={book.title}
-                    />
+                    /> */}
                 </div>
                 <div className="flex flex-col gap-3 w-full justify-center">
                     <h5 className="text-gray-600 font-semibold text-xl md:text-2xl ">

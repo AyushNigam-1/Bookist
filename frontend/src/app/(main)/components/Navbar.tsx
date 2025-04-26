@@ -73,7 +73,7 @@ const Navbar = () => {
             </MenuItems>
           </Menu>
         </> : <>
-          <div className="flex gap-2  ">
+          <div className="flex gap-4  ">
 
             <Link
               href="/login"

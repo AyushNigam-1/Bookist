@@ -10,6 +10,7 @@ export default {
         extend: {
             animation: {
                 'spin-slow': 'spin 2s linear infinite',
+                'bounce-slow': 'bounce 4s infinite',
             },
             fontFamily: {
                 mulish: [
