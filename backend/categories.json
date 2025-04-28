@@ -1,1694 +1,1750 @@
 {
   "Business & Entrepreneurship": {
-    "Business Strategy": {
-      "icon": "📈",
-      "description": "The process of setting long-term goals, identifying opportunities, and creating a plan to achieve competitive advantage in the market."
-    },
-    "Leadership": {
-      "icon": "👑",
-      "description": "The ability to inspire, guide, and influence teams towards achieving common business goals."
-    },
-    "Management": {
-      "icon": "🏢",
-      "description": "The practice of planning, organizing, and overseeing business operations to ensure efficiency, productivity, and profitability."
-    },
-    "Marketing": {
-      "icon": "📢",
-      "description": "The process of promoting products or services through various strategies such as advertising, social media, SEO, and content marketing."
-    },
-    "Sales": {
-      "icon": "💰",
-      "description": "The art of persuading potential customers to purchase a product or service by understanding their needs, presenting solutions, and closing deals."
-    },
-    "Finance": {
-      "icon": "📊",
-      "description": "Managing a company's monetary resources, including budgeting, forecasting, financial reporting, and investment decisions."
-    },
-    "Investments": {
-      "icon": "📉",
-      "description": "Allocating capital into assets such as stocks, bonds, real estate, or startups to generate profits over time."
-    },
-    "Economics": {
-      "icon": "🌍",
-      "description": "The study of how businesses, individuals, and governments allocate resources and respond to market forces."
-    },
-    "Accounting": {
-      "icon": "🧾",
-      "description": "The systematic recording, reporting, and analyzing of financial transactions to ensure accuracy and compliance with regulations."
-    },
-    "Operations Management": {
-      "icon": "⚙️",
-      "description": "Overseeing daily business activities, optimizing processes, and ensuring efficient production or service delivery."
-    },
-    "Product Development": {
-      "icon": "🛠",
-      "description": "The end-to-end process of designing, building, testing, and launching new products or improving existing ones."
-    },
-    "Supply Chain & Logistics": {
-      "icon": "🚛",
-      "description": "Managing the flow of goods and services from production to delivery, ensuring efficiency, cost-effectiveness, and timely fulfillment."
-    },
-    "Customer Relations": {
-      "icon": "🤝",
-      "description": "The practice of building strong, long-term relationships with customers through exceptional service and communication."
-    },
-    "Negotiation": {
-      "icon": "🗣",
-      "description": "The skill of reaching mutually beneficial agreements in business deals, contracts, or partnerships."
-    },
-    "Business Ethics": {
-      "icon": "⚖️",
-      "description": "The principles and values that guide decision-making, ensuring businesses operate with integrity and social responsibility."
-    },
-    "Corporate Governance": {
-      "icon": "🏛",
-      "description": "The framework of policies, regulations, and procedures that dictate how a company is managed and controlled."
-    },
-    "Entrepreneurial Mindset": {
-      "icon": "🚀",
-      "description": "A mindset focused on innovation, problem-solving, resilience, and taking calculated risks to build and grow successful businesses."
-    },
-    "Startup Management": {
-      "icon": "🌱",
-      "description": "The unique challenges of launching, scaling, and sustaining a startup, including funding, team building, and product development."
-    },
-    "Scaling & Growth": {
-      "icon": "📈",
-      "description": "Strategies for expanding a business sustainably, including entering new markets, increasing production, and optimizing operations."
-    },
-    "Market Research": {
-      "icon": "🔍",
-      "description": "The process of gathering and analyzing data about customers, competitors, and industry trends to make informed business decisions."
-    },
-    "Branding": {
-      "icon": "🎨",
-      "description": "Establishing a unique business identity through logos, messaging, values, and customer experience."
-    },
-    "Public Relations": {
-      "icon": "📰",
-      "description": "Managing a company's public image, media relations, and crisis communication to maintain a positive reputation."
-    },
-    "Pricing Strategies": {
-      "icon": "🏷",
-      "description": "Setting competitive and profitable prices for products and services based on market demand and customer perceived value."
-    },
-    "Human Resources": {
-      "icon": "🧑‍💼",
-      "description": "Managing employee recruitment, training, performance evaluation, and workplace culture to ensure a motivated workforce."
-    },
-    "Innovation & Creativity": {
-      "icon": "💡",
-      "description": "Encouraging new ideas, disruptive thinking, and creative problem-solving to develop innovative products, services, and business models."
-    },
-    "Business Law & Regulations": {
-      "icon": "⚖️",
-      "description": "Understanding legal requirements, contracts, intellectual property laws, and compliance to avoid legal issues."
-    },
-    "Risk Management": {
-      "icon": "🚨",
-      "description": "Identifying potential risks, developing mitigation strategies, and ensuring business continuity."
-    },
-    "Business Communication": {
-      "icon": "📩",
-      "description": "Effective communication skills in professional settings, including writing reports, presentations, and emails."
-    },
-    "Business Automation": {
-      "icon": "🤖",
-      "description": "Leveraging technology and AI to streamline repetitive tasks, improve efficiency, and reduce operational costs."
-    },
-    "Global Business & Trade": {
-      "icon": "🌎",
-      "description": "Expanding operations internationally, navigating cross-border trade regulations, and managing cultural differences."
-    },
-    "Workplace Culture": {
-      "icon": "🏢",
-      "description": "Creating a positive and productive work environment that promotes employee satisfaction and retention."
-    },
-    "Conflict Resolution": {
-      "icon": "⚔️",
-      "description": "Handling workplace disputes effectively through mediation, communication, and problem-solving strategies."
-    },
-    "Debt Management": {
-      "icon": "💳",
-      "description": "Strategizing ways to manage, reduce, and optimize business debts while maintaining financial stability."
-    },
-    "Corporate Social Responsibility (CSR)": {
-      "icon": "🌱",
-      "description": "Implementing sustainable and ethical business practices to contribute positively to society and the environment."
+    "icon": "💼",
+    "description": "Learn how businesses grow, succeed, and how entrepreneurs turn ideas into reality.",
+    "subcategories": {
+      "Business Strategy": {
+        "icon": "📈",
+        "description": "The process of setting long-term goals, identifying opportunities, and creating a plan to achieve competitive advantage in the market."
+      },
+      "Leadership": {
+        "icon": "👑",
+        "description": "The ability to inspire, guide, and influence teams towards achieving common business goals."
+      },
+      "Management": {
+        "icon": "🏢",
+        "description": "The practice of planning, organizing, and overseeing business operations to ensure efficiency, productivity, and profitability."
+      },
+      "Marketing": {
+        "icon": "📢",
+        "description": "The process of promoting products or services through various strategies such as advertising, social media, SEO, and content marketing."
+      },
+      "Sales": {
+        "icon": "💰",
+        "description": "The art of persuading potential customers to purchase a product or service by understanding their needs, presenting solutions, and closing deals."
+      },
+      "Finance": {
+        "icon": "📊",
+        "description": "Managing a company's monetary resources, including budgeting, forecasting, financial reporting, and investment decisions."
+      },
+      "Investments": {
+        "icon": "📉",
+        "description": "Allocating capital into assets such as stocks, bonds, real estate, or startups to generate profits over time."
+      },
+      "Economics": {
+        "icon": "🌍",
+        "description": "The study of how businesses, individuals, and governments allocate resources and respond to market forces."
+      },
+      "Accounting": {
+        "icon": "🧾",
+        "description": "The systematic recording, reporting, and analyzing of financial transactions to ensure accuracy and compliance with regulations."
+      },
+      "Operations Management": {
+        "icon": "⚙️",
+        "description": "Overseeing daily business activities, optimizing processes, and ensuring efficient production or service delivery."
+      },
+      "Product Development": {
+        "icon": "🛠",
+        "description": "The end-to-end process of designing, building, testing, and launching new products or improving existing ones."
+      },
+      "Supply Chain & Logistics": {
+        "icon": "🚛",
+        "description": "Managing the flow of goods and services from production to delivery, ensuring efficiency, cost-effectiveness, and timely fulfillment."
+      },
+      "Customer Relations": {
+        "icon": "🤝",
+        "description": "The practice of building strong, long-term relationships with customers through exceptional service and communication."
+      },
+      "Negotiation": {
+        "icon": "🗣",
+        "description": "The skill of reaching mutually beneficial agreements in business deals, contracts, or partnerships."
+      },
+      "Business Ethics": {
+        "icon": "⚖️",
+        "description": "The principles and values that guide decision-making, ensuring businesses operate with integrity and social responsibility."
+      },
+      "Corporate Governance": {
+        "icon": "🏛",
+        "description": "The framework of policies, regulations, and procedures that dictate how a company is managed and controlled."
+      },
+      "Entrepreneurial Mindset": {
+        "icon": "🚀",
+        "description": "A mindset focused on innovation, problem-solving, resilience, and taking calculated risks to build and grow successful businesses."
+      },
+      "Startup Management": {
+        "icon": "🌱",
+        "description": "The unique challenges of launching, scaling, and sustaining a startup, including funding, team building, and product development."
+      },
+      "Scaling & Growth": {
+        "icon": "📈",
+        "description": "Strategies for expanding a business sustainably, including entering new markets, increasing production, and optimizing operations."
+      },
+      "Market Research": {
+        "icon": "🔍",
+        "description": "The process of gathering and analyzing data about customers, competitors, and industry trends to make informed business decisions."
+      },
+      "Branding": {
+        "icon": "🎨",
+        "description": "Establishing a unique business identity through logos, messaging, values, and customer experience."
+      },
+      "Public Relations": {
+        "icon": "📰",
+        "description": "Managing a company's public image, media relations, and crisis communication to maintain a positive reputation."
+      },
+      "Pricing Strategies": {
+        "icon": "🏷",
+        "description": "Setting competitive and profitable prices for products and services based on market demand and customer perceived value."
+      },
+      "Human Resources": {
+        "icon": "🧑‍💼",
+        "description": "Managing employee recruitment, training, performance evaluation, and workplace culture to ensure a motivated workforce."
+      },
+      "Innovation & Creativity": {
+        "icon": "💡",
+        "description": "Encouraging new ideas, disruptive thinking, and creative problem-solving to develop innovative products, services, and business models."
+      },
+      "Business Law & Regulations": {
+        "icon": "⚖️",
+        "description": "Understanding legal requirements, contracts, intellectual property laws, and compliance to avoid legal issues."
+      },
+      "Risk Management": {
+        "icon": "🚨",
+        "description": "Identifying potential risks, developing mitigation strategies, and ensuring business continuity."
+      },
+      "Business Communication": {
+        "icon": "📩",
+        "description": "Effective communication skills in professional settings, including writing reports, presentations, and emails."
+      },
+      "Business Automation": {
+        "icon": "🤖",
+        "description": "Leveraging technology and AI to streamline repetitive tasks, improve efficiency, and reduce operational costs."
+      },
+      "Global Business & Trade": {
+        "icon": "🌎",
+        "description": "Expanding operations internationally, navigating cross-border trade regulations, and managing cultural differences."
+      },
+      "Workplace Culture": {
+        "icon": "🏢",
+        "description": "Creating a positive and productive work environment that promotes employee satisfaction and retention."
+      },
+      "Conflict Resolution": {
+        "icon": "⚔️",
+        "description": "Handling workplace disputes effectively through mediation, communication, and problem-solving strategies."
+      },
+      "Debt Management": {
+        "icon": "💳",
+        "description": "Strategizing ways to manage, reduce, and optimize business debts while maintaining financial stability."
+      },
+      "Corporate Social Responsibility (CSR)": {
+        "icon": "🌱",
+        "description": "Implementing sustainable and ethical business practices to contribute positively to society and the environment."
+      }
     }
   },
   "Psychology & Human Behavior": {
-    "Cognitive Psychology": {
-      "icon": "🧠",
-      "description": "The study of how people think, learn, remember, and process information. It explores mental functions such as perception, attention, language, and problem-solving."
-    },
-    "Behavioral Psychology": {
-      "icon": "🧑‍🔬",
-      "description": "Examines how external stimuli influence human actions and habits, focusing on learned behaviors, conditioning, and reinforcement."
-    },
-    "Social Psychology": {
-      "icon": "👥",
-      "description": "Studies how individuals' thoughts, feelings, and behaviors are influenced by social interactions, cultural norms, and group dynamics."
-    },
-    "Developmental Psychology": {
-      "icon": "👶",
-      "description": "Explores how people grow and change over their lifespan, from infancy to old age, including cognitive, emotional, and social development."
-    },
-    "Clinical Psychology": {
-      "icon": "🩺",
-      "description": "Focuses on diagnosing and treating mental health conditions such as depression, anxiety, and personality disorders using various therapeutic methods."
-    },
-    "Personality Psychology": {
-      "icon": "🤹",
-      "description": "Investigates individual differences in personality traits, behaviors, and emotions to understand what makes people unique."
-    },
-    "Neuroscience & Brain Function": {
-      "icon": "🧬",
-      "description": "Studies the biological processes of the brain and nervous system to understand how they affect behavior, cognition, and emotions."
-    },
-    "Emotional Intelligence": {
-      "icon": "💡",
-      "description": "The ability to recognize, understand, and manage one's own emotions while also being able to perceive and influence others' emotions effectively."
-    },
-    "Decision Making & Judgment": {
-      "icon": "⚖️",
-      "description": "Examines how people make choices, evaluate risks, and process information when faced with uncertainty."
-    },
-    "Motivation & Goal Setting": {
-      "icon": "🎯",
-      "description": "Investigates what drives human behavior, exploring intrinsic and extrinsic motivation, self-discipline, and goal achievement strategies."
-    },
-    "Memory & Learning": {
-      "icon": "📝",
-      "description": "Studies how people encode, store, and retrieve information, including techniques to enhance memory retention and learning efficiency."
-    },
-    "Habits & Behavioral Change": {
-      "icon": "🔄",
-      "description": "Explores the science behind habit formation, breaking bad habits, and implementing lasting behavioral changes."
-    },
-    "Subconscious Mind & Conditioning": {
-      "icon": "🌀",
-      "description": "Investigates how subconscious thoughts, beliefs, and past experiences shape behaviors and decision-making processes."
-    },
-    "Psychological Biases & Heuristics": {
-      "icon": "🔍",
-      "description": "Identifies common mental shortcuts and cognitive biases that influence human thinking, decision-making, and problem-solving."
-    },
-    "Stress & Resilience": {
-      "icon": "💪",
-      "description": "Studies how individuals respond to stress, build coping mechanisms, and develop resilience to overcome adversity."
-    },
-    "Mindfulness & Meditation": {
-      "icon": "🧘",
-      "description": "Explores practices that enhance self-awareness, focus, and mental well-being by training the mind to stay present in the moment."
-    },
-    "Psychological Disorders": {
-      "icon": "⚕️",
-      "description": "Covers various mental health disorders, their symptoms, causes, and treatment options, including anxiety, depression, and PTSD."
-    },
-    "Therapies & Treatment Methods": {
-      "icon": "🛠",
-      "description": "Examines different psychological treatment approaches such as psychotherapy, counseling, and medication-based interventions."
-    },
-    "Self-Esteem & Confidence": {
-      "icon": "💖",
-      "description": "Explores the factors that influence self-worth, self-perception, and ways to build confidence and a positive self-image."
-    },
-    "Persuasion & Influence": {
-      "icon": "🎭",
-      "description": "Studies the psychological principles behind persuasion, manipulation, and how people influence each other's beliefs and actions."
-    },
-    "Group Dynamics & Leadership": {
-      "icon": "👨‍👩‍👧‍👦",
-      "description": "Examines how individuals behave in groups, leadership styles, teamwork, and the impact of collective decision-making."
-    },
-    "Psychology of Relationships": {
-      "icon": "❤️",
-      "description": "Investigates romantic, family, and social relationships, focusing on attachment styles, communication, and conflict resolution."
-    },
-    "Psychology of Communication": {
-      "icon": "🗣",
-      "description": "Studies how verbal and nonverbal communication impacts relationships, persuasion, and social interactions."
-    },
-    "Mental Health & Well-being": {
-      "icon": "🧘‍♂️",
-      "description": "Explores practices and habits that contribute to overall mental wellness, emotional stability, and psychological balance."
-    },
-    "Psychology of Success & Achievement": {
-      "icon": "🏆",
-      "description": "Investigates the mindset, behaviors, and habits of high achievers and how motivation, resilience, and discipline contribute to success."
-    },
-    "Theories of Personality": {
-      "icon": "📚",
-      "description": "Explores major theories such as the Big Five, Freud’s psychoanalysis, and Jungian archetypes to understand different personality types."
-    },
-    "Cognitive Behavioral Therapy (CBT)": {
-      "icon": "🛋",
-      "description": "A popular psychological treatment method that helps individuals identify and change negative thought patterns and behaviors."
-    },
-    "Neuroplasticity & Brain Adaptation": {
-      "icon": "🧠",
-      "description": "Studies the brain's ability to reorganize and adapt by forming new neural connections throughout life."
-    },
-    "Psychology of Fear & Anxiety": {
-      "icon": "😨",
-      "description": "Examines how fear and anxiety affect decision-making, stress responses, and overall mental health."
-    },
-    "Dreams & the Subconscious Mind": {
-      "icon": "💭",
-      "description": "Explores the role of dreams in processing emotions, subconscious thoughts, and their connection to mental well-being."
+    "icon": "🧠",
+    "description": "Explore how people think, feel, act, and understand the human mind.",
+    "subcategories": {
+      "Cognitive Psychology": {
+        "icon": "🧠",
+        "description": "The study of how people think, learn, remember, and process information. It explores mental functions such as perception, attention, language, and problem-solving."
+      },
+      "Behavioral Psychology": {
+        "icon": "🧑‍🔬",
+        "description": "Examines how external stimuli influence human actions and habits, focusing on learned behaviors, conditioning, and reinforcement."
+      },
+      "Social Psychology": {
+        "icon": "👥",
+        "description": "Studies how individuals' thoughts, feelings, and behaviors are influenced by social interactions, cultural norms, and group dynamics."
+      },
+      "Developmental Psychology": {
+        "icon": "👶",
+        "description": "Explores how people grow and change over their lifespan, from infancy to old age, including cognitive, emotional, and social development."
+      },
+      "Clinical Psychology": {
+        "icon": "🩺",
+        "description": "Focuses on diagnosing and treating mental health conditions such as depression, anxiety, and personality disorders using various therapeutic methods."
+      },
+      "Personality Psychology": {
+        "icon": "🤹",
+        "description": "Investigates individual differences in personality traits, behaviors, and emotions to understand what makes people unique."
+      },
+      "Neuroscience & Brain Function": {
+        "icon": "🧬",
+        "description": "Studies the biological processes of the brain and nervous system to understand how they affect behavior, cognition, and emotions."
+      },
+      "Emotional Intelligence": {
+        "icon": "💡",
+        "description": "The ability to recognize, understand, and manage one's own emotions while also being able to perceive and influence others' emotions effectively."
+      },
+      "Decision Making & Judgment": {
+        "icon": "⚖️",
+        "description": "Examines how people make choices, evaluate risks, and process information when faced with uncertainty."
+      },
+      "Motivation & Goal Setting": {
+        "icon": "🎯",
+        "description": "Investigates what drives human behavior, exploring intrinsic and extrinsic motivation, self-discipline, and goal achievement strategies."
+      },
+      "Memory & Learning": {
+        "icon": "📝",
+        "description": "Studies how people encode, store, and retrieve information, including techniques to enhance memory retention and learning efficiency."
+      },
+      "Habits & Behavioral Change": {
+        "icon": "🔄",
+        "description": "Explores the science behind habit formation, breaking bad habits, and implementing lasting behavioral changes."
+      },
+      "Subconscious Mind & Conditioning": {
+        "icon": "🌀",
+        "description": "Investigates how subconscious thoughts, beliefs, and past experiences shape behaviors and decision-making processes."
+      },
+      "Psychological Biases & Heuristics": {
+        "icon": "🔍",
+        "description": "Identifies common mental shortcuts and cognitive biases that influence human thinking, decision-making, and problem-solving."
+      },
+      "Stress & Resilience": {
+        "icon": "💪",
+        "description": "Studies how individuals respond to stress, build coping mechanisms, and develop resilience to overcome adversity."
+      },
+      "Mindfulness & Meditation": {
+        "icon": "🧘",
+        "description": "Explores practices that enhance self-awareness, focus, and mental well-being by training the mind to stay present in the moment."
+      },
+      "Psychological Disorders": {
+        "icon": "⚕️",
+        "description": "Covers various mental health disorders, their symptoms, causes, and treatment options, including anxiety, depression, and PTSD."
+      },
+      "Therapies & Treatment Methods": {
+        "icon": "🛠",
+        "description": "Examines different psychological treatment approaches such as psychotherapy, counseling, and medication-based interventions."
+      },
+      "Self-Esteem & Confidence": {
+        "icon": "💖",
+        "description": "Explores the factors that influence self-worth, self-perception, and ways to build confidence and a positive self-image."
+      },
+      "Persuasion & Influence": {
+        "icon": "🎭",
+        "description": "Studies the psychological principles behind persuasion, manipulation, and how people influence each other's beliefs and actions."
+      },
+      "Group Dynamics & Leadership": {
+        "icon": "👨‍👩‍👧‍👦",
+        "description": "Examines how individuals behave in groups, leadership styles, teamwork, and the impact of collective decision-making."
+      },
+      "Psychology of Relationships": {
+        "icon": "❤️",
+        "description": "Investigates romantic, family, and social relationships, focusing on attachment styles, communication, and conflict resolution."
+      },
+      "Psychology of Communication": {
+        "icon": "🗣",
+        "description": "Studies how verbal and nonverbal communication impacts relationships, persuasion, and social interactions."
+      },
+      "Mental Health & Well-being": {
+        "icon": "🧘‍♂️",
+        "description": "Explores practices and habits that contribute to overall mental wellness, emotional stability, and psychological balance."
+      },
+      "Psychology of Success & Achievement": {
+        "icon": "🏆",
+        "description": "Investigates the mindset, behaviors, and habits of high achievers and how motivation, resilience, and discipline contribute to success."
+      },
+      "Theories of Personality": {
+        "icon": "📚",
+        "description": "Explores major theories such as the Big Five, Freud’s psychoanalysis, and Jungian archetypes to understand different personality types."
+      },
+      "Cognitive Behavioral Therapy (CBT)": {
+        "icon": "🛋",
+        "description": "A popular psychological treatment method that helps individuals identify and change negative thought patterns and behaviors."
+      },
+      "Neuroplasticity & Brain Adaptation": {
+        "icon": "🧠",
+        "description": "Studies the brain's ability to reorganize and adapt by forming new neural connections throughout life."
+      },
+      "Psychology of Fear & Anxiety": {
+        "icon": "😨",
+        "description": "Examines how fear and anxiety affect decision-making, stress responses, and overall mental health."
+      },
+      "Dreams & the Subconscious Mind": {
+        "icon": "💭",
+        "description": "Explores the role of dreams in processing emotions, subconscious thoughts, and their connection to mental well-being."
+      }
     }
   },
   "Self-Help & Personal Development": {
-    "Goal Setting & Achievement": {
-      "icon": "🎯",
-      "description": "Techniques and strategies to set clear, actionable goals and stay committed to achieving them."
-    },
-    "Time Management & Productivity": {
-      "icon": "⏳",
-      "description": "Methods to optimize time usage, eliminate distractions, and maximize efficiency in daily tasks."
-    },
-    "Habits & Behavior Change": {
-      "icon": "🔄",
-      "description": "Understanding how habits are formed, ways to break bad habits, and how to develop positive routines."
-    },
-    "Mindset & Mental Resilience": {
-      "icon": "🧠",
-      "description": "Developing a strong and growth-oriented mindset to overcome challenges and setbacks in life."
-    },
-    "Self-Discipline & Willpower": {
-      "icon": "🛡",
-      "description": "Learning how to strengthen self-control, resist temptations, and stay committed to long-term goals."
-    },
-    "Confidence & Self-Esteem": {
-      "icon": "💪",
-      "description": "Building self-belief, handling self-doubt, and developing a positive self-image for personal success."
-    },
-    "Emotional Intelligence": {
-      "icon": "💡",
-      "description": "The ability to recognize, understand, and manage emotions effectively for better decision-making and relationships."
-    },
-    "Decision Making & Problem Solving": {
-      "icon": "🧩",
-      "description": "Practical approaches to making better choices, analyzing situations, and resolving issues efficiently."
-    },
-    "Mindfulness & Presence": {
-      "icon": "🧘",
-      "description": "Cultivating awareness of the present moment through mindfulness practices for reduced stress and increased clarity."
-    },
-    "Overcoming Fear & Anxiety": {
-      "icon": "😨",
-      "description": "Techniques to manage fear, overcome anxiety, and build courage in difficult situations."
-    },
-    "Stress Management": {
-      "icon": "🛀",
-      "description": "Practical ways to cope with stress, relax the mind, and maintain emotional balance under pressure."
-    },
-    "Personal Growth & Continuous Learning": {
-      "icon": "📚",
-      "description": "The importance of lifelong learning, self-improvement strategies, and expanding personal potential."
-    },
-    "Social Skills & Communication": {
-      "icon": "👥",
-      "description": "Enhancing conversational skills, active listening, and understanding social cues for better interactions."
-    },
-    "Building Positive Relationships": {
-      "icon": "💞",
-      "description": "Strengthening personal and professional relationships through trust, empathy, and effective communication."
-    },
-    "Success & Wealth Mindset": {
-      "icon": "💰",
-      "description": "Developing the right mindset to attract financial success, manage money wisely, and achieve long-term stability."
-    },
-    "Creativity & Innovation": {
-      "icon": "🎨",
-      "description": "Boosting creative thinking, problem-solving skills, and generating innovative ideas for personal and professional growth."
-    },
-    "Focus & Concentration": {
-      "icon": "🎯",
-      "description": "Training the mind to improve focus, avoid distractions, and enhance productivity."
-    },
-    "Work-Life Balance": {
-      "icon": "⚖️",
-      "description": "Managing time effectively to maintain a balance between personal life and professional responsibilities."
-    },
-    "Resilience & Adaptability": {
-      "icon": "💪",
-      "description": "Developing mental toughness to bounce back from failures and adjust to changing circumstances."
-    },
-    "Visualization & Affirmations": {
-      "icon": "🌟",
-      "description": "Using visualization techniques and positive affirmations to manifest goals and strengthen self-belief."
-    },
-    "The Power of Gratitude": {
-      "icon": "🙏",
-      "description": "Practicing gratitude to improve overall happiness, reduce stress, and cultivate a positive outlook on life."
-    },
-    "Overcoming Procrastination": {
-      "icon": "⏳",
-      "description": "Identifying the root causes of procrastination and using practical techniques to take action immediately."
-    },
-    "Mental Clarity & Self-Reflection": {
-      "icon": "🧘‍♂️",
-      "description": "Techniques to clear mental clutter, reflect on personal experiences, and gain deeper self-awareness."
-    },
-    "Discipline & Self-Control": {
-      "icon": "🛡",
-      "description": "Strengthening self-discipline to maintain consistency, achieve goals, and make better life choices."
-    },
-    "Leadership & Influence": {
-      "icon": "👑",
-      "description": "Learning how to inspire, lead, and influence others effectively in personal and professional settings."
-    },
-    "The Science of Happiness": {
-      "icon": "😊",
-      "description": "Understanding what truly contributes to happiness and applying scientifically-backed techniques to improve well-being."
-    },
-    "Spiritual Growth & Inner Peace": {
-      "icon": "🕉",
-      "description": "Exploring self-awareness, inner peace, and spiritual practices to lead a fulfilling life."
-    },
-    "Breaking Negative Patterns": {
-      "icon": "🚫",
-      "description": "Identifying and eliminating limiting beliefs and behaviors that hinder personal growth."
-    },
-    "Optimism & Positive Thinking": {
-      "icon": "🌞",
-      "description": "Cultivating a positive mindset to enhance motivation, happiness, and overall success."
-    },
-    "Personal Values & Life Purpose": {
-      "icon": "🎯",
-      "description": "Discovering core values and aligning life decisions with a sense of purpose and meaning."
+    "icon": "🌱",
+    "description": "Build better habits, mindset, and skills to improve your personal and professional life.",
+    "subcategories": {
+      "Goal Setting & Achievement": {
+        "icon": "🎯",
+        "description": "Techniques and strategies to set clear, actionable goals and stay committed to achieving them."
+      },
+      "Time Management & Productivity": {
+        "icon": "⏳",
+        "description": "Methods to optimize time usage, eliminate distractions, and maximize efficiency in daily tasks."
+      },
+      "Habits & Behavior Change": {
+        "icon": "🔄",
+        "description": "Understanding how habits are formed, ways to break bad habits, and how to develop positive routines."
+      },
+      "Mindset & Mental Resilience": {
+        "icon": "🧠",
+        "description": "Developing a strong and growth-oriented mindset to overcome challenges and setbacks in life."
+      },
+      "Self-Discipline & Willpower": {
+        "icon": "🛡",
+        "description": "Learning how to strengthen self-control, resist temptations, and stay committed to long-term goals."
+      },
+      "Confidence & Self-Esteem": {
+        "icon": "💪",
+        "description": "Building self-belief, handling self-doubt, and developing a positive self-image for personal success."
+      },
+      "Emotional Intelligence": {
+        "icon": "💡",
+        "description": "The ability to recognize, understand, and manage emotions effectively for better decision-making and relationships."
+      },
+      "Decision Making & Problem Solving": {
+        "icon": "🧩",
+        "description": "Practical approaches to making better choices, analyzing situations, and resolving issues efficiently."
+      },
+      "Mindfulness & Presence": {
+        "icon": "🧘",
+        "description": "Cultivating awareness of the present moment through mindfulness practices for reduced stress and increased clarity."
+      },
+      "Overcoming Fear & Anxiety": {
+        "icon": "😨",
+        "description": "Techniques to manage fear, overcome anxiety, and build courage in difficult situations."
+      },
+      "Stress Management": {
+        "icon": "🛀",
+        "description": "Practical ways to cope with stress, relax the mind, and maintain emotional balance under pressure."
+      },
+      "Personal Growth & Continuous Learning": {
+        "icon": "📚",
+        "description": "The importance of lifelong learning, self-improvement strategies, and expanding personal potential."
+      },
+      "Social Skills & Communication": {
+        "icon": "👥",
+        "description": "Enhancing conversational skills, active listening, and understanding social cues for better interactions."
+      },
+      "Building Positive Relationships": {
+        "icon": "💞",
+        "description": "Strengthening personal and professional relationships through trust, empathy, and effective communication."
+      },
+      "Success & Wealth Mindset": {
+        "icon": "💰",
+        "description": "Developing the right mindset to attract financial success, manage money wisely, and achieve long-term stability."
+      },
+      "Creativity & Innovation": {
+        "icon": "🎨",
+        "description": "Boosting creative thinking, problem-solving skills, and generating innovative ideas for personal and professional growth."
+      },
+      "Focus & Concentration": {
+        "icon": "🎯",
+        "description": "Training the mind to improve focus, avoid distractions, and enhance productivity."
+      },
+      "Work-Life Balance": {
+        "icon": "⚖️",
+        "description": "Managing time effectively to maintain a balance between personal life and professional responsibilities."
+      },
+      "Resilience & Adaptability": {
+        "icon": "💪",
+        "description": "Developing mental toughness to bounce back from failures and adjust to changing circumstances."
+      },
+      "Visualization & Affirmations": {
+        "icon": "🌟",
+        "description": "Using visualization techniques and positive affirmations to manifest goals and strengthen self-belief."
+      },
+      "The Power of Gratitude": {
+        "icon": "🙏",
+        "description": "Practicing gratitude to improve overall happiness, reduce stress, and cultivate a positive outlook on life."
+      },
+      "Overcoming Procrastination": {
+        "icon": "⏳",
+        "description": "Identifying the root causes of procrastination and using practical techniques to take action immediately."
+      },
+      "Mental Clarity & Self-Reflection": {
+        "icon": "🧘‍♂️",
+        "description": "Techniques to clear mental clutter, reflect on personal experiences, and gain deeper self-awareness."
+      },
+      "Discipline & Self-Control": {
+        "icon": "🛡",
+        "description": "Strengthening self-discipline to maintain consistency, achieve goals, and make better life choices."
+      },
+      "Leadership & Influence": {
+        "icon": "👑",
+        "description": "Learning how to inspire, lead, and influence others effectively in personal and professional settings."
+      },
+      "The Science of Happiness": {
+        "icon": "😊",
+        "description": "Understanding what truly contributes to happiness and applying scientifically-backed techniques to improve well-being."
+      },
+      "Spiritual Growth & Inner Peace": {
+        "icon": "🕉",
+        "description": "Exploring self-awareness, inner peace, and spiritual practices to lead a fulfilling life."
+      },
+      "Breaking Negative Patterns": {
+        "icon": "🚫",
+        "description": "Identifying and eliminating limiting beliefs and behaviors that hinder personal growth."
+      },
+      "Optimism & Positive Thinking": {
+        "icon": "🌞",
+        "description": "Cultivating a positive mindset to enhance motivation, happiness, and overall success."
+      },
+      "Personal Values & Life Purpose": {
+        "icon": "🎯",
+        "description": "Discovering core values and aligning life decisions with a sense of purpose and meaning."
+      }
     }
   },
   "Money & Investing": {
-    "Personal Finance Management": {
-      "icon": "💰",
-      "description": "Techniques to manage income, expenses, and savings efficiently for financial stability."
-    },
-    "Budgeting & Expense Tracking": {
-      "icon": "📊",
-      "description": "Methods to create and maintain a budget, track spending, and control financial habits."
-    },
-    "Saving Strategies": {
-      "icon": "💵",
-      "description": "Smart ways to save money consistently and build financial security over time."
-    },
-    "Debt Management & Reduction": {
-      "icon": "💳",
-      "description": "Strategies to pay off debt efficiently and avoid financial pitfalls."
-    },
-    "Emergency Funds & Financial Safety Nets": {
-      "icon": "🆘",
-      "description": "The importance of having financial reserves for unexpected situations."
-    },
-    "Retirement Planning": {
-      "icon": "🏦",
-      "description": "Steps to prepare for a secure and comfortable retirement through savings and investments."
-    },
-    "Wealth Building Strategies": {
-      "icon": "📈",
-      "description": "Long-term financial planning methods to grow wealth steadily and sustainably."
-    },
-    "Investment Basics": {
-      "icon": "📚",
-      "description": "Fundamental concepts of investing, risk, and return for beginners."
-    },
-    "Stock Market Investing": {
-      "icon": "📉",
-      "description": "How to analyze stocks, invest wisely, and navigate the stock market effectively."
-    },
-    "Bonds & Fixed Income Investments": {
-      "icon": "💳",
-      "description": "Understanding bonds, interest rates, and how fixed-income securities provide stability."
-    },
-    "Real Estate Investing": {
-      "icon": "🏡",
-      "description": "How to invest in property, generate rental income, and build wealth through real estate."
-    },
-    "Mutual Funds & ETFs": {
-      "icon": "📊",
-      "description": "How to invest in diversified funds, minimize risk, and maximize returns."
-    },
-    "Index Investing": {
-      "icon": "📈",
-      "description": "A passive investment strategy focused on tracking market indices for steady growth."
-    },
-    "Value Investing": {
-      "icon": "📜",
-      "description": "Finding undervalued stocks and long-term opportunities in the market."
-    },
-    "Growth Investing": {
-      "icon": "🚀",
-      "description": "Investing in high-potential companies with strong future growth prospects."
-    },
-    "Dividend Investing": {
-      "icon": "💰",
-      "description": "Building a portfolio that generates passive income through dividend-paying stocks."
-    },
-    "Risk Management & Diversification": {
-      "icon": "⚖️",
-      "description": "Reducing financial risks by diversifying investments and managing exposure."
-    },
-    "Asset Allocation Strategies": {
-      "icon": "🔀",
-      "description": "Balancing assets across different investment types for optimized returns."
-    },
-    "Tax Planning & Optimization": {
-      "icon": "📉",
-      "description": "Techniques to minimize tax liabilities and maximize after-tax returns."
-    },
-    "Cryptocurrency & Digital Assets": {
-      "icon": "🪙",
-      "description": "Understanding blockchain, crypto investments, and managing risks in digital assets."
-    },
-    "Commodities & Precious Metals Investing": {
-      "icon": "🏆",
-      "description": "Investing in gold, silver, oil, and other commodities for portfolio diversification."
-    },
-    "Alternative Investments": {
-      "icon": "🛠",
-      "description": "Exploring hedge funds, private equity, collectibles, and other non-traditional investments."
-    },
-    "Entrepreneurial Finance": {
-      "icon": "💼",
-      "description": "Managing business finances, funding startups, and making profitable business investments."
-    },
-    "Financial Independence & FIRE Movement": {
-      "icon": "🔥",
-      "description": "Strategies to achieve financial independence and retire early through smart investments."
-    },
-    "Behavioral Finance & Money Psychology": {
-      "icon": "🧠",
-      "description": "Understanding the psychological factors that influence financial decisions."
-    },
-    "Economic Principles & Market Cycles": {
-      "icon": "📉",
-      "description": "How economic trends and market cycles affect investments and financial planning."
-    },
-    "Understanding Inflation & Interest Rates": {
-      "icon": "📈",
-      "description": "The impact of inflation and interest rates on savings, investments, and loans."
-    },
-    "Wealth Mindset & Financial Discipline": {
-      "icon": "🧠",
-      "description": "Developing financial habits, discipline, and a mindset for long-term wealth."
-    },
-    "Insurance & Risk Coverage": {
-      "icon": "🛡",
-      "description": "The importance of insurance policies to protect wealth and manage financial risks."
-    },
-    "Estate Planning & Wealth Transfer": {
-      "icon": "📜",
-      "description": "Strategies for passing wealth to future generations and managing legal aspects."
+    "icon": "💰",
+    "description": "Learn how to manage money smartly, invest wisely, and grow your wealth",
+    "subcategories": {
+      "Personal Finance Management": {
+        "icon": "💰",
+        "description": "Techniques to manage income, expenses, and savings efficiently for financial stability."
+      },
+      "Budgeting & Expense Tracking": {
+        "icon": "📊",
+        "description": "Methods to create and maintain a budget, track spending, and control financial habits."
+      },
+      "Saving Strategies": {
+        "icon": "💵",
+        "description": "Smart ways to save money consistently and build financial security over time."
+      },
+      "Debt Management & Reduction": {
+        "icon": "💳",
+        "description": "Strategies to pay off debt efficiently and avoid financial pitfalls."
+      },
+      "Emergency Funds & Financial Safety Nets": {
+        "icon": "🆘",
+        "description": "The importance of having financial reserves for unexpected situations."
+      },
+      "Retirement Planning": {
+        "icon": "🏦",
+        "description": "Steps to prepare for a secure and comfortable retirement through savings and investments."
+      },
+      "Wealth Building Strategies": {
+        "icon": "📈",
+        "description": "Long-term financial planning methods to grow wealth steadily and sustainably."
+      },
+      "Investment Basics": {
+        "icon": "📚",
+        "description": "Fundamental concepts of investing, risk, and return for beginners."
+      },
+      "Stock Market Investing": {
+        "icon": "📉",
+        "description": "How to analyze stocks, invest wisely, and navigate the stock market effectively."
+      },
+      "Bonds & Fixed Income Investments": {
+        "icon": "💳",
+        "description": "Understanding bonds, interest rates, and how fixed-income securities provide stability."
+      },
+      "Real Estate Investing": {
+        "icon": "🏡",
+        "description": "How to invest in property, generate rental income, and build wealth through real estate."
+      },
+      "Mutual Funds & ETFs": {
+        "icon": "📊",
+        "description": "How to invest in diversified funds, minimize risk, and maximize returns."
+      },
+      "Index Investing": {
+        "icon": "📈",
+        "description": "A passive investment strategy focused on tracking market indices for steady growth."
+      },
+      "Value Investing": {
+        "icon": "📜",
+        "description": "Finding undervalued stocks and long-term opportunities in the market."
+      },
+      "Growth Investing": {
+        "icon": "🚀",
+        "description": "Investing in high-potential companies with strong future growth prospects."
+      },
+      "Dividend Investing": {
+        "icon": "💰",
+        "description": "Building a portfolio that generates passive income through dividend-paying stocks."
+      },
+      "Risk Management & Diversification": {
+        "icon": "⚖️",
+        "description": "Reducing financial risks by diversifying investments and managing exposure."
+      },
+      "Asset Allocation Strategies": {
+        "icon": "🔀",
+        "description": "Balancing assets across different investment types for optimized returns."
+      },
+      "Tax Planning & Optimization": {
+        "icon": "📉",
+        "description": "Techniques to minimize tax liabilities and maximize after-tax returns."
+      },
+      "Cryptocurrency & Digital Assets": {
+        "icon": "🪙",
+        "description": "Understanding blockchain, crypto investments, and managing risks in digital assets."
+      },
+      "Commodities & Precious Metals Investing": {
+        "icon": "🏆",
+        "description": "Investing in gold, silver, oil, and other commodities for portfolio diversification."
+      },
+      "Alternative Investments": {
+        "icon": "🛠",
+        "description": "Exploring hedge funds, private equity, collectibles, and other non-traditional investments."
+      },
+      "Entrepreneurial Finance": {
+        "icon": "💼",
+        "description": "Managing business finances, funding startups, and making profitable business investments."
+      },
+      "Financial Independence & FIRE Movement": {
+        "icon": "🔥",
+        "description": "Strategies to achieve financial independence and retire early through smart investments."
+      },
+      "Behavioral Finance & Money Psychology": {
+        "icon": "🧠",
+        "description": "Understanding the psychological factors that influence financial decisions."
+      },
+      "Economic Principles & Market Cycles": {
+        "icon": "📉",
+        "description": "How economic trends and market cycles affect investments and financial planning."
+      },
+      "Understanding Inflation & Interest Rates": {
+        "icon": "📈",
+        "description": "The impact of inflation and interest rates on savings, investments, and loans."
+      },
+      "Wealth Mindset & Financial Discipline": {
+        "icon": "🧠",
+        "description": "Developing financial habits, discipline, and a mindset for long-term wealth."
+      },
+      "Insurance & Risk Coverage": {
+        "icon": "🛡",
+        "description": "The importance of insurance policies to protect wealth and manage financial risks."
+      },
+      "Estate Planning & Wealth Transfer": {
+        "icon": "📜",
+        "description": "Strategies for passing wealth to future generations and managing legal aspects."
+      }
     }
   },
   "Productivity & Time Management": {
-    "Goal Setting & Prioritization": {
-      "icon": "🎯",
-      "description": "Techniques to set clear goals, prioritize tasks, and stay on track for success."
-    },
-    "Time Blocking & Scheduling": {
-      "icon": "🗓",
-      "description": "Organizing your day with structured time blocks to improve focus and efficiency."
-    },
-    "Task Management & To-Do Lists": {
-      "icon": "📋",
-      "description": "Methods to organize, track, and complete tasks effectively with lists and workflows."
-    },
-    "Focus & Deep Work": {
-      "icon": "🔬",
-      "description": "Strategies to eliminate distractions and achieve intense concentration on important tasks."
-    },
-    "Eliminating Distractions": {
-      "icon": "🚫",
-      "description": "Ways to minimize interruptions and create an environment conducive to productivity."
-    },
-    "Procrastination & Overcoming It": {
-      "icon": "⏳",
-      "description": "Techniques to beat procrastination and build momentum for consistent progress."
-    },
-    "Energy Management & Peak Performance": {
-      "icon": "⚡",
-      "description": "Balancing energy levels to maintain high productivity and avoid burnout."
-    },
-    "Habit Formation & Behavior Change": {
-      "icon": "🔄",
-      "description": "Developing productive habits and breaking unhelpful ones for long-term success."
-    },
-    "Self-Discipline & Willpower": {
-      "icon": "🛡",
-      "description": "Building strong self-control to stay committed to goals and tasks."
-    },
-    "Work-Life Balance": {
-      "icon": "⚖️",
-      "description": "Maintaining a healthy balance between professional and personal life."
-    },
-    "Efficiency & Optimization": {
-      "icon": "🚀",
-      "description": "Techniques to complete tasks faster and improve workflow efficiency."
-    },
-    "Delegation & Outsourcing": {
-      "icon": "🤝",
-      "description": "Assigning tasks effectively to focus on high-value work."
-    },
-    "Decision-Making Speed & Effectiveness": {
-      "icon": "🕵️‍♂️",
-      "description": "Improving decision-making processes to be faster and more effective."
-    },
-    "Mindset & Motivation": {
-      "icon": "💡",
-      "description": "Developing a productive mindset and staying motivated to achieve goals."
-    },
-    "Routine & Rituals for Productivity": {
-      "icon": "📆",
-      "description": "Creating daily routines that enhance focus and efficiency."
-    },
-    "Pomodoro & Other Time-Tracking Techniques": {
-      "icon": "⏳",
-      "description": "Using structured time management techniques to maintain productivity."
-    },
-    "Minimalism & Simplification": {
-      "icon": "🧹",
-      "description": "Reducing clutter and simplifying tasks to improve efficiency."
-    },
-    "Cognitive Load Management": {
-      "icon": "🧠",
-      "description": "Minimizing mental overload to enhance focus and decision-making."
-    },
-    "Productivity Tools & Systems": {
-      "icon": "🛠",
-      "description": "Leveraging apps and frameworks to streamline work processes."
-    },
-    "Multitasking vs. Single-Tasking": {
-      "icon": "📌",
-      "description": "Understanding when to multitask and when to focus on one task at a time."
-    },
-    "Strategic Thinking & Long-Term Planning": {
-      "icon": "🔮",
-      "description": "Developing a long-term vision and planning strategically for success."
-    },
-    "Execution & Implementation": {
-      "icon": "✅",
-      "description": "Turning ideas into action and completing tasks efficiently."
-    },
-    "Learning & Skill Acquisition Efficiency": {
-      "icon": "📚",
-      "description": "Enhancing learning speed and mastering new skills effectively."
-    },
-    "Stress Management & Avoiding Burnout": {
-      "icon": "🛑",
-      "description": "Techniques to manage stress and sustain productivity without exhaustion."
-    },
-    "Accountability & Self-Monitoring": {
-      "icon": "📊",
-      "description": "Tracking progress and staying accountable for personal and professional growth."
-    },
-    "Leveraging Dead Time": {
-      "icon": "⏰",
-      "description": "Maximizing productivity during idle or waiting periods."
-    },
-    "Meeting & Communication Efficiency": {
-      "icon": "📢",
-      "description": "Making meetings productive and improving communication skills for better workflow."
-    },
-    "Creative Thinking & Problem Solving": {
-      "icon": "💡",
-      "description": "Enhancing creativity and developing innovative solutions to challenges."
-    },
-    "Environmental Optimization for Focus": {
-      "icon": "🏡",
-      "description": "Setting up an ideal workspace to boost concentration and productivity."
-    },
-    "Review & Reflection for Continuous Improvement": {
-      "icon": "📊",
-      "description": "Regularly assessing progress and refining strategies for ongoing growth."
+    "icon": "⏰",
+    "description": "Master techniques to work smarter, stay focused, and manage your time better.",
+    "subcategories": {
+      "Goal Setting & Prioritization": {
+        "icon": "🎯",
+        "description": "Techniques to set clear goals, prioritize tasks, and stay on track for success."
+      },
+      "Time Blocking & Scheduling": {
+        "icon": "🗓",
+        "description": "Organizing your day with structured time blocks to improve focus and efficiency."
+      },
+      "Task Management & To-Do Lists": {
+        "icon": "📋",
+        "description": "Methods to organize, track, and complete tasks effectively with lists and workflows."
+      },
+      "Focus & Deep Work": {
+        "icon": "🔬",
+        "description": "Strategies to eliminate distractions and achieve intense concentration on important tasks."
+      },
+      "Eliminating Distractions": {
+        "icon": "🚫",
+        "description": "Ways to minimize interruptions and create an environment conducive to productivity."
+      },
+      "Procrastination & Overcoming It": {
+        "icon": "⏳",
+        "description": "Techniques to beat procrastination and build momentum for consistent progress."
+      },
+      "Energy Management & Peak Performance": {
+        "icon": "⚡",
+        "description": "Balancing energy levels to maintain high productivity and avoid burnout."
+      },
+      "Habit Formation & Behavior Change": {
+        "icon": "🔄",
+        "description": "Developing productive habits and breaking unhelpful ones for long-term success."
+      },
+      "Self-Discipline & Willpower": {
+        "icon": "🛡",
+        "description": "Building strong self-control to stay committed to goals and tasks."
+      },
+      "Work-Life Balance": {
+        "icon": "⚖️",
+        "description": "Maintaining a healthy balance between professional and personal life."
+      },
+      "Efficiency & Optimization": {
+        "icon": "🚀",
+        "description": "Techniques to complete tasks faster and improve workflow efficiency."
+      },
+      "Delegation & Outsourcing": {
+        "icon": "🤝",
+        "description": "Assigning tasks effectively to focus on high-value work."
+      },
+      "Decision-Making Speed & Effectiveness": {
+        "icon": "🕵️‍♂️",
+        "description": "Improving decision-making processes to be faster and more effective."
+      },
+      "Mindset & Motivation": {
+        "icon": "💡",
+        "description": "Developing a productive mindset and staying motivated to achieve goals."
+      },
+      "Routine & Rituals for Productivity": {
+        "icon": "📆",
+        "description": "Creating daily routines that enhance focus and efficiency."
+      },
+      "Pomodoro & Other Time-Tracking Techniques": {
+        "icon": "⏳",
+        "description": "Using structured time management techniques to maintain productivity."
+      },
+      "Minimalism & Simplification": {
+        "icon": "🧹",
+        "description": "Reducing clutter and simplifying tasks to improve efficiency."
+      },
+      "Cognitive Load Management": {
+        "icon": "🧠",
+        "description": "Minimizing mental overload to enhance focus and decision-making."
+      },
+      "Productivity Tools & Systems": {
+        "icon": "🛠",
+        "description": "Leveraging apps and frameworks to streamline work processes."
+      },
+      "Multitasking vs. Single-Tasking": {
+        "icon": "📌",
+        "description": "Understanding when to multitask and when to focus on one task at a time."
+      },
+      "Strategic Thinking & Long-Term Planning": {
+        "icon": "🔮",
+        "description": "Developing a long-term vision and planning strategically for success."
+      },
+      "Execution & Implementation": {
+        "icon": "✅",
+        "description": "Turning ideas into action and completing tasks efficiently."
+      },
+      "Learning & Skill Acquisition Efficiency": {
+        "icon": "📚",
+        "description": "Enhancing learning speed and mastering new skills effectively."
+      },
+      "Stress Management & Avoiding Burnout": {
+        "icon": "🛑",
+        "description": "Techniques to manage stress and sustain productivity without exhaustion."
+      },
+      "Accountability & Self-Monitoring": {
+        "icon": "📊",
+        "description": "Tracking progress and staying accountable for personal and professional growth."
+      },
+      "Leveraging Dead Time": {
+        "icon": "⏰",
+        "description": "Maximizing productivity during idle or waiting periods."
+      },
+      "Meeting & Communication Efficiency": {
+        "icon": "📢",
+        "description": "Making meetings productive and improving communication skills for better workflow."
+      },
+      "Creative Thinking & Problem Solving": {
+        "icon": "💡",
+        "description": "Enhancing creativity and developing innovative solutions to challenges."
+      },
+      "Environmental Optimization for Focus": {
+        "icon": "🏡",
+        "description": "Setting up an ideal workspace to boost concentration and productivity."
+      },
+      "Review & Reflection for Continuous Improvement": {
+        "icon": "📊",
+        "description": "Regularly assessing progress and refining strategies for ongoing growth."
+      }
     }
   },
   "Science & Technology": {
-    "Physics": {
-      "icon": "⚛️",
-      "description": "Understanding the fundamental principles governing matter, energy, and forces in the universe."
-    },
-    "Chemistry": {
-      "icon": "🧪",
-      "description": "Exploring chemical reactions, elements, and compounds that form the basis of life and materials."
-    },
-    "Biology": {
-      "icon": "🦠",
-      "description": "Studying living organisms, their structures, functions, and interactions with the environment."
-    },
-    "Mathematics": {
-      "icon": "📐",
-      "description": "Analyzing numbers, patterns, and relationships to solve problems and model real-world scenarios."
-    },
-    "Astronomy & Space Science": {
-      "icon": "🚀",
-      "description": "Exploring celestial bodies, space exploration, and the vast universe beyond Earth."
-    },
-    "Computer Science & Artificial Intelligence": {
-      "icon": "💻",
-      "description": "Developing algorithms, programming, and AI systems for automation and problem-solving."
-    },
-    "Robotics & Automation": {
-      "icon": "🤖",
-      "description": "Designing and building intelligent machines for industrial, medical, and domestic applications."
-    },
-    "Quantum Mechanics": {
-      "icon": "🔬",
-      "description": "Understanding the behavior of particles at the atomic and subatomic levels."
-    },
-    "Genetics & Biotechnology": {
-      "icon": "🧬",
-      "description": "Exploring DNA, genetic engineering, and biotechnology applications in medicine and agriculture."
-    },
-    "Neuroscience": {
-      "icon": "🧠",
-      "description": "Studying the structure and function of the brain and nervous system."
-    },
-    "Materials Science": {
-      "icon": "🛠",
-      "description": "Investigating the properties and applications of materials in engineering and technology."
-    },
-    "Earth Sciences": {
-      "icon": "🌍",
-      "description": "Studying the Earth's structure, climate, and natural processes."
-    },
-    "Environmental Science & Sustainability": {
-      "icon": "♻️",
-      "description": "Understanding ecosystems, climate change, and sustainable solutions for the planet."
-    },
-    "Medical Science & Healthcare": {
-      "icon": "🏥",
-      "description": "Advancing human health through medical research, treatments, and healthcare innovations."
-    },
-    "Engineering & Applied Sciences": {
-      "icon": "⚙️",
-      "description": "Applying scientific principles to design and develop technology and infrastructure."
-    },
-    "Information Technology & Cybersecurity": {
-      "icon": "🔒",
-      "description": "Protecting digital systems, networks, and data from cyber threats and breaches."
-    },
-    "Electronics & Telecommunications": {
-      "icon": "📡",
-      "description": "Developing communication systems, electronic circuits, and digital devices."
-    },
-    "Renewable Energy & Sustainable Technology": {
-      "icon": "☀️",
-      "description": "Exploring energy sources like solar, wind, and hydro for a sustainable future."
-    },
-    "Nanotechnology": {
-      "icon": "⚛️",
-      "description": "Manipulating materials at the nanoscale for advanced applications in medicine and engineering."
-    },
-    "Space Exploration & Astrobiology": {
-      "icon": "🔭",
-      "description": "Investigating the potential for life beyond Earth and advancing space travel technologies."
-    },
-    "Scientific Research Methods & Critical Thinking": {
-      "icon": "📖",
-      "description": "Developing analytical skills and scientific methodologies for problem-solving."
-    },
-    "History & Philosophy of Science": {
-      "icon": "📚",
-      "description": "Understanding the evolution of scientific ideas and their impact on society."
-    },
-    "Ethics in Science & Technology": {
-      "icon": "🛡",
-      "description": "Examining the moral implications of scientific advancements and technological innovations."
-    },
-    "AI Ethics & Digital Privacy": {
-      "icon": "🧠",
-      "description": "Ensuring ethical AI development, data privacy, and responsible technology use."
+    "icon": "🔬",
+    "description": "Discover innovations, scientific wonders, and how technology shapes our world.",
+    "subcategories": {
+      "Physics": {
+        "icon": "⚛️",
+        "description": "Understanding the fundamental principles governing matter, energy, and forces in the universe."
+      },
+      "Chemistry": {
+        "icon": "🧪",
+        "description": "Exploring chemical reactions, elements, and compounds that form the basis of life and materials."
+      },
+      "Biology": {
+        "icon": "🦠",
+        "description": "Studying living organisms, their structures, functions, and interactions with the environment."
+      },
+      "Mathematics": {
+        "icon": "📐",
+        "description": "Analyzing numbers, patterns, and relationships to solve problems and model real-world scenarios."
+      },
+      "Astronomy & Space Science": {
+        "icon": "🚀",
+        "description": "Exploring celestial bodies, space exploration, and the vast universe beyond Earth."
+      },
+      "Computer Science & Artificial Intelligence": {
+        "icon": "💻",
+        "description": "Developing algorithms, programming, and AI systems for automation and problem-solving."
+      },
+      "Robotics & Automation": {
+        "icon": "🤖",
+        "description": "Designing and building intelligent machines for industrial, medical, and domestic applications."
+      },
+      "Quantum Mechanics": {
+        "icon": "🔬",
+        "description": "Understanding the behavior of particles at the atomic and subatomic levels."
+      },
+      "Genetics & Biotechnology": {
+        "icon": "🧬",
+        "description": "Exploring DNA, genetic engineering, and biotechnology applications in medicine and agriculture."
+      },
+      "Neuroscience": {
+        "icon": "🧠",
+        "description": "Studying the structure and function of the brain and nervous system."
+      },
+      "Materials Science": {
+        "icon": "🛠",
+        "description": "Investigating the properties and applications of materials in engineering and technology."
+      },
+      "Earth Sciences": {
+        "icon": "🌍",
+        "description": "Studying the Earth's structure, climate, and natural processes."
+      },
+      "Environmental Science & Sustainability": {
+        "icon": "♻️",
+        "description": "Understanding ecosystems, climate change, and sustainable solutions for the planet."
+      },
+      "Medical Science & Healthcare": {
+        "icon": "🏥",
+        "description": "Advancing human health through medical research, treatments, and healthcare innovations."
+      },
+      "Engineering & Applied Sciences": {
+        "icon": "⚙️",
+        "description": "Applying scientific principles to design and develop technology and infrastructure."
+      },
+      "Information Technology & Cybersecurity": {
+        "icon": "🔒",
+        "description": "Protecting digital systems, networks, and data from cyber threats and breaches."
+      },
+      "Electronics & Telecommunications": {
+        "icon": "📡",
+        "description": "Developing communication systems, electronic circuits, and digital devices."
+      },
+      "Renewable Energy & Sustainable Technology": {
+        "icon": "☀️",
+        "description": "Exploring energy sources like solar, wind, and hydro for a sustainable future."
+      },
+      "Nanotechnology": {
+        "icon": "⚛️",
+        "description": "Manipulating materials at the nanoscale for advanced applications in medicine and engineering."
+      },
+      "Space Exploration & Astrobiology": {
+        "icon": "🔭",
+        "description": "Investigating the potential for life beyond Earth and advancing space travel technologies."
+      },
+      "Scientific Research Methods & Critical Thinking": {
+        "icon": "📖",
+        "description": "Developing analytical skills and scientific methodologies for problem-solving."
+      },
+      "History & Philosophy of Science": {
+        "icon": "📚",
+        "description": "Understanding the evolution of scientific ideas and their impact on society."
+      },
+      "Ethics in Science & Technology": {
+        "icon": "🛡",
+        "description": "Examining the moral implications of scientific advancements and technological innovations."
+      },
+      "AI Ethics & Digital Privacy": {
+        "icon": "🧠",
+        "description": "Ensuring ethical AI development, data privacy, and responsible technology use."
+      }
     }
   },
   "Health & Fitness": {
-    "Nutrition & Diet": {
-      "icon": "🥗",
-      "description": "Understanding the role of nutrients, balanced diets, and healthy eating habits for overall well-being."
-    },
-    "Exercise Science": {
-      "icon": "🏋️",
-      "description": "Exploring the principles of physical activity, movement, and performance optimization."
-    },
-    "Strength Training": {
-      "icon": "💪",
-      "description": "Building muscle strength, endurance, and functional fitness through resistance exercises."
-    },
-    "Cardiovascular Health": {
-      "icon": "❤️",
-      "description": "Improving heart health through exercise, diet, and lifestyle choices."
-    },
-    "Mental Health & Well-being": {
-      "icon": "🧠",
-      "description": "Promoting emotional well-being, stress management, and psychological resilience."
-    },
-    "Sleep Science": {
-      "icon": "😴",
-      "description": "Understanding sleep patterns, circadian rhythms, and ways to improve sleep quality."
-    },
-    "Weight Management": {
-      "icon": "⚖️",
-      "description": "Strategies for achieving and maintaining a healthy weight through diet and exercise."
-    },
-    "Flexibility & Mobility": {
-      "icon": "🧘",
-      "description": "Enhancing body movement, reducing stiffness, and improving range of motion."
-    },
-    "Injury Prevention & Recovery": {
-      "icon": "🏥",
-      "description": "Minimizing the risk of injuries and strategies for rehabilitation and healing."
-    },
-    "Holistic Health & Wellness": {
-      "icon": "🌿",
-      "description": "Integrating mind-body approaches, natural healing, and alternative therapies for well-being."
-    },
-    "Sports Science & Performance": {
-      "icon": "🏅",
-      "description": "Optimizing athletic performance through training, nutrition, and recovery strategies."
-    },
-    "Aging & Longevity": {
-      "icon": "⏳",
-      "description": "Understanding the science of aging and strategies to promote a longer, healthier life."
-    },
-    "Immune System Health": {
-      "icon": "🦠",
-      "description": "Boosting immunity through nutrition, lifestyle, and medical advancements."
-    },
-    "Gut Health & Digestion": {
-      "icon": "🍽️",
-      "description": "Exploring the gut microbiome, digestive health, and its impact on overall wellness."
-    },
-    "Stress Management & Relaxation": {
-      "icon": "😌",
-      "description": "Techniques to reduce stress, increase relaxation, and improve mental health."
-    },
-    "Hormonal Health": {
-      "icon": "🧬",
-      "description": "Balancing hormones naturally to optimize physical and mental well-being."
-    },
-    "Metabolism & Energy Balance": {
-      "icon": "🔥",
-      "description": "Understanding metabolism, energy regulation, and factors influencing body weight."
-    },
-    "Brain Health & Cognitive Function": {
-      "icon": "🧠",
-      "description": "Enhancing memory, focus, and mental sharpness through lifestyle and nutrition."
-    },
-    "Posture & Ergonomics": {
-      "icon": "🦴",
-      "description": "Improving body alignment, reducing strain, and preventing musculoskeletal issues."
-    },
-    "Breathwork & Respiratory Health": {
-      "icon": "🌬️",
-      "description": "Using breathing techniques to enhance lung capacity, relaxation, and overall health."
-    },
-    "Hydration & Detoxification": {
-      "icon": "💧",
-      "description": "Maintaining hydration levels and natural detoxification processes for optimal health."
-    },
-    "Alternative Medicine & Natural Healing": {
-      "icon": "🌱",
-      "description": "Exploring holistic and non-traditional healing methods for better health."
-    },
-    "Public Health & Epidemiology": {
-      "icon": "🌍",
-      "description": "Understanding disease prevention, global health trends, and public health policies."
-    },
-    "Genetic Health & Personalized Medicine": {
-      "icon": "🧬",
-      "description": "Utilizing genetic insights to tailor healthcare and treatment plans."
+    "icon": "🏋️‍♂️",
+    "description": "Stay healthy, fit, and learn about physical and mental wellness.",
+    "subcategories": {
+      "Nutrition & Diet": {
+        "icon": "🥗",
+        "description": "Understanding the role of nutrients, balanced diets, and healthy eating habits for overall well-being."
+      },
+      "Exercise Science": {
+        "icon": "🏋️",
+        "description": "Exploring the principles of physical activity, movement, and performance optimization."
+      },
+      "Strength Training": {
+        "icon": "💪",
+        "description": "Building muscle strength, endurance, and functional fitness through resistance exercises."
+      },
+      "Cardiovascular Health": {
+        "icon": "❤️",
+        "description": "Improving heart health through exercise, diet, and lifestyle choices."
+      },
+      "Mental Health & Well-being": {
+        "icon": "🧠",
+        "description": "Promoting emotional well-being, stress management, and psychological resilience."
+      },
+      "Sleep Science": {
+        "icon": "😴",
+        "description": "Understanding sleep patterns, circadian rhythms, and ways to improve sleep quality."
+      },
+      "Weight Management": {
+        "icon": "⚖️",
+        "description": "Strategies for achieving and maintaining a healthy weight through diet and exercise."
+      },
+      "Flexibility & Mobility": {
+        "icon": "🧘",
+        "description": "Enhancing body movement, reducing stiffness, and improving range of motion."
+      },
+      "Injury Prevention & Recovery": {
+        "icon": "🏥",
+        "description": "Minimizing the risk of injuries and strategies for rehabilitation and healing."
+      },
+      "Holistic Health & Wellness": {
+        "icon": "🌿",
+        "description": "Integrating mind-body approaches, natural healing, and alternative therapies for well-being."
+      },
+      "Sports Science & Performance": {
+        "icon": "🏅",
+        "description": "Optimizing athletic performance through training, nutrition, and recovery strategies."
+      },
+      "Aging & Longevity": {
+        "icon": "⏳",
+        "description": "Understanding the science of aging and strategies to promote a longer, healthier life."
+      },
+      "Immune System Health": {
+        "icon": "🦠",
+        "description": "Boosting immunity through nutrition, lifestyle, and medical advancements."
+      },
+      "Gut Health & Digestion": {
+        "icon": "🍽️",
+        "description": "Exploring the gut microbiome, digestive health, and its impact on overall wellness."
+      },
+      "Stress Management & Relaxation": {
+        "icon": "😌",
+        "description": "Techniques to reduce stress, increase relaxation, and improve mental health."
+      },
+      "Hormonal Health": {
+        "icon": "🧬",
+        "description": "Balancing hormones naturally to optimize physical and mental well-being."
+      },
+      "Metabolism & Energy Balance": {
+        "icon": "🔥",
+        "description": "Understanding metabolism, energy regulation, and factors influencing body weight."
+      },
+      "Brain Health & Cognitive Function": {
+        "icon": "🧠",
+        "description": "Enhancing memory, focus, and mental sharpness through lifestyle and nutrition."
+      },
+      "Posture & Ergonomics": {
+        "icon": "🦴",
+        "description": "Improving body alignment, reducing strain, and preventing musculoskeletal issues."
+      },
+      "Breathwork & Respiratory Health": {
+        "icon": "🌬️",
+        "description": "Using breathing techniques to enhance lung capacity, relaxation, and overall health."
+      },
+      "Hydration & Detoxification": {
+        "icon": "💧",
+        "description": "Maintaining hydration levels and natural detoxification processes for optimal health."
+      },
+      "Alternative Medicine & Natural Healing": {
+        "icon": "🌱",
+        "description": "Exploring holistic and non-traditional healing methods for better health."
+      },
+      "Public Health & Epidemiology": {
+        "icon": "🌍",
+        "description": "Understanding disease prevention, global health trends, and public health policies."
+      },
+      "Genetic Health & Personalized Medicine": {
+        "icon": "🧬",
+        "description": "Utilizing genetic insights to tailor healthcare and treatment plans."
+      }
     }
   },
   "Philosophy & Spirituality": {
-    "Metaphysics": {
-      "icon": "🌀",
-      "description": "Exploring the fundamental nature of reality, existence, and the universe."
-    },
-    "Epistemology": {
-      "icon": "🔍",
-      "description": "Understanding the nature, scope, and limits of human knowledge and belief."
-    },
-    "Ethics & Morality": {
-      "icon": "⚖️",
-      "description": "Examining principles of right and wrong, moral responsibility, and ethical decision-making."
-    },
-    "Logic & Critical Thinking": {
-      "icon": "🧠",
-      "description": "Developing reasoning skills, logical analysis, and rational argumentation."
-    },
-    "Political Philosophy": {
-      "icon": "🏛️",
-      "description": "Studying the nature of government, justice, power, and individual rights."
-    },
-    "Aesthetics & Philosophy of Art": {
-      "icon": "🎭",
-      "description": "Exploring the nature of beauty, artistic expression, and the role of art in society."
-    },
-    "Existentialism": {
-      "icon": "🤔",
-      "description": "Investigating themes of existence, free will, meaning, and the human condition."
-    },
-    "Stoicism": {
-      "icon": "🛡️",
-      "description": "Practicing resilience, self-control, and wisdom to navigate life's challenges."
-    },
-    "Eastern Philosophy": {
-      "icon": "☯️",
-      "description": "Understanding philosophical traditions from Asia, including Taoism, Confucianism, and Buddhism."
-    },
-    "Western Philosophy": {
-      "icon": "🏛️",
-      "description": "Exploring philosophical thought from ancient Greece to modern Western thinkers."
-    },
-    "Philosophy of Mind": {
-      "icon": "🧠",
-      "description": "Examining consciousness, perception, and the nature of thought."
-    },
-    "Philosophy of Science": {
-      "icon": "🔬",
-      "description": "Analyzing scientific methods, theories, and the relationship between science and reality."
-    },
-    "Philosophy of Religion": {
-      "icon": "⛪",
-      "description": "Exploring religious beliefs, the nature of divinity, and arguments for and against God."
-    },
-    "Spiritual Awakening & Enlightenment": {
-      "icon": "🌅",
-      "description": "Understanding self-realization, higher consciousness, and the path to inner peace."
-    },
-    "Meditation & Mindfulness": {
-      "icon": "🧘",
-      "description": "Practicing awareness, presence, and inner stillness for mental and emotional well-being."
-    },
-    "Non-Duality & Advaita Vedanta": {
-      "icon": "🌌",
-      "description": "Exploring the philosophy of oneness and the dissolution of the ego."
-    },
-    "Buddhism & Zen Teachings": {
-      "icon": "☸️",
-      "description": "Understanding Buddhist philosophy, the Four Noble Truths, and the practice of Zen."
-    },
-    "Taoism & Wu Wei": {
-      "icon": "🌊",
-      "description": "Living in harmony with nature and embracing effortless action (Wu Wei)."
-    },
-    "Christian Mysticism": {
-      "icon": "⛪",
-      "description": "Exploring mystical traditions within Christianity, such as contemplation and divine union."
-    },
-    "Sufism & Islamic Mysticism": {
-      "icon": "🕌",
-      "description": "Delving into the mystical aspects of Islam, including Sufi poetry, whirling dervishes, and divine love."
-    },
-    "Hindu Philosophy & Vedanta": {
-      "icon": "🕉️",
-      "description": "Understanding key Hindu concepts, including Brahman, Atman, and Moksha."
-    },
-    "Karma & Reincarnation": {
-      "icon": "🔄",
-      "description": "Exploring the laws of cause and effect and the cycle of rebirth."
-    },
-    "Consciousness & Self-Realization": {
-      "icon": "👁️",
-      "description": "Investigating the nature of awareness and the journey to self-discovery."
-    },
-    "Detachment & Letting Go": {
-      "icon": "🎈",
-      "description": "Practicing non-attachment for emotional freedom and inner peace."
-    },
-    "Morality & the Meaning of Life": {
-      "icon": "🌍",
-      "description": "Seeking purpose, meaning, and ethical principles in human existence."
-    },
-    "Transcendentalism": {
-      "icon": "🌲",
-      "description": "Exploring the connection between nature, individuality, and spirituality."
-    },
-    "Pantheism & Nature Spirituality": {
-      "icon": "🌿",
-      "description": "Viewing the universe as divine and embracing spiritual connection with nature."
-    },
-    "New Age Spirituality": {
-      "icon": "🔮",
-      "description": "Exploring modern spiritual movements, energy healing, and metaphysical concepts."
-    },
-    "Death & the Afterlife": {
-      "icon": "⚰️",
-      "description": "Contemplating what happens after death and exploring different beliefs about the afterlife."
-    },
-    "Sacred Texts & Wisdom Literature": {
-      "icon": "📜",
-      "description": "Studying ancient scriptures, philosophical texts, and spiritual writings from various traditions."
+    "icon": "🧘‍♂️",
+    "description": "Understand deep life questions, meaning, and spiritual growth.",
+    "subcategories": {
+      "Metaphysics": {
+        "icon": "🌀",
+        "description": "Exploring the fundamental nature of reality, existence, and the universe."
+      },
+      "Epistemology": {
+        "icon": "🔍",
+        "description": "Understanding the nature, scope, and limits of human knowledge and belief."
+      },
+      "Ethics & Morality": {
+        "icon": "⚖️",
+        "description": "Examining principles of right and wrong, moral responsibility, and ethical decision-making."
+      },
+      "Logic & Critical Thinking": {
+        "icon": "🧠",
+        "description": "Developing reasoning skills, logical analysis, and rational argumentation."
+      },
+      "Political Philosophy": {
+        "icon": "🏛️",
+        "description": "Studying the nature of government, justice, power, and individual rights."
+      },
+      "Aesthetics & Philosophy of Art": {
+        "icon": "🎭",
+        "description": "Exploring the nature of beauty, artistic expression, and the role of art in society."
+      },
+      "Existentialism": {
+        "icon": "🤔",
+        "description": "Investigating themes of existence, free will, meaning, and the human condition."
+      },
+      "Stoicism": {
+        "icon": "🛡️",
+        "description": "Practicing resilience, self-control, and wisdom to navigate life's challenges."
+      },
+      "Eastern Philosophy": {
+        "icon": "☯️",
+        "description": "Understanding philosophical traditions from Asia, including Taoism, Confucianism, and Buddhism."
+      },
+      "Western Philosophy": {
+        "icon": "🏛️",
+        "description": "Exploring philosophical thought from ancient Greece to modern Western thinkers."
+      },
+      "Philosophy of Mind": {
+        "icon": "🧠",
+        "description": "Examining consciousness, perception, and the nature of thought."
+      },
+      "Philosophy of Science": {
+        "icon": "🔬",
+        "description": "Analyzing scientific methods, theories, and the relationship between science and reality."
+      },
+      "Philosophy of Religion": {
+        "icon": "⛪",
+        "description": "Exploring religious beliefs, the nature of divinity, and arguments for and against God."
+      },
+      "Spiritual Awakening & Enlightenment": {
+        "icon": "🌅",
+        "description": "Understanding self-realization, higher consciousness, and the path to inner peace."
+      },
+      "Meditation & Mindfulness": {
+        "icon": "🧘",
+        "description": "Practicing awareness, presence, and inner stillness for mental and emotional well-being."
+      },
+      "Non-Duality & Advaita Vedanta": {
+        "icon": "🌌",
+        "description": "Exploring the philosophy of oneness and the dissolution of the ego."
+      },
+      "Buddhism & Zen Teachings": {
+        "icon": "☸️",
+        "description": "Understanding Buddhist philosophy, the Four Noble Truths, and the practice of Zen."
+      },
+      "Taoism & Wu Wei": {
+        "icon": "🌊",
+        "description": "Living in harmony with nature and embracing effortless action (Wu Wei)."
+      },
+      "Christian Mysticism": {
+        "icon": "⛪",
+        "description": "Exploring mystical traditions within Christianity, such as contemplation and divine union."
+      },
+      "Sufism & Islamic Mysticism": {
+        "icon": "🕌",
+        "description": "Delving into the mystical aspects of Islam, including Sufi poetry, whirling dervishes, and divine love."
+      },
+      "Hindu Philosophy & Vedanta": {
+        "icon": "🕉️",
+        "description": "Understanding key Hindu concepts, including Brahman, Atman, and Moksha."
+      },
+      "Karma & Reincarnation": {
+        "icon": "🔄",
+        "description": "Exploring the laws of cause and effect and the cycle of rebirth."
+      },
+      "Consciousness & Self-Realization": {
+        "icon": "👁️",
+        "description": "Investigating the nature of awareness and the journey to self-discovery."
+      },
+      "Detachment & Letting Go": {
+        "icon": "🎈",
+        "description": "Practicing non-attachment for emotional freedom and inner peace."
+      },
+      "Morality & the Meaning of Life": {
+        "icon": "🌍",
+        "description": "Seeking purpose, meaning, and ethical principles in human existence."
+      },
+      "Transcendentalism": {
+        "icon": "🌲",
+        "description": "Exploring the connection between nature, individuality, and spirituality."
+      },
+      "Pantheism & Nature Spirituality": {
+        "icon": "🌿",
+        "description": "Viewing the universe as divine and embracing spiritual connection with nature."
+      },
+      "New Age Spirituality": {
+        "icon": "🔮",
+        "description": "Exploring modern spiritual movements, energy healing, and metaphysical concepts."
+      },
+      "Death & the Afterlife": {
+        "icon": "⚰️",
+        "description": "Contemplating what happens after death and exploring different beliefs about the afterlife."
+      },
+      "Sacred Texts & Wisdom Literature": {
+        "icon": "📜",
+        "description": "Studying ancient scriptures, philosophical texts, and spiritual writings from various traditions."
+      }
     }
   },
   "Leadership & Influence": {
-    "Principles of Leadership": {
-      "icon": "\ud83c\udfc6",
-      "description": "Understanding the core principles that define great leadership and effective management."
-    },
-    "Emotional Intelligence in Leadership": {
-      "icon": "\ud83e\udde0",
-      "description": "Developing self-awareness, empathy, and emotional regulation to lead effectively."
-    },
-    "Decision Making & Problem Solving": {
-      "icon": "\ud83d\udca1",
-      "description": "Enhancing critical thinking and analytical skills to make sound decisions under pressure."
-    },
-    "Persuasion & Influence": {
-      "icon": "\ud83c\udfa7",
-      "description": "Mastering the art of persuasion to inspire action and lead with impact."
-    },
-    "Servant Leadership": {
-      "icon": "\ud83e\udd1d",
-      "description": "Focusing on serving others to create a people-first leadership approach."
-    },
-    "Transformational Leadership": {
-      "icon": "\ud83d\udd25",
-      "description": "Motivating teams to innovate, change, and exceed expectations."
-    },
-    "Charismatic Leadership": {
-      "icon": "\ud83c\udf1f",
-      "description": "Using personal charm and confidence to inspire and energize people."
-    },
-    "Situational Leadership": {
-      "icon": "\ud83d\udccd",
-      "description": "Adapting leadership styles to fit the needs of different teams and scenarios."
-    },
-    "Authentic Leadership": {
-      "icon": "\ud83c\udfad",
-      "description": "Leading with honesty, transparency, and a strong moral compass."
-    },
-    "Leadership Communication": {
-      "icon": "\ud83d\udde3\ufe0f",
-      "description": "Developing clear and effective communication skills for leading teams."
-    },
-    "Public Speaking & Presentation": {
-      "icon": "\ud83d\udce2",
-      "description": "Mastering the art of delivering powerful speeches and presentations."
-    },
-    "Crisis Management": {
-      "icon": "\ud83d\udea8",
-      "description": "Handling unexpected challenges with confidence and strategic thinking."
-    },
-    "Strategic Thinking & Vision": {
-      "icon": "\ud83c\udfaf",
-      "description": "Developing long-term goals and aligning strategies with business objectives."
-    },
-    "Organizational Leadership": {
-      "icon": "\ud83c\udfe6",
-      "description": "Understanding how to lead at the corporate level and drive organizational success."
-    },
-    "Change Management": {
-      "icon": "\ud83d\udd04",
-      "description": "Leading teams through change and fostering adaptability in organizations."
-    },
-    "Conflict Resolution": {
-      "icon": "⚖️",
-      "description": "Mediating disputes and finding solutions that align with team goals."
-    },
-    "Negotiation & Diplomacy": {
-      "icon": "\ud83e\udd1d",
-      "description": "Mastering negotiation skills to achieve win-win outcomes."
-    },
-    "Team Building & Motivation": {
-      "icon": "\ud83d\udc65",
-      "description": "Creating high-performing teams through motivation and collaboration."
-    },
-    "Delegation & Empowerment": {
-      "icon": "\ud83d\udcda",
-      "description": "Learning how to delegate effectively and empower team members."
-    },
-    "Executive Presence": {
-      "icon": "\ud83d\udc54",
-      "description": "Developing confidence, authority, and leadership presence."
-    },
-    "Leadership Ethics & Integrity": {
-      "icon": "⚖️",
-      "description": "Upholding ethical leadership and maintaining a strong moral foundation."
-    },
-    "Psychology of Influence": {
-      "icon": "\ud83e\udde0",
-      "description": "Understanding the psychological principles behind persuasion and leadership."
-    },
-    "Leading High-Performance Teams": {
-      "icon": "\ud83d\ude80",
-      "description": "Building and managing elite teams that consistently deliver outstanding results."
-    },
-    "Coaching & Mentoring": {
-      "icon": "\ud83c\udfaf",
-      "description": "Guiding and developing others to reach their full potential."
-    },
-    "Time Management for Leaders": {
-      "icon": "⏳",
-      "description": "Optimizing productivity and prioritizing tasks to maximize efficiency."
-    },
-    "Corporate Culture & Leadership": {
-      "icon": "\ud83c\udfe2",
-      "description": "Shaping company culture to align with values and business success."
-    },
-    "Adaptability & Resilience": {
-      "icon": "\ud83d\udee1️",
-      "description": "Thriving in uncertainty and leading with resilience in challenging times."
-    },
-    "Influence Without Authority": {
-      "icon": "\ud83d\udd04",
-      "description": "Leading effectively even without formal power or titles."
-    },
-    "Political & Social Leadership": {
-      "icon": "\ud83c\udf0e",
-      "description": "Understanding leadership in government, activism, and social change."
-    },
-    "Networking & Relationship Building": {
-      "icon": "\ud83d\udd17",
-      "description": "Building meaningful connections to advance leadership and career success."
+    "icon": "🧑",
+    "description": "Develop leadership skills to inspire, guide, and influence others effectively.",
+    "subcategories": {
+      "Principles of Leadership": {
+        "icon": "\ud83c\udfc6",
+        "description": "Understanding the core principles that define great leadership and effective management."
+      },
+      "Emotional Intelligence in Leadership": {
+        "icon": "\ud83e\udde0",
+        "description": "Developing self-awareness, empathy, and emotional regulation to lead effectively."
+      },
+      "Decision Making & Problem Solving": {
+        "icon": "\ud83d\udca1",
+        "description": "Enhancing critical thinking and analytical skills to make sound decisions under pressure."
+      },
+      "Persuasion & Influence": {
+        "icon": "\ud83c\udfa7",
+        "description": "Mastering the art of persuasion to inspire action and lead with impact."
+      },
+      "Servant Leadership": {
+        "icon": "\ud83e\udd1d",
+        "description": "Focusing on serving others to create a people-first leadership approach."
+      },
+      "Transformational Leadership": {
+        "icon": "\ud83d\udd25",
+        "description": "Motivating teams to innovate, change, and exceed expectations."
+      },
+      "Charismatic Leadership": {
+        "icon": "\ud83c\udf1f",
+        "description": "Using personal charm and confidence to inspire and energize people."
+      },
+      "Situational Leadership": {
+        "icon": "\ud83d\udccd",
+        "description": "Adapting leadership styles to fit the needs of different teams and scenarios."
+      },
+      "Authentic Leadership": {
+        "icon": "\ud83c\udfad",
+        "description": "Leading with honesty, transparency, and a strong moral compass."
+      },
+      "Leadership Communication": {
+        "icon": "\ud83d\udde3\ufe0f",
+        "description": "Developing clear and effective communication skills for leading teams."
+      },
+      "Public Speaking & Presentation": {
+        "icon": "\ud83d\udce2",
+        "description": "Mastering the art of delivering powerful speeches and presentations."
+      },
+      "Crisis Management": {
+        "icon": "\ud83d\udea8",
+        "description": "Handling unexpected challenges with confidence and strategic thinking."
+      },
+      "Strategic Thinking & Vision": {
+        "icon": "\ud83c\udfaf",
+        "description": "Developing long-term goals and aligning strategies with business objectives."
+      },
+      "Organizational Leadership": {
+        "icon": "\ud83c\udfe6",
+        "description": "Understanding how to lead at the corporate level and drive organizational success."
+      },
+      "Change Management": {
+        "icon": "\ud83d\udd04",
+        "description": "Leading teams through change and fostering adaptability in organizations."
+      },
+      "Conflict Resolution": {
+        "icon": "⚖️",
+        "description": "Mediating disputes and finding solutions that align with team goals."
+      },
+      "Negotiation & Diplomacy": {
+        "icon": "\ud83e\udd1d",
+        "description": "Mastering negotiation skills to achieve win-win outcomes."
+      },
+      "Team Building & Motivation": {
+        "icon": "\ud83d\udc65",
+        "description": "Creating high-performing teams through motivation and collaboration."
+      },
+      "Delegation & Empowerment": {
+        "icon": "\ud83d\udcda",
+        "description": "Learning how to delegate effectively and empower team members."
+      },
+      "Executive Presence": {
+        "icon": "\ud83d\udc54",
+        "description": "Developing confidence, authority, and leadership presence."
+      },
+      "Leadership Ethics & Integrity": {
+        "icon": "⚖️",
+        "description": "Upholding ethical leadership and maintaining a strong moral foundation."
+      },
+      "Psychology of Influence": {
+        "icon": "\ud83e\udde0",
+        "description": "Understanding the psychological principles behind persuasion and leadership."
+      },
+      "Leading High-Performance Teams": {
+        "icon": "\ud83d\ude80",
+        "description": "Building and managing elite teams that consistently deliver outstanding results."
+      },
+      "Coaching & Mentoring": {
+        "icon": "\ud83c\udfaf",
+        "description": "Guiding and developing others to reach their full potential."
+      },
+      "Time Management for Leaders": {
+        "icon": "⏳",
+        "description": "Optimizing productivity and prioritizing tasks to maximize efficiency."
+      },
+      "Corporate Culture & Leadership": {
+        "icon": "\ud83c\udfe2",
+        "description": "Shaping company culture to align with values and business success."
+      },
+      "Adaptability & Resilience": {
+        "icon": "\ud83d\udee1️",
+        "description": "Thriving in uncertainty and leading with resilience in challenging times."
+      },
+      "Influence Without Authority": {
+        "icon": "\ud83d\udd04",
+        "description": "Leading effectively even without formal power or titles."
+      },
+      "Political & Social Leadership": {
+        "icon": "\ud83c\udf0e",
+        "description": "Understanding leadership in government, activism, and social change."
+      },
+      "Networking & Relationship Building": {
+        "icon": "\ud83d\udd17",
+        "description": "Building meaningful connections to advance leadership and career success."
+      }
     }
   },
   "Relationships & Social Skills": {
-    "Fundamentals of Human Connection": {
-      "icon": "🤝",
-      "description": "Understanding the psychological and social aspects of human relationships."
-    },
-    "Emotional Intelligence in Relationships": {
-      "icon": "🧠",
-      "description": "Developing self-awareness, empathy, and emotional regulation to improve relationships."
-    },
-    "Communication Skills": {
-      "icon": "🗣️",
-      "description": "Mastering verbal and written communication for stronger personal and professional relationships."
-    },
-    "Active Listening": {
-      "icon": "👂",
-      "description": "Enhancing listening skills to foster deeper understanding and connection."
-    },
-    "Nonverbal Communication & Body Language": {
-      "icon": "🧐",
-      "description": "Interpreting and using body language to improve interactions and relationships."
-    },
-    "Building Rapport & Trust": {
-      "icon": "🤝",
-      "description": "Establishing trust and strong bonds in personal and professional relationships."
-    },
-    "Conflict Resolution": {
-      "icon": "⚖️",
-      "description": "Resolving disagreements and managing conflicts effectively."
-    },
-    "Negotiation & Compromise": {
-      "icon": "🤝",
-      "description": "Balancing different perspectives to reach mutually beneficial outcomes."
-    },
-    "Interpersonal Boundaries": {
-      "icon": "🚧",
-      "description": "Setting and respecting personal boundaries to maintain healthy relationships."
-    },
-    "Assertiveness & Self-Expression": {
-      "icon": "💪",
-      "description": "Expressing thoughts, needs, and boundaries with confidence and respect."
-    },
-    "Empathy & Compassion": {
-      "icon": "❤️",
-      "description": "Developing deeper emotional connections through understanding and care."
-    },
-    "Relationship Psychology": {
-      "icon": "🧠",
-      "description": "Exploring the psychological principles behind human relationships."
-    },
-    "Romantic Relationships & Dating": {
-      "icon": "💘",
-      "description": "Understanding attraction, dating dynamics, and building healthy romantic relationships."
-    },
-    "Marriage & Long-Term Partnerships": {
-      "icon": "💍",
-      "description": "Nurturing long-term relationships through trust, communication, and commitment."
-    },
-    "Friendships & Social Circles": {
-      "icon": "👥",
-      "description": "Building and maintaining meaningful friendships and social connections."
-    },
-    "Family Relationships & Dynamics": {
-      "icon": "👨‍👩‍👧‍👦",
-      "description": "Understanding family roles, relationships, and how to foster strong bonds."
-    },
-    "Parenting & Child Relationships": {
-      "icon": "👶",
-      "description": "Developing strong, supportive, and nurturing relationships with children."
-    },
-    "Workplace Relationships": {
-      "icon": "🏢",
-      "description": "Navigating professional relationships for a positive and productive work environment."
-    },
-    "Networking & Social Influence": {
-      "icon": "🔗",
-      "description": "Building professional and personal connections to expand opportunities."
-    },
-    "Charisma & Social Presence": {
-      "icon": "✨",
-      "description": "Enhancing social confidence and making a lasting impression."
-    },
-    "Handling Rejection & Criticism": {
-      "icon": "❌",
-      "description": "Building resilience and managing negative feedback effectively."
-    },
-    "Social Anxiety & Confidence Building": {
-      "icon": "😰",
-      "description": "Overcoming social fears and developing confidence in interactions."
-    },
-    "Small Talk & Conversation Skills": {
-      "icon": "💬",
-      "description": "Mastering casual conversations to build rapport and ease interactions."
-    },
-    "Persuasion & Influence in Social Settings": {
-      "icon": "🧠",
-      "description": "Using psychological principles to positively influence others."
-    },
-    "Building & Maintaining Social Connections": {
-      "icon": "🔄",
-      "description": "Strengthening and sustaining meaningful relationships over time."
-    },
-    "Cultural Differences in Relationships": {
-      "icon": "🌎",
-      "description": "Understanding and respecting cultural variations in social interactions."
-    },
-    "Toxic Relationships & Red Flags": {
-      "icon": "⚠️",
-      "description": "Recognizing and avoiding unhealthy relationship patterns."
-    },
-    "Breakups & Emotional Recovery": {
-      "icon": "💔",
-      "description": "Healing from breakups and moving forward in a healthy way."
-    },
-    "Love Languages & Relationship Styles": {
-      "icon": "💖",
-      "description": "Understanding different ways people express and receive love."
-    },
-    "Online & Digital Communication Skills": {
-      "icon": "📱",
-      "description": "Navigating social interactions in the digital age effectively."
+    "icon": "🤝",
+    "description": "Build strong relationships, improve communication, and connect better with people.",
+    "subcategories": {
+      "Fundamentals of Human Connection": {
+        "icon": "🤝",
+        "description": "Understanding the psychological and social aspects of human relationships."
+      },
+      "Emotional Intelligence in Relationships": {
+        "icon": "🧠",
+        "description": "Developing self-awareness, empathy, and emotional regulation to improve relationships."
+      },
+      "Communication Skills": {
+        "icon": "🗣️",
+        "description": "Mastering verbal and written communication for stronger personal and professional relationships."
+      },
+      "Active Listening": {
+        "icon": "👂",
+        "description": "Enhancing listening skills to foster deeper understanding and connection."
+      },
+      "Nonverbal Communication & Body Language": {
+        "icon": "🧐",
+        "description": "Interpreting and using body language to improve interactions and relationships."
+      },
+      "Building Rapport & Trust": {
+        "icon": "🤝",
+        "description": "Establishing trust and strong bonds in personal and professional relationships."
+      },
+      "Conflict Resolution": {
+        "icon": "⚖️",
+        "description": "Resolving disagreements and managing conflicts effectively."
+      },
+      "Negotiation & Compromise": {
+        "icon": "🤝",
+        "description": "Balancing different perspectives to reach mutually beneficial outcomes."
+      },
+      "Interpersonal Boundaries": {
+        "icon": "🚧",
+        "description": "Setting and respecting personal boundaries to maintain healthy relationships."
+      },
+      "Assertiveness & Self-Expression": {
+        "icon": "💪",
+        "description": "Expressing thoughts, needs, and boundaries with confidence and respect."
+      },
+      "Empathy & Compassion": {
+        "icon": "❤️",
+        "description": "Developing deeper emotional connections through understanding and care."
+      },
+      "Relationship Psychology": {
+        "icon": "🧠",
+        "description": "Exploring the psychological principles behind human relationships."
+      },
+      "Romantic Relationships & Dating": {
+        "icon": "💘",
+        "description": "Understanding attraction, dating dynamics, and building healthy romantic relationships."
+      },
+      "Marriage & Long-Term Partnerships": {
+        "icon": "💍",
+        "description": "Nurturing long-term relationships through trust, communication, and commitment."
+      },
+      "Friendships & Social Circles": {
+        "icon": "👥",
+        "description": "Building and maintaining meaningful friendships and social connections."
+      },
+      "Family Relationships & Dynamics": {
+        "icon": "👨‍👩‍👧‍👦",
+        "description": "Understanding family roles, relationships, and how to foster strong bonds."
+      },
+      "Parenting & Child Relationships": {
+        "icon": "👶",
+        "description": "Developing strong, supportive, and nurturing relationships with children."
+      },
+      "Workplace Relationships": {
+        "icon": "🏢",
+        "description": "Navigating professional relationships for a positive and productive work environment."
+      },
+      "Networking & Social Influence": {
+        "icon": "🔗",
+        "description": "Building professional and personal connections to expand opportunities."
+      },
+      "Charisma & Social Presence": {
+        "icon": "✨",
+        "description": "Enhancing social confidence and making a lasting impression."
+      },
+      "Handling Rejection & Criticism": {
+        "icon": "❌",
+        "description": "Building resilience and managing negative feedback effectively."
+      },
+      "Social Anxiety & Confidence Building": {
+        "icon": "😰",
+        "description": "Overcoming social fears and developing confidence in interactions."
+      },
+      "Small Talk & Conversation Skills": {
+        "icon": "💬",
+        "description": "Mastering casual conversations to build rapport and ease interactions."
+      },
+      "Persuasion & Influence in Social Settings": {
+        "icon": "🧠",
+        "description": "Using psychological principles to positively influence others."
+      },
+      "Building & Maintaining Social Connections": {
+        "icon": "🔄",
+        "description": "Strengthening and sustaining meaningful relationships over time."
+      },
+      "Cultural Differences in Relationships": {
+        "icon": "🌎",
+        "description": "Understanding and respecting cultural variations in social interactions."
+      },
+      "Toxic Relationships & Red Flags": {
+        "icon": "⚠️",
+        "description": "Recognizing and avoiding unhealthy relationship patterns."
+      },
+      "Breakups & Emotional Recovery": {
+        "icon": "💔",
+        "description": "Healing from breakups and moving forward in a healthy way."
+      },
+      "Love Languages & Relationship Styles": {
+        "icon": "💖",
+        "description": "Understanding different ways people express and receive love."
+      },
+      "Online & Digital Communication Skills": {
+        "icon": "📱",
+        "description": "Navigating social interactions in the digital age effectively."
+      }
     }
   },
   "History & Politics": {
-    "Ancient Civilizations": {
-      "icon": "🏺",
-      "description": "Exploring the rise, culture, and contributions of early human societies."
-    },
-    "Medieval History": {
-      "icon": "🛡️",
-      "description": "Examining the feudal era, kingdoms, and significant medieval events."
-    },
-    "Modern History": {
-      "icon": "📜",
-      "description": "Understanding historical developments from the Renaissance to the present."
-    },
-    "Military History & Warfare": {
-      "icon": "⚔️",
-      "description": "Analyzing battles, military strategies, and the evolution of warfare."
-    },
-    "History of Revolutions": {
-      "icon": "🔥",
-      "description": "Studying political, social, and economic revolutions that shaped history."
-    },
-    "World Wars & Global Conflicts": {
-      "icon": "🌍",
-      "description": "Investigating major wars, their causes, and global impact."
-    },
-    "Economic History": {
-      "icon": "💰",
-      "description": "Tracing the evolution of trade, markets, and financial systems."
-    },
-    "Colonialism & Imperialism": {
-      "icon": "🇬🇧",
-      "description": "Exploring the impact of empires and colonial rule on global history."
-    },
-    "History of Science & Technology": {
-      "icon": "🔬",
-      "description": "Tracking scientific discoveries and technological advancements over time."
-    },
-    "Cultural & Social History": {
-      "icon": "🎭",
-      "description": "Understanding the evolution of human societies, traditions, and arts."
-    },
-    "Religious History": {
-      "icon": "⛪",
-      "description": "Examining the origins, spread, and influence of world religions."
-    },
-    "Political Theories & Ideologies": {
-      "icon": "📖",
-      "description": "Studying major political ideas and their influence on governance."
-    },
-    "Democracy & Governance": {
-      "icon": "🏛️",
-      "description": "Analyzing democratic systems, institutions, and governance structures."
-    },
-    "Authoritarianism & Dictatorships": {
-      "icon": "🚨",
-      "description": "Examining the rise and rule of authoritarian leaders and regimes."
-    },
-    "Geopolitics & Global Relations": {
-      "icon": "🌍",
-      "description": "Understanding international power dynamics and diplomatic relations."
-    },
-    "Political Movements & Activism": {
-      "icon": "✊",
-      "description": "Exploring historical movements that shaped social and political change."
-    },
-    "International Organizations & Diplomacy": {
-      "icon": "🏛️",
-      "description": "Studying global institutions like the UN and diplomatic strategies."
-    },
-    "Elections & Political Campaigns": {
-      "icon": "🗳️",
-      "description": "Analyzing electoral systems, campaigns, and political strategies."
-    },
-    "Constitutional Law & Rights": {
-      "icon": "📜",
-      "description": "Understanding the legal foundations of nations and civil liberties."
-    },
-    "Civil Rights & Social Justice": {
-      "icon": "✊",
-      "description": "Tracing the fight for equality and human rights throughout history."
-    },
-    "Public Policy & Governance": {
-      "icon": "🏛️",
-      "description": "Studying policy-making, government functions, and administrative laws."
-    },
-    "Propaganda & Political Influence": {
-      "icon": "📢",
-      "description": "Analyzing how media and communication shape political narratives."
-    },
-    "History of Nations & Empires": {
-      "icon": "🌎",
-      "description": "Examining the rise and fall of great civilizations and empires."
-    },
-    "Cold War & Political Tensions": {
-      "icon": "❄️",
-      "description": "Exploring the ideological conflict between global superpowers."
-    },
-    "Terrorism & Counterterrorism": {
-      "icon": "💣",
-      "description": "Understanding the causes, tactics, and responses to terrorism."
-    },
-    "Political Corruption & Scandals": {
-      "icon": "⚖️",
-      "description": "Investigating historical corruption cases and their impact on governance."
-    },
-    "Globalization & Political Economy": {
-      "icon": "🌍",
-      "description": "Examining the interconnectedness of economies and international trade."
-    },
-    "History of Human Rights": {
-      "icon": "⚖️",
-      "description": "Tracing the development of human rights and global justice movements."
-    },
-    "Nationalism & Identity Politics": {
-      "icon": "🏴",
-      "description": "Studying national identity, patriotism, and their impact on politics."
-    },
-    "Political Leadership & Statesmanship": {
-      "icon": "👑",
-      "description": "Exploring the lives and legacies of influential political leaders."
+    "icon": "🏛️",
+    "description": "Learn from past events, political movements, and how societies have evolved",
+    "subcategories": {
+      "Ancient Civilizations": {
+        "icon": "🏺",
+        "description": "Exploring the rise, culture, and contributions of early human societies."
+      },
+      "Medieval History": {
+        "icon": "🛡️",
+        "description": "Examining the feudal era, kingdoms, and significant medieval events."
+      },
+      "Modern History": {
+        "icon": "📜",
+        "description": "Understanding historical developments from the Renaissance to the present."
+      },
+      "Military History & Warfare": {
+        "icon": "⚔️",
+        "description": "Analyzing battles, military strategies, and the evolution of warfare."
+      },
+      "History of Revolutions": {
+        "icon": "🔥",
+        "description": "Studying political, social, and economic revolutions that shaped history."
+      },
+      "World Wars & Global Conflicts": {
+        "icon": "🌍",
+        "description": "Investigating major wars, their causes, and global impact."
+      },
+      "Economic History": {
+        "icon": "💰",
+        "description": "Tracing the evolution of trade, markets, and financial systems."
+      },
+      "Colonialism & Imperialism": {
+        "icon": "🇬🇧",
+        "description": "Exploring the impact of empires and colonial rule on global history."
+      },
+      "History of Science & Technology": {
+        "icon": "🔬",
+        "description": "Tracking scientific discoveries and technological advancements over time."
+      },
+      "Cultural & Social History": {
+        "icon": "🎭",
+        "description": "Understanding the evolution of human societies, traditions, and arts."
+      },
+      "Religious History": {
+        "icon": "⛪",
+        "description": "Examining the origins, spread, and influence of world religions."
+      },
+      "Political Theories & Ideologies": {
+        "icon": "📖",
+        "description": "Studying major political ideas and their influence on governance."
+      },
+      "Democracy & Governance": {
+        "icon": "🏛️",
+        "description": "Analyzing democratic systems, institutions, and governance structures."
+      },
+      "Authoritarianism & Dictatorships": {
+        "icon": "🚨",
+        "description": "Examining the rise and rule of authoritarian leaders and regimes."
+      },
+      "Geopolitics & Global Relations": {
+        "icon": "🌍",
+        "description": "Understanding international power dynamics and diplomatic relations."
+      },
+      "Political Movements & Activism": {
+        "icon": "✊",
+        "description": "Exploring historical movements that shaped social and political change."
+      },
+      "International Organizations & Diplomacy": {
+        "icon": "🏛️",
+        "description": "Studying global institutions like the UN and diplomatic strategies."
+      },
+      "Elections & Political Campaigns": {
+        "icon": "🗳️",
+        "description": "Analyzing electoral systems, campaigns, and political strategies."
+      },
+      "Constitutional Law & Rights": {
+        "icon": "📜",
+        "description": "Understanding the legal foundations of nations and civil liberties."
+      },
+      "Civil Rights & Social Justice": {
+        "icon": "✊",
+        "description": "Tracing the fight for equality and human rights throughout history."
+      },
+      "Public Policy & Governance": {
+        "icon": "🏛️",
+        "description": "Studying policy-making, government functions, and administrative laws."
+      },
+      "Propaganda & Political Influence": {
+        "icon": "📢",
+        "description": "Analyzing how media and communication shape political narratives."
+      },
+      "History of Nations & Empires": {
+        "icon": "🌎",
+        "description": "Examining the rise and fall of great civilizations and empires."
+      },
+      "Cold War & Political Tensions": {
+        "icon": "❄️",
+        "description": "Exploring the ideological conflict between global superpowers."
+      },
+      "Terrorism & Counterterrorism": {
+        "icon": "💣",
+        "description": "Understanding the causes, tactics, and responses to terrorism."
+      },
+      "Political Corruption & Scandals": {
+        "icon": "⚖️",
+        "description": "Investigating historical corruption cases and their impact on governance."
+      },
+      "Globalization & Political Economy": {
+        "icon": "🌍",
+        "description": "Examining the interconnectedness of economies and international trade."
+      },
+      "History of Human Rights": {
+        "icon": "⚖️",
+        "description": "Tracing the development of human rights and global justice movements."
+      },
+      "Nationalism & Identity Politics": {
+        "icon": "🏴",
+        "description": "Studying national identity, patriotism, and their impact on politics."
+      },
+      "Political Leadership & Statesmanship": {
+        "icon": "👑",
+        "description": "Exploring the lives and legacies of influential political leaders."
+      }
     }
   },
   "Neuroscience & Brain Science": {
-    "Brain Structure & Function": {
-      "icon": "🧠",
-      "description": "Understanding the anatomy and functions of different brain regions."
-    },
-    "Neurotransmitters & Brain Chemistry": {
-      "icon": "🧪",
-      "description": "Exploring chemical messengers that regulate brain activity and behavior."
-    },
-    "Cognitive Neuroscience": {
-      "icon": "🧬",
-      "description": "Studying how the brain processes thoughts, memory, and decision-making."
-    },
-    "Behavioral Neuroscience": {
-      "icon": "🧑‍⚕️",
-      "description": "Examining the neural basis of behavior and psychological processes."
-    },
-    "Neuroplasticity & Brain Adaptation": {
-      "icon": "🔄",
-      "description": "Understanding how the brain rewires itself in response to learning and injury."
-    },
-    "Memory & Learning Mechanisms": {
-      "icon": "📚",
-      "description": "Exploring how the brain encodes, stores, and retrieves information."
-    },
-    "Neuropsychology & Brain Disorders": {
-      "icon": "🩺",
-      "description": "Studying brain disorders and their effects on cognition and behavior."
-    },
-    "Consciousness & Awareness": {
-      "icon": "✨",
-      "description": "Investigating the science behind self-awareness and perception."
-    },
-    "Subconscious Mind & Unconscious Processing": {
-      "icon": "💭",
-      "description": "Exploring cognitive processes that occur without conscious awareness."
-    },
-    "Emotion & Brain Function": {
-      "icon": "💡",
-      "description": "Understanding how the brain processes emotions and their impact on behavior."
-    },
-    "Decision Making & Neural Pathways": {
-      "icon": "🛤️",
-      "description": "Analyzing how the brain makes choices and evaluates risks."
-    },
-    "Neural Basis of Motivation & Reward": {
-      "icon": "🏆",
-      "description": "Examining the brain circuits involved in motivation and pleasure."
-    },
-    "Attention & Focus": {
-      "icon": "🎯",
-      "description": "Understanding the brain mechanisms that control concentration and distractions."
-    },
-    "Sleep & Brain Health": {
-      "icon": "🌙",
-      "description": "Exploring the role of sleep in cognitive function and overall brain health."
-    },
-    "Neurobiology of Stress & Resilience": {
-      "icon": "⚡",
-      "description": "Studying how stress affects the brain and ways to build resilience."
-    },
-    "Mental Illness & Neurological Disorders": {
-      "icon": "🩻",
-      "description": "Understanding conditions like depression, schizophrenia, and neurodegenerative diseases."
-    },
-    "Brain-Computer Interfaces (BCI)": {
-      "icon": "🖥️",
-      "description": "Exploring technologies that connect the brain with external devices."
-    },
-    "Neuroscience of Pain & Perception": {
-      "icon": "⚕️",
-      "description": "Understanding how the brain perceives pain and sensory stimuli."
-    },
-    "Artificial Intelligence & Neural Networks": {
-      "icon": "🤖",
-      "description": "Studying the intersection of neuroscience and AI in machine learning models."
-    },
-    "Neuroscience of Habits & Behavioral Change": {
-      "icon": "🔁",
-      "description": "Exploring how the brain forms and breaks habits over time."
-    },
-    "Psychopharmacology & Brain Chemistry": {
-      "icon": "💊",
-      "description": "Analyzing the effects of drugs and medications on brain function."
-    },
-    "Sensory Perception & Neural Processing": {
-      "icon": "👀",
-      "description": "Understanding how the brain interprets sensory information."
-    },
-    "Aging & Brain Degeneration": {
-      "icon": "🧓",
-      "description": "Examining cognitive decline, neurodegeneration, and strategies for brain health."
-    },
-    "Neuroethics & Cognitive Enhancement": {
-      "icon": "⚖️",
-      "description": "Exploring ethical concerns surrounding brain modification and enhancement."
-    },
-    "Mirror Neurons & Social Behavior": {
-      "icon": "🪞",
-      "description": "Investigating how mirror neurons influence empathy and social interactions."
-    },
-    "Language Processing & Brain Function": {
-      "icon": "🗣️",
-      "description": "Studying how the brain processes and produces language."
-    },
-    "Neuroscience of Addiction": {
-      "icon": "🚬",
-      "description": "Understanding the neural mechanisms behind addiction and substance abuse."
-    },
-    "Brainwaves & Neural Oscillations": {
-      "icon": "📡",
-      "description": "Exploring brainwave activity and its role in cognition and consciousness."
-    },
-    "Gut-Brain Connection": {
-      "icon": "🦠",
-      "description": "Studying how gut microbiota influence brain function and mental health."
-    },
-    "Neuroscience of Fear & Anxiety": {
-      "icon": "😨",
-      "description": "Examining how the brain processes fear, stress, and anxiety responses."
+    "icon": "🧠",
+    "description": "Study how the brain works and impacts behavior, emotions, and decisions.",
+    "subcategories": {
+      "Brain Structure & Function": {
+        "icon": "🧠",
+        "description": "Understanding the anatomy and functions of different brain regions."
+      },
+      "Neurotransmitters & Brain Chemistry": {
+        "icon": "🧪",
+        "description": "Exploring chemical messengers that regulate brain activity and behavior."
+      },
+      "Cognitive Neuroscience": {
+        "icon": "🧬",
+        "description": "Studying how the brain processes thoughts, memory, and decision-making."
+      },
+      "Behavioral Neuroscience": {
+        "icon": "🧑‍⚕️",
+        "description": "Examining the neural basis of behavior and psychological processes."
+      },
+      "Neuroplasticity & Brain Adaptation": {
+        "icon": "🔄",
+        "description": "Understanding how the brain rewires itself in response to learning and injury."
+      },
+      "Memory & Learning Mechanisms": {
+        "icon": "📚",
+        "description": "Exploring how the brain encodes, stores, and retrieves information."
+      },
+      "Neuropsychology & Brain Disorders": {
+        "icon": "🩺",
+        "description": "Studying brain disorders and their effects on cognition and behavior."
+      },
+      "Consciousness & Awareness": {
+        "icon": "✨",
+        "description": "Investigating the science behind self-awareness and perception."
+      },
+      "Subconscious Mind & Unconscious Processing": {
+        "icon": "💭",
+        "description": "Exploring cognitive processes that occur without conscious awareness."
+      },
+      "Emotion & Brain Function": {
+        "icon": "💡",
+        "description": "Understanding how the brain processes emotions and their impact on behavior."
+      },
+      "Decision Making & Neural Pathways": {
+        "icon": "🛤️",
+        "description": "Analyzing how the brain makes choices and evaluates risks."
+      },
+      "Neural Basis of Motivation & Reward": {
+        "icon": "🏆",
+        "description": "Examining the brain circuits involved in motivation and pleasure."
+      },
+      "Attention & Focus": {
+        "icon": "🎯",
+        "description": "Understanding the brain mechanisms that control concentration and distractions."
+      },
+      "Sleep & Brain Health": {
+        "icon": "🌙",
+        "description": "Exploring the role of sleep in cognitive function and overall brain health."
+      },
+      "Neurobiology of Stress & Resilience": {
+        "icon": "⚡",
+        "description": "Studying how stress affects the brain and ways to build resilience."
+      },
+      "Mental Illness & Neurological Disorders": {
+        "icon": "🩻",
+        "description": "Understanding conditions like depression, schizophrenia, and neurodegenerative diseases."
+      },
+      "Brain-Computer Interfaces (BCI)": {
+        "icon": "🖥️",
+        "description": "Exploring technologies that connect the brain with external devices."
+      },
+      "Neuroscience of Pain & Perception": {
+        "icon": "⚕️",
+        "description": "Understanding how the brain perceives pain and sensory stimuli."
+      },
+      "Artificial Intelligence & Neural Networks": {
+        "icon": "🤖",
+        "description": "Studying the intersection of neuroscience and AI in machine learning models."
+      },
+      "Neuroscience of Habits & Behavioral Change": {
+        "icon": "🔁",
+        "description": "Exploring how the brain forms and breaks habits over time."
+      },
+      "Psychopharmacology & Brain Chemistry": {
+        "icon": "💊",
+        "description": "Analyzing the effects of drugs and medications on brain function."
+      },
+      "Sensory Perception & Neural Processing": {
+        "icon": "👀",
+        "description": "Understanding how the brain interprets sensory information."
+      },
+      "Aging & Brain Degeneration": {
+        "icon": "🧓",
+        "description": "Examining cognitive decline, neurodegeneration, and strategies for brain health."
+      },
+      "Neuroethics & Cognitive Enhancement": {
+        "icon": "⚖️",
+        "description": "Exploring ethical concerns surrounding brain modification and enhancement."
+      },
+      "Mirror Neurons & Social Behavior": {
+        "icon": "🪞",
+        "description": "Investigating how mirror neurons influence empathy and social interactions."
+      },
+      "Language Processing & Brain Function": {
+        "icon": "🗣️",
+        "description": "Studying how the brain processes and produces language."
+      },
+      "Neuroscience of Addiction": {
+        "icon": "🚬",
+        "description": "Understanding the neural mechanisms behind addiction and substance abuse."
+      },
+      "Brainwaves & Neural Oscillations": {
+        "icon": "📡",
+        "description": "Exploring brainwave activity and its role in cognition and consciousness."
+      },
+      "Gut-Brain Connection": {
+        "icon": "🦠",
+        "description": "Studying how gut microbiota influence brain function and mental health."
+      },
+      "Neuroscience of Fear & Anxiety": {
+        "icon": "😨",
+        "description": "Examining how the brain processes fear, stress, and anxiety responses."
+      }
     }
   },
   "Writing & Creativity": {
-    "Creative Writing Techniques": {
-      "icon": "✍️",
-      "description": "Exploring methods to enhance creativity and storytelling in writing."
-    },
-    "Storytelling & Narrative Structure": {
-      "icon": "📖",
-      "description": "Understanding the elements of compelling stories and structured narratives."
-    },
-    "Fiction Writing": {
-      "icon": "📚",
-      "description": "Developing characters, plots, and settings for engaging fiction."
-    },
-    "Non-Fiction Writing": {
-      "icon": "📰",
-      "description": "Writing factual, informative, and engaging non-fiction content."
-    },
-    "Screenwriting & Scriptwriting": {
-      "icon": "🎬",
-      "description": "Crafting scripts for movies, TV shows, and digital content."
-    },
-    "Poetry & Literary Forms": {
-      "icon": "🖋️",
-      "description": "Exploring different poetic structures and literary techniques."
-    },
-    "Writing Style & Voice": {
-      "icon": "📝",
-      "description": "Developing a unique writing style and tone for various contexts."
-    },
-    "Grammar & Language Mastery": {
-      "icon": "🔤",
-      "description": "Improving writing clarity with correct grammar and language use."
-    },
-    "Editing & Proofreading": {
-      "icon": "🔍",
-      "description": "Refining written content for clarity, grammar, and coherence."
-    },
-    "Copywriting & Persuasive Writing": {
-      "icon": "💰",
-      "description": "Crafting persuasive content for advertising, sales, and marketing."
-    },
-    "Content Writing & Blogging": {
-      "icon": "🖥️",
-      "description": "Writing engaging and informative online content for blogs and websites."
-    },
-    "Technical Writing & Documentation": {
-      "icon": "📑",
-      "description": "Creating clear, precise documentation for technical topics."
-    },
-    "Academic & Research Writing": {
-      "icon": "🎓",
-      "description": "Writing structured, evidence-based papers for academic purposes."
-    },
-    "Business & Professional Writing": {
-      "icon": "💼",
-      "description": "Developing effective reports, proposals, and professional communication."
-    },
-    "Journalism & Investigative Writing": {
-      "icon": "📰",
-      "description": "Reporting facts, conducting investigations, and writing news articles."
-    },
-    "Memoirs & Autobiographies": {
-      "icon": "📜",
-      "description": "Writing personal life stories and reflective narratives."
-    },
-    "Publishing & Self-Publishing": {
-      "icon": "📚",
-      "description": "Understanding the publishing industry and self-publishing strategies."
-    },
-    "Writing for Social Media": {
-      "icon": "📲",
-      "description": "Creating engaging, platform-specific content for social media."
-    },
-    "Creativity & Idea Generation": {
-      "icon": "💡",
-      "description": "Generating fresh ideas and overcoming creative blocks in writing."
-    },
-    "Overcoming Writer’s Block": {
-      "icon": "🚧",
-      "description": "Techniques to maintain productivity and overcome creative barriers."
-    },
-    "Productivity & Writing Habits": {
-      "icon": "⏳",
-      "description": "Building effective routines for consistent writing output."
-    },
-    "Writing for Different Audiences": {
-      "icon": "👥",
-      "description": "Adapting writing style and tone for various readerships."
-    },
-    "Visual Storytelling & Comics": {
-      "icon": "🎨",
-      "description": "Combining writing with visuals for graphic novels and comics."
-    },
-    "Speechwriting & Public Speaking": {
-      "icon": "🎤",
-      "description": "Crafting impactful speeches and improving public speaking skills."
-    },
-    "Writing for Marketing & Branding": {
-      "icon": "📢",
-      "description": "Developing brand-aligned content for marketing campaigns."
-    },
-    "Ghostwriting & Collaboration": {
-      "icon": "👻",
-      "description": "Writing for others while maintaining their voice and style."
-    },
-    "Writing for Video Games & Interactive Media": {
-      "icon": "🎮",
-      "description": "Crafting narratives for games and interactive storytelling."
-    },
-    "Literary Analysis & Criticism": {
-      "icon": "🔎",
-      "description": "Analyzing literature, themes, and writing techniques critically."
-    },
-    "Writing Psychology & Motivation": {
-      "icon": "🧠",
-      "description": "Understanding cognitive aspects that influence writing and creativity."
-    },
-    "Typography & Writing Presentation": {
-      "icon": "🔠",
-      "description": "Using typography to enhance readability and visual appeal in writing."
+    "icon": "✍️",
+    "description": "Unlock creative ideas, improve storytelling, and master the art of writing.",
+    "subcategories": {
+      "Creative Writing Techniques": {
+        "icon": "✍️",
+        "description": "Exploring methods to enhance creativity and storytelling in writing."
+      },
+      "Storytelling & Narrative Structure": {
+        "icon": "📖",
+        "description": "Understanding the elements of compelling stories and structured narratives."
+      },
+      "Fiction Writing": {
+        "icon": "📚",
+        "description": "Developing characters, plots, and settings for engaging fiction."
+      },
+      "Non-Fiction Writing": {
+        "icon": "📰",
+        "description": "Writing factual, informative, and engaging non-fiction content."
+      },
+      "Screenwriting & Scriptwriting": {
+        "icon": "🎬",
+        "description": "Crafting scripts for movies, TV shows, and digital content."
+      },
+      "Poetry & Literary Forms": {
+        "icon": "🖋️",
+        "description": "Exploring different poetic structures and literary techniques."
+      },
+      "Writing Style & Voice": {
+        "icon": "📝",
+        "description": "Developing a unique writing style and tone for various contexts."
+      },
+      "Grammar & Language Mastery": {
+        "icon": "🔤",
+        "description": "Improving writing clarity with correct grammar and language use."
+      },
+      "Editing & Proofreading": {
+        "icon": "🔍",
+        "description": "Refining written content for clarity, grammar, and coherence."
+      },
+      "Copywriting & Persuasive Writing": {
+        "icon": "💰",
+        "description": "Crafting persuasive content for advertising, sales, and marketing."
+      },
+      "Content Writing & Blogging": {
+        "icon": "🖥️",
+        "description": "Writing engaging and informative online content for blogs and websites."
+      },
+      "Technical Writing & Documentation": {
+        "icon": "📑",
+        "description": "Creating clear, precise documentation for technical topics."
+      },
+      "Academic & Research Writing": {
+        "icon": "🎓",
+        "description": "Writing structured, evidence-based papers for academic purposes."
+      },
+      "Business & Professional Writing": {
+        "icon": "💼",
+        "description": "Developing effective reports, proposals, and professional communication."
+      },
+      "Journalism & Investigative Writing": {
+        "icon": "📰",
+        "description": "Reporting facts, conducting investigations, and writing news articles."
+      },
+      "Memoirs & Autobiographies": {
+        "icon": "📜",
+        "description": "Writing personal life stories and reflective narratives."
+      },
+      "Publishing & Self-Publishing": {
+        "icon": "📚",
+        "description": "Understanding the publishing industry and self-publishing strategies."
+      },
+      "Writing for Social Media": {
+        "icon": "📲",
+        "description": "Creating engaging, platform-specific content for social media."
+      },
+      "Creativity & Idea Generation": {
+        "icon": "💡",
+        "description": "Generating fresh ideas and overcoming creative blocks in writing."
+      },
+      "Overcoming Writer’s Block": {
+        "icon": "🚧",
+        "description": "Techniques to maintain productivity and overcome creative barriers."
+      },
+      "Productivity & Writing Habits": {
+        "icon": "⏳",
+        "description": "Building effective routines for consistent writing output."
+      },
+      "Writing for Different Audiences": {
+        "icon": "👥",
+        "description": "Adapting writing style and tone for various readerships."
+      },
+      "Visual Storytelling & Comics": {
+        "icon": "🎨",
+        "description": "Combining writing with visuals for graphic novels and comics."
+      },
+      "Speechwriting & Public Speaking": {
+        "icon": "🎤",
+        "description": "Crafting impactful speeches and improving public speaking skills."
+      },
+      "Writing for Marketing & Branding": {
+        "icon": "📢",
+        "description": "Developing brand-aligned content for marketing campaigns."
+      },
+      "Ghostwriting & Collaboration": {
+        "icon": "👻",
+        "description": "Writing for others while maintaining their voice and style."
+      },
+      "Writing for Video Games & Interactive Media": {
+        "icon": "🎮",
+        "description": "Crafting narratives for games and interactive storytelling."
+      },
+      "Literary Analysis & Criticism": {
+        "icon": "🔎",
+        "description": "Analyzing literature, themes, and writing techniques critically."
+      },
+      "Writing Psychology & Motivation": {
+        "icon": "🧠",
+        "description": "Understanding cognitive aspects that influence writing and creativity."
+      },
+      "Typography & Writing Presentation": {
+        "icon": "🔠",
+        "description": "Using typography to enhance readability and visual appeal in writing."
+      }
     }
   },
   "Education & Learning": {
-    "Theories of Learning & Pedagogy": {
-      "icon": "📚",
-      "description": "Understanding foundational theories of how people learn and effective teaching methods."
-    },
-    "Cognitive Science & Learning Processes": {
-      "icon": "🧠",
-      "description": "Exploring how the brain processes, stores, and retrieves information."
-    },
-    "Memory & Retention Techniques": {
-      "icon": "📝",
-      "description": "Techniques to improve memory recall and learning retention."
-    },
-    "Critical Thinking & Problem Solving": {
-      "icon": "🤔",
-      "description": "Developing logical reasoning and analytical thinking skills."
-    },
-    "Metacognition & Self-Regulated Learning": {
-      "icon": "🔄",
-      "description": "Strategies to improve self-awareness and control over learning."
-    },
-    "Formal Education Systems": {
-      "icon": "🏫",
-      "description": "Examining traditional education structures and curricula."
-    },
-    "Alternative Education Models": {
-      "icon": "🚀",
-      "description": "Exploring unconventional learning approaches beyond standard schooling."
-    },
-    "Homeschooling & Unschooling": {
-      "icon": "🏡",
-      "description": "Understanding self-directed and home-based education methods."
-    },
-    "Online Learning & E-Learning": {
-      "icon": "💻",
-      "description": "Digital education platforms and remote learning strategies."
-    },
-    "STEM Education": {
-      "icon": "🔬",
-      "description": "Teaching and learning methods for STEM disciplines."
-    },
-    "Humanities & Arts Education": {
-      "icon": "🎭",
-      "description": "Exploring the role of arts and humanities in education."
-    },
-    "Language Learning & Linguistics": {
-      "icon": "🗣️",
-      "description": "Techniques and theories for mastering new languages."
-    },
-    "Skill Development & Lifelong Learning": {
-      "icon": "🛠️",
-      "description": "Continuous personal and professional skill-building strategies."
-    },
-    "Adult Education & Continuing Education": {
-      "icon": "👨‍🎓",
-      "description": "Learning opportunities for adults seeking new knowledge or skills."
-    },
-    "Teaching Strategies & Instructional Design": {
-      "icon": "📋",
-      "description": "Methods to create effective and engaging educational experiences."
-    },
-    "Assessment & Evaluation Methods": {
-      "icon": "📊",
-      "description": "Measuring learning outcomes and educational effectiveness."
-    },
-    "Educational Psychology": {
-      "icon": "🧑‍🏫",
-      "description": "Understanding psychological principles behind learning and teaching."
-    },
-    "Special Education & Inclusive Learning": {
-      "icon": "🦾",
-      "description": "Adapting education for learners with diverse needs and abilities."
-    },
-    "Early Childhood Education": {
-      "icon": "👶",
-      "description": "Educational methods and theories for young children."
-    },
-    "Higher Education & University Learning": {
-      "icon": "🎓",
-      "description": "Learning approaches at universities and advanced institutions."
-    },
-    "Workplace Learning & Corporate Training": {
-      "icon": "🏢",
-      "description": "Professional development and employee training programs."
-    },
-    "EdTech & Learning Technologies": {
-      "icon": "📱",
-      "description": "The role of technology in modern education and learning."
-    },
-    "Learning Motivation & Engagement": {
-      "icon": "🔥",
-      "description": "Techniques to increase student motivation and interest in learning."
-    },
-    "Cultural & Global Perspectives on Education": {
-      "icon": "🌍",
-      "description": "How different cultures approach education and learning."
-    },
-    "Philosophy of Education": {
-      "icon": "🎓",
-      "description": "Exploring fundamental beliefs about teaching and learning."
-    },
-    "Education Policy & Reform": {
-      "icon": "📜",
-      "description": "Analyzing and improving education systems and policies."
-    },
-    "Self-Education & Independent Learning": {
-      "icon": "📖",
-      "description": "Developing strategies for learning without formal education."
-    },
-    "Personalized Learning & Adaptive Learning": {
-      "icon": "🤖",
-      "description": "Customized education techniques based on individual needs."
-    },
-    "Experiential & Hands-On Learning": {
-      "icon": "🏕️",
-      "description": "Learning through direct experience and real-world application."
-    },
-    "Creativity & Innovation in Education": {
-      "icon": "💡",
-      "description": "Encouraging creativity and innovation in learning environments."
-    },
-    "Learning Strategies & Memory Techniques": {
-      "icon": "📌",
-      "description": "Practical methods to enhance learning efficiency and recall."
-    },
-    "Online Education & EdTech": {
-      "icon": "🌐",
-      "description": "Leveraging technology for scalable and accessible education."
-    },
-    "Self-Learning & Research Skills": {
-      "icon": "🔎",
-      "description": "Building strong research and independent learning capabilities."
-    },
-    "Public Speaking & Debate": {
-      "icon": "🎙️",
-      "description": "Mastering communication, argumentation, and presentation skills."
+    "icon": "🎓",
+    "description": "Discover powerful ways to learn faster, smarter, and become a lifelong learner.",
+    "subcategories": {
+      "Theories of Learning & Pedagogy": {
+        "icon": "📚",
+        "description": "Understanding foundational theories of how people learn and effective teaching methods."
+      },
+      "Cognitive Science & Learning Processes": {
+        "icon": "🧠",
+        "description": "Exploring how the brain processes, stores, and retrieves information."
+      },
+      "Memory & Retention Techniques": {
+        "icon": "📝",
+        "description": "Techniques to improve memory recall and learning retention."
+      },
+      "Critical Thinking & Problem Solving": {
+        "icon": "🤔",
+        "description": "Developing logical reasoning and analytical thinking skills."
+      },
+      "Metacognition & Self-Regulated Learning": {
+        "icon": "🔄",
+        "description": "Strategies to improve self-awareness and control over learning."
+      },
+      "Formal Education Systems": {
+        "icon": "🏫",
+        "description": "Examining traditional education structures and curricula."
+      },
+      "Alternative Education Models": {
+        "icon": "🚀",
+        "description": "Exploring unconventional learning approaches beyond standard schooling."
+      },
+      "Homeschooling & Unschooling": {
+        "icon": "🏡",
+        "description": "Understanding self-directed and home-based education methods."
+      },
+      "Online Learning & E-Learning": {
+        "icon": "💻",
+        "description": "Digital education platforms and remote learning strategies."
+      },
+      "STEM Education": {
+        "icon": "🔬",
+        "description": "Teaching and learning methods for STEM disciplines."
+      },
+      "Humanities & Arts Education": {
+        "icon": "🎭",
+        "description": "Exploring the role of arts and humanities in education."
+      },
+      "Language Learning & Linguistics": {
+        "icon": "🗣️",
+        "description": "Techniques and theories for mastering new languages."
+      },
+      "Skill Development & Lifelong Learning": {
+        "icon": "🛠️",
+        "description": "Continuous personal and professional skill-building strategies."
+      },
+      "Adult Education & Continuing Education": {
+        "icon": "👨‍🎓",
+        "description": "Learning opportunities for adults seeking new knowledge or skills."
+      },
+      "Teaching Strategies & Instructional Design": {
+        "icon": "📋",
+        "description": "Methods to create effective and engaging educational experiences."
+      },
+      "Assessment & Evaluation Methods": {
+        "icon": "📊",
+        "description": "Measuring learning outcomes and educational effectiveness."
+      },
+      "Educational Psychology": {
+        "icon": "🧑‍🏫",
+        "description": "Understanding psychological principles behind learning and teaching."
+      },
+      "Special Education & Inclusive Learning": {
+        "icon": "🦾",
+        "description": "Adapting education for learners with diverse needs and abilities."
+      },
+      "Early Childhood Education": {
+        "icon": "👶",
+        "description": "Educational methods and theories for young children."
+      },
+      "Higher Education & University Learning": {
+        "icon": "🎓",
+        "description": "Learning approaches at universities and advanced institutions."
+      },
+      "Workplace Learning & Corporate Training": {
+        "icon": "🏢",
+        "description": "Professional development and employee training programs."
+      },
+      "EdTech & Learning Technologies": {
+        "icon": "📱",
+        "description": "The role of technology in modern education and learning."
+      },
+      "Learning Motivation & Engagement": {
+        "icon": "🔥",
+        "description": "Techniques to increase student motivation and interest in learning."
+      },
+      "Cultural & Global Perspectives on Education": {
+        "icon": "🌍",
+        "description": "How different cultures approach education and learning."
+      },
+      "Philosophy of Education": {
+        "icon": "🎓",
+        "description": "Exploring fundamental beliefs about teaching and learning."
+      },
+      "Education Policy & Reform": {
+        "icon": "📜",
+        "description": "Analyzing and improving education systems and policies."
+      },
+      "Self-Education & Independent Learning": {
+        "icon": "📖",
+        "description": "Developing strategies for learning without formal education."
+      },
+      "Personalized Learning & Adaptive Learning": {
+        "icon": "🤖",
+        "description": "Customized education techniques based on individual needs."
+      },
+      "Experiential & Hands-On Learning": {
+        "icon": "🏕️",
+        "description": "Learning through direct experience and real-world application."
+      },
+      "Creativity & Innovation in Education": {
+        "icon": "💡",
+        "description": "Encouraging creativity and innovation in learning environments."
+      },
+      "Learning Strategies & Memory Techniques": {
+        "icon": "📌",
+        "description": "Practical methods to enhance learning efficiency and recall."
+      },
+      "Online Education & EdTech": {
+        "icon": "🌐",
+        "description": "Leveraging technology for scalable and accessible education."
+      },
+      "Self-Learning & Research Skills": {
+        "icon": "🔎",
+        "description": "Building strong research and independent learning capabilities."
+      },
+      "Public Speaking & Debate": {
+        "icon": "🎙️",
+        "description": "Mastering communication, argumentation, and presentation skills."
+      }
     }
   }
 }

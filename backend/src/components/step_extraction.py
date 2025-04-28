@@ -3,6 +3,8 @@ from src.utils.pdf_operations import extract_json_from_markdown
 from src.utils.file_operations import save_json_file ,load_json_file
 from src.utils.prompts import step_extraction_prompt
 from src.components.duplicate_removel import remove_duplicate_steps
+
+
 def extract_actionable_steps( folder_path, model, text_chunk):
     prompt = step_extraction_prompt(text_chunk)
     print(prompt)

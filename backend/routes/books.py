@@ -37,6 +37,7 @@ def get_all_books():
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
 
+
 @router.get("/book/{title}/info")
 def get_book_info(title: str):
     print(title)
@@ -320,8 +321,15 @@ def extract_json_keys():
     """Extracts all keys from a JSON file."""
     try:
         content = load_json_file("","categories.json",{})
-        keys = list(content.keys())
-        return keys
+        result = [
+            {
+                "name": key,
+                "icon": value.get("icon", ""),
+                "description": value.get("description", ""),
+            }
+            for key, value in content.items()
+        ]
+        return result
     except json.JSONDecodeError:
         raise HTTPException(status_code=400, detail="Invalid JSON file")
 
