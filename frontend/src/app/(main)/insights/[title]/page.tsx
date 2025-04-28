@@ -11,6 +11,9 @@ import Loader from '@/app/(main)/components/Loader';
 import Slider from "@/app/(main)/components/Slider"
 import { get } from 'http';
 import { getFavouriteIds } from '@/app/services/userService';
+import ShareModal from '../../components/ShareModal';
+import CategoryDialog from '../../components/CategoryDialog';
+import { Slide, toast, ToastContainer } from 'react-toastify';
 interface StepData {
     step: string;
     category: string;
@@ -36,8 +39,8 @@ export default function Page() {
     const [filteredCategories, setFilteredCategories] = useState<Categories[]>([])
     const [bookmarked, setBookmarked] = useState<number[]>([])
     const [mode, setMode] = useState("List")
-    const [query, setQuery] = useState("")
     const [isOpen, setIsOpen] = useState(false)
+    const [shareModal, setShareModal] = useState(false)
     const user = JSON.parse(localStorage.getItem("user") || "{}")
 
     useEffect(() => {
@@ -100,9 +103,31 @@ export default function Page() {
 
             if (!bookmarked.includes(id)) {
                 setBookmarked((bookmarks) => ([...bookmarks, id]))
+                toast.success('Bookmark Added', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Slide,
+                });
             }
             else {
                 setBookmarked((bookmarks) => bookmarks.filter((bookmark) => bookmark !== id))
+                toast.error('Bookmark Removed', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Slide,
+                });
             }
 
         } catch (err: any) {
@@ -204,6 +229,7 @@ export default function Page() {
 
 
                                             <button
+                                                onClick={() => setShareModal(true)}
                                                 type="button"
                                                 className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold "
                                             >
@@ -212,6 +238,7 @@ export default function Page() {
                                                 </svg>
 
                                             </button>
+                                            <ShareModal isOpen={shareModal} setIsOpen={setShareModal} shareUrl={`https://insights.com/insight/${params.title}/${step?.category}/${step.step_id}`} />
                                             <button onClick={() => handleAdd(step.step_id, step.category)}
                                                 type="button"
                                                 className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold ${bookmarked.includes(step.step_id) ? 'outline-gray-800 outline-1 text-gray-500' : ''} `}
@@ -230,70 +257,10 @@ export default function Page() {
                     ) : (
                         <Loader />
                     )}
-                    <Dialog open={isOpen} onClose={() => { setIsOpen(false); setFilteredCategories(categories) }} className="relative z-50">
-                        <DialogBackdrop className="fixed inset-0 bg-black/30" />
-
-                        <div className="fixed inset-0 w-screen  p-4 flex justify-center gap-4 items-center">
-                            <DialogPanel className="max-w-lg shadow rounded-lg bg-gray-100 p-3 flex flex-col gap-3 ">
-                                <div className='justify-between flex items-center' >
-                                    <DialogTitle className="font-bold text-lg md:text-2xl text-gray-800"> Select Categories </DialogTitle>
-                                    <button
-                                        onClick={() => { setIsOpen(false); setFilteredCategories(categories) }}
-                                        type="button"
-                                        className="text-gray-600 cursor-pointer bg-gray-200  focus:outline-none rounded-full  p-2 w-min  font-semibold "
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-
-                                </div>
-                                <SearchBar responsive={false} data={categories} propertyToSearch='name' setFilteredData={setFilteredCategories} />
-                                <div className="overflow-y-scroll h-[50vh] gap-3 flex flex-col rounded-lg   scrollbar-thumb-gray-300 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
-                                    {filteredCategories.map((category) => (
-                                        <div className="relative overflow-visible inline-block">
-
-                                            <button
-                                                key={category.name}
-                                                onClick={() => {
-                                                    toggleCategory(category)
-                                                    setIsOpen(false);
-                                                }}
-                                                className={`relative flex flex-col gap-2 rounded-lg select-none hover:bg-gray-200 cursor-pointer text-gray-700 p-2 bg-gray-200 w-full 
-            ${selectedCategory?.map(c => c.name).includes(category.name) ? ' border-2 border-gray-400' : ''}`}
-                                            >
-
-
-                                                <div className='flex flex-col gap-1'>
-                                                    <div className='flex gap-2  justify-between'>
-                                                        <div className='flex gap-2 text-base md:text-xl'>
-                                                            <span >{category.icon}</span>
-                                                            <h4 className='font-semibold text-gray-800  flex items-center gap-2'>
-                                                                {category.name}
-                                                            </h4>
-                                                        </div>
-                                                        {selectedCategory?.map(c => c.name).includes(category.name) && (
-                                                            <span className=' z-10 rounded-full font-medium  text-xs flex gap-1 items-center text-gray-600'>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                                </svg>
-
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                    <h6 className="text-sm md:text-base text-left rounded-lg text-gray-500">
-                                                        {category.description}
-                                                    </h6>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            </DialogPanel>
-                        </div>
-                    </Dialog>
+                    <CategoryDialog isOpen={isOpen} setIsOpen={setIsOpen} categories={categories} filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} selectedCategory={selectedCategory} toggleCategory={toggleCategory} />
                 </>
             }
+            <ToastContainer />
         </div >
 
     );

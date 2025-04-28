@@ -23,8 +23,6 @@ def get_all_books():
 
         book_list = []
         for title, author, thumbnail, description, category in books:
-            if isinstance(category, list):  # PostgreSQL may return a list
-                category = ", ".join(category)  # Convert list to a comma-separated string
             book_list.append({
                 "title": title,
                 "author": author,
@@ -37,6 +35,42 @@ def get_all_books():
     else:
         raise HTTPException(status_code=500, detail="Database connection failed")
 
+@router.post("/books/find-by-categories")
+def find_books_by_categories(categories: List[str] = Body(...)):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="Database connection failed")
+
+    try:
+        cur = conn.cursor()
+
+        if not categories:
+            # If no categories provided, return all books
+            cur.execute('SELECT * FROM book;')
+        else:
+            placeholders = ','.join(['%s'] * len(categories))
+            query = f"""
+                SELECT *
+                FROM book
+                WHERE EXISTS (
+                    SELECT 1
+                    FROM unnest(category) AS cat
+                    WHERE cat IN ({placeholders})
+                );
+            """
+            cur.execute(query, tuple(categories))
+
+        rows = cur.fetchall()
+        columns = [desc[0] for desc in cur.description]
+        books = [dict(zip(columns, row)) for row in rows]
+
+        return books
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        conn.close()
 
 @router.get("/book/{title}/info")
 def get_book_info(title: str):

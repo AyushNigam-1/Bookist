@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { getBookInfoByTitle } from "@/app/services/bookService";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import ShareModal from "../../components/ShareModal";
 
 const Overview = () => {
     const [book, setBook] = useState<any>(null);
     const params = useParams<{ title?: string }>();
+    const [isOpen, setIsOpen] = useState(false);
     useEffect(() => {
         const getBook = async () => {
             if (!params.title) return
@@ -44,6 +46,7 @@ const Overview = () => {
                                 </button>
                                 <button
                                     type="button"
+                                    onClick={() => setIsOpen(true)}
                                     className="text-gray-200 md:text-gray-700  md:bg-gray-200 bg-gray-700   w-full justify-center  flex gap-2 items-center  focus:outline-none rounded-full p-3  md:w-min  font-semibold "
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 md:size-5">
@@ -52,6 +55,7 @@ const Overview = () => {
 
                                     {/* Bookmark */}
                                 </button>
+                                <ShareModal isOpen={isOpen} setIsOpen={setIsOpen} shareUrl={`https://www.bookworm.com/overview/${book?.title}`} />
                             </div>
                         </div>
                         <span className=" text-gray-600 text-sm md:text-lg flex items-center justify-between"> &bull; {book?.author} &nbsp; &bull;  {book?.sub_categories_count} Categories &nbsp; &bull;  {book?.total_insights} Insights  </span>

@@ -17,9 +17,11 @@
     "framer-motion": "^12.6.2",
     "js-cookie": "^3.0.5",
     "next": "15.2.3",
+    "next-share": "^0.27.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
+    "react-toastify": "^11.0.5",
     "remark-gfm": "^4.0.1",
     "tailwind-scrollbar": "^4.0.2",
     "tailwind-scrollbar-hide": "^2.0.0"

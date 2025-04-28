@@ -18,7 +18,14 @@ export const getAllCategories = async () => {
         throw error;
     }
 };
-
+export const findBooksByCategories = async (categories: string[]) => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/books/find-by-categories`, categories);
+        return response.data;
+    } catch (error: any) {
+        throw error;
+    }
+};
 export const getBookContentKeys = async (title: string) => {
     try {
         const response = await axios.get(`${API_BASE_URL}/book/${title}/content_keys`);
