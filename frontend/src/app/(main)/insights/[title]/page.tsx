@@ -41,6 +41,7 @@ export default function Page() {
     const [mode, setMode] = useState("List")
     const [isOpen, setIsOpen] = useState(false)
     const [shareModal, setShareModal] = useState(false)
+    const [shareUrl, setShareUrl] = useState("")
     const user = JSON.parse(localStorage.getItem("user") || "{}")
 
     useEffect(() => {
@@ -225,30 +226,42 @@ export default function Page() {
                                             </h6>
 
                                         </Link>
-                                        <div className="flex gap-2 justify-between mt-auto">
+                                        <div className="flex gap-2 justify-between mt-auto items-center">
+                                            <span className='flex gap-1 items-center mt-auto text-gray-600' >
 
-
-                                            <button
-                                                onClick={() => setShareModal(true)}
-                                                type="button"
-                                                className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold "
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+                                                {/* <span className='p-1 rounded-full bg-gray-100'> */}
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="md:size-5 size-4">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
+                                                {/* </span> */}
+                                                <p className=' text-sm font-medium' >
+                                                    Pending
+                                                </p>
+                                            </span>
+                                            <div className='flex gap-4 items-center'>
 
-                                            </button>
-                                            <ShareModal isOpen={shareModal} setIsOpen={setShareModal} shareUrl={`https://insights.com/insight/${params.title}/${step?.category}/${step.step_id}`} />
-                                            <button onClick={() => handleAdd(step.step_id, step.category)}
-                                                type="button"
-                                                className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold ${bookmarked.includes(step.step_id) ? 'outline-gray-800 outline-1 text-gray-500' : ''} `}
-                                            >{bookmarked.includes(step.step_id) ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
-                                            </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
-                                            </svg>}
+                                                <button onClick={() => handleAdd(step.step_id, step.category)}
+                                                    type="button"
+                                                    className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold ${bookmarked.includes(step.step_id) ? 'outline-gray-800 outline-1 text-gray-500' : ''} `}
+                                                >{bookmarked.includes(step.step_id) ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
+                                                </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                                                </svg>}
 
-                                            </button>
+                                                </button>
+                                                <button
+                                                    onClick={() => { setShareUrl(step.step); setShareModal(true) }}
+                                                    type="button"
+                                                    className="text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold cursor-pointer"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+                                                    </svg>
+
+                                                </button>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -257,6 +270,7 @@ export default function Page() {
                     ) : (
                         <Loader />
                     )}
+                    <ShareModal isOpen={shareModal} setIsOpen={setShareModal} shareUrl={shareUrl} />
                     <CategoryDialog isOpen={isOpen} setIsOpen={setIsOpen} categories={categories} filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} selectedCategory={selectedCategory} toggleCategory={toggleCategory} />
                 </>
             }

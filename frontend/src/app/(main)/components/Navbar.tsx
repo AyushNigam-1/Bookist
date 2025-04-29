@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className="border-b border-gray-300 pb-2 z-50 top-0 start-0">
       <div className="flex flex-wrap items-center justify-between container mx-auto">
         <span className="self-center text-2xl text-gray-700 font-semibold whitespace-nowrap">
-          Bewise
+          <img src="/logo.png" alt="" className="md:w-32 w-20" />
         </span>
 
         {isLoggedIn ? (
@@ -39,7 +39,7 @@ const Navbar = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <MenuItems className="absolute right-0 mt-2 w-40 md:w-56 origin-top-right rounded-lg bg-gray-700 p-2 text-white shadow-lg focus:outline-none z-80">
+              <MenuItems className="absolute right-0 mt-2 w-40 md:w-56 origin-top-right rounded-xl bg-gray-700 p-2 text-white shadow-lg focus:outline-none z-80">
                 <div className="flex flex-col gap-1">
                   <MenuItem>
                     {({ active }) => (

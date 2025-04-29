@@ -28,8 +28,7 @@ const CategoryDialog: React.FC<categoryProps> = ({ isOpen, setIsOpen, filteredCa
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    {/* <div className="fixed inset-0 bg-black/20 backdrop-blur-xs" /> */}
-                    <DialogBackdrop className="fixed inset-0 bg-black/30" />
+                    <DialogBackdrop className="fixed inset-0 bg-black/30 backdrop-blur-xs" />
                 </Transition.Child>
 
                 < div className="fixed inset-0 w-screen  p-4 flex justify-center gap-4 items-center" >
@@ -42,7 +41,7 @@ const CategoryDialog: React.FC<categoryProps> = ({ isOpen, setIsOpen, filteredCa
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
-                        <DialogPanel className="max-w-lg shadow rounded-lg bg-gray-100 p-3 flex flex-col gap-3 " >
+                        <DialogPanel className="max-w-lg shadow rounded-xl bg-gray-100 p-3 flex flex-col gap-3 " >
                             <div className='justify-between flex items-center' >
                                 <DialogTitle className="font-bold text-lg md:text-2xl text-gray-800" > Select Categories </DialogTitle>
                                 < button
@@ -69,7 +68,7 @@ const CategoryDialog: React.FC<categoryProps> = ({ isOpen, setIsOpen, filteredCa
                                                     setIsOpen(false);
                                                 }
                                             }
-                                            className={`relative flex flex-col gap-2 rounded-lg select-none hover:bg-gray-200 cursor-pointer text-gray-400 p-2 bg-gray-200 w-full 
+                                            className={`relative flex flex-col gap-2 rounded-xl select-none hover:bg-gray-200 cursor-pointer text-gray-400 p-2 bg-gray-200 w-full 
                         ${selectedCategory?.map(c => c).includes(category) ? ' border-2 border-gray-400' : ''}`}
                                         >
 

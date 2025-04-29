@@ -8,8 +8,8 @@ def categorize_steps(folder_path, actionable_steps, categories, model):
 
     subcategories = {key: value
     for category in categories
-    for key, value in categories_dict[category].items()
-}
+    for key, value in categories_dict[category]["subcategories"].items()
+    }
 
     categorized_steps = load_json_file(folder_path, "categorized_steps.json", {})
 
