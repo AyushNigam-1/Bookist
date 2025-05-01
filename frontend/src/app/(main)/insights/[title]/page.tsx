@@ -1,16 +1,12 @@
 "use client"
 import SearchBar from '@/app/(main)/components/SearchBar';
 import { addFavouriteInsight, getBookContentKeys, getBookContentValue } from '@/app/services/bookService';
-import { DialogBackdrop, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
-import clsx from 'clsx'
 import Loader from '@/app/(main)/components/Loader';
 import Slider from "@/app/(main)/components/Slider"
-import { get } from 'http';
-import { getFavouriteIds } from '@/app/services/userService';
+import { getCompletedInsights, getFavouriteIds } from '@/app/services/userService';
 import ShareModal from '../../components/ShareModal';
 import CategoryDialog from '../../components/CategoryDialog';
 import { Slide, toast, ToastContainer } from 'react-toastify';
@@ -42,12 +38,17 @@ export default function Page() {
     const [isOpen, setIsOpen] = useState(false)
     const [shareModal, setShareModal] = useState(false)
     const [shareUrl, setShareUrl] = useState("")
+    const [completedInsights, setCompletedInsights] = useState<string[]>([])
     const user = JSON.parse(localStorage.getItem("user") || "{}")
 
     useEffect(() => {
 
         const getBookmarkedIds = async () => {
+            if (!params?.title) return
             const bookmarkedIds = await getFavouriteIds(user.user_id)
+            const completedInsights = await getCompletedInsights(user.user_id, params.title);
+            console.log(completedInsights)
+            setCompletedInsights(completedInsights)
             setBookmarked(bookmarkedIds)
         }
         getBookmarkedIds()
@@ -208,7 +209,13 @@ export default function Page() {
                             {filteredBooks.map((step, index) => (
                                 <div className='relative rounded-2xl   ' key={`${step.step_id}-${bookmarked.includes(step.step_id)}`} >
                                     <div className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
-                                        <Link href={`/insight/${params.title}/${step?.category}/${step.step_id}`} className='flex flex-col gap-2' >
+                                        <Link href={{
+                                            pathname: `/insight/${params.title}/${step?.category}/${step.step_id}`,
+                                            query: {
+                                                isCompleted: completedInsights.includes(String(step.step_id)),
+                                                user_id: user.user_id
+                                            }
+                                        }} className='flex flex-col gap-2' >
                                             <div className='flex justify-between items-center'>
                                                 <span className=' text-gray-600 font-medium  text-sm flex gap-1 items-center w-min text-nowrap flex-nowrap rounded-lg' >
                                                     <span>
@@ -227,17 +234,31 @@ export default function Page() {
 
                                         </Link>
                                         <div className="flex gap-2 justify-between mt-auto items-center">
-                                            <span className='flex gap-1 items-center mt-auto text-gray-600' >
+                                            {
+                                                completedInsights.includes(String(step.step_id)) ? <span className='flex gap-1 items-center mt-auto text-green-600' >
 
-                                                {/* <span className='p-1 rounded-full bg-gray-100'> */}
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="md:size-5 size-4">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                                </svg>
-                                                {/* </span> */}
-                                                <p className=' text-sm font-medium' >
-                                                    Pending
-                                                </p>
-                                            </span>
+                                                    {/* <span className='p-1 rounded-full bg-gray-100'> */}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 md:size-5">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                    </svg>
+
+                                                    {/* </span> */}
+                                                    <p className=' text-sm font-medium' >
+                                                        Completed
+                                                    </p>
+                                                </span> : <span className='flex gap-1 items-center mt-auto text-yellow-600' >
+
+                                                    {/* <span className='p-1 rounded-full bg-gray-100'> */}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="md:size-5 size-4">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                    </svg>
+                                                    {/* </span> */}
+                                                    <p className=' text-sm font-medium' >
+                                                        Pending
+                                                    </p>
+                                                </span>
+                                            }
+
                                             <div className='flex gap-4 items-center'>
 
                                                 <button onClick={() => handleAdd(step.step_id, step.category)}

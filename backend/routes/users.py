@@ -7,6 +7,7 @@ from jose import JWTError, jwt
 import json
 from datetime import datetime, timedelta
 from controllers.connection import connect_db
+from psycopg2.extras import Json
 
 SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
@@ -275,7 +276,7 @@ def get_fav_categories(user_id: int):
 @router.post("/favourite/insight/list/{user_id}")
 def get_fav_insights(
     user_id: int ,
-    category: List[str] = Body(...) 
+    category: List[str] = Body(...) ,
 ):
     print("user_id", user_id)
     conn = connect_db()
@@ -316,6 +317,74 @@ def get_fav_insights(
     except Exception as e:
         print(e)
         raise HTTPException(400, str(e))
+
+    finally:
+        cur.close()
+        conn.close()
+
+
+@router.post("/complete/insight/{user_id}")
+def toggle_completed_insight(
+    user_id: int,
+    book_name: str = Body(...),
+    insight_id: str = Body(...)
+):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="DB connection failed")
+    
+    cur = conn.cursor()
+    try:
+        cur.execute('SELECT completed_insights FROM "user" WHERE id = %s;', (user_id,))
+        row = cur.fetchone()
+        completed = row[0] if row and row[0] is not None else {}
+
+        if book_name not in completed:
+            completed[book_name] = []
+
+        if insight_id in completed[book_name]:
+            completed[book_name].remove(insight_id)
+            action = "removed"
+        else:
+            completed[book_name].append(insight_id)
+            action = "added"
+
+        cur.execute(
+            'UPDATE "user" SET completed_insights = %s WHERE id = %s;',
+            (Json(completed), user_id)
+        )
+        conn.commit()
+
+        return {"message": f"Insight {action} from completed list"}
+
+    except Exception as e:
+        print("Error:", e)
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(e))
+
+    finally:
+        cur.close()
+        conn.close()
+
+@router.get("/completed/insights/{user_id}/{book_name}")
+def get_completed_insights(user_id: int, book_name: str):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="DB connection failed")
+    
+    cur = conn.cursor()
+    try:
+        cur.execute('SELECT completed_insights FROM "user" WHERE id = %s;', (user_id,))
+        row = cur.fetchone()
+        completed = row[0] if row and row[0] is not None else {}
+
+        insights = completed.get(book_name, [])
+
+        return {"insights": insights}
+
+    except Exception as e:
+        print("Error:", e)
+        raise HTTPException(status_code=400, detail=str(e))
 
     finally:
         cur.close()

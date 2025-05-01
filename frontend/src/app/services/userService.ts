@@ -82,3 +82,29 @@ export async function getFavouriteInsights(userId: number, category?: string[]) 
 
     return response.data.insights;
 }
+
+export const getCompletedInsights = async (userId: number, bookName: string) => {
+    try {
+        const response = await axios.get(`${API}/completed/insights/${userId}/${bookName}`);
+        return response.data.insights; // this will be an array of insight IDs
+    } catch (error) {
+        console.error("Failed to fetch completed insights:", error);
+        throw error;
+    }
+};
+
+export const addCompletedInsight = async (userId: number, bookName: string, insightId: number) => {
+    try {
+        const response = await axios.post(
+            `${API}/complete/insight/${userId}`,
+            {
+                book_name: bookName,
+                insight_id: insightId
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Failed to add completed insight", error);
+        throw error;
+    }
+}

@@ -1,16 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { getStepDetails } from "@/app/services/bookService";
+import { addCompletedInsight } from "@/app/services/userService";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 
 export default function StepPage() {
-    const { stepId } = useParams();
+    const { title, stepId } = useParams();
+    const searchParams = useSearchParams(); // not destructured
+    const isCompleted = searchParams.get('isCompleted') === 'true';
+    const userId = searchParams.get('user_id');
     const [stepDetails, setStepDetails] = useState(null);
     const [error, setError] = useState(null);
 
+    const handleAddInsight = async () => {
+        try {
+            const res = await addCompletedInsight(userId, title, stepId);
+            console.log(res.message); // "Insight added to completed list"
+        } catch (err) {
+            alert("Failed to mark insight as completed");
+        }
+    };
 
     useEffect(() => {
         if (!stepId) return;
@@ -49,6 +61,15 @@ export default function StepPage() {
             >
                 {JSON.parse(stepDetails?.detailed_breakdown)}
             </ReactMarkdown >
+            <label class="inline-flex items-center space-x-2 cursor-pointer">
+                <input type="checkbox" class="peer hidden" onClick={() => handleAddInsight()} />
+                <div class="w-5 h-5 rounded-full border-2 border-gray-300 peer-checked:bg-blue-600 peer-checked:border-blue-600 transition duration-300 flex items-center justify-center">
+                    <svg class="w-3 h-3 text-white hidden peer-checked:block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <span class="text-gray-700">Mark as completed</span>
+            </label>
             {/* <div className="mt-4">
                 <h2 className=" text-gray-600 ">Example</h2>
                 <p className="mt-1  text-xl text-gray-800">{stepDetails.example}</p>
