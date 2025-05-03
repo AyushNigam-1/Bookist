@@ -36,33 +36,46 @@ export const getProfile = async (email: string) => {
     return res.data;
 };
 
-export const addFavouriteBook = async (email: string, book_id: number) => {
-    const res = await axios.post(`${API}/favourite/book/add`, {
-        email,
-        book_id,
-    });
-    return res.data;
+export const toggleFavouriteBook = async (userId: number, bookId: number) => {
+    console.log(userId, bookId)
+    try {
+        const res = await axios.post(`${API}/favourite/book/${userId}/${bookId}`);
+        return res.data.favourite_books;
+    } catch (error) {
+        console.error('Error toggling favourite book:', error);
+        throw error;
+    }
 };
 
-export const removeFavouriteBook = async (email: string, book_id: number) => {
-    const res = await axios.post(`${API}/favourite/book/remove`, {
-        email,
-        book_id,
-    });
-    return res.data;
+export const getFavouriteBooks = async (userId: number) => {
+    try {
+        const res = await axios.get(`${API}/favourite/book/${userId}`);
+        return res.data.favourite_books;
+    } catch (error) {
+        console.error('Error fetching favourite books:', error);
+        throw error;
+    }
 };
 
-export const addFavouriteInsight = async (
-    user_id: number,
-    insight: { id: number; category: string, description: string }
-) => {
-    console.log("called")
-    const res = await axios.post(`${API}/favourite/insight/add`, {
-        user_id,
-        insight,
-    });
-    return res.data;
+export const addFavouriteInsight = async (userId: number, insight: {
+    id: number;
+    category: string;
+    description: string
+    icon: string;
+}) => {
+    try {
+        console.log(userId, insight)
+        const response = await axios.post(`${API}/favourite/insight/add`, {
+            user_id: userId,
+            insight: insight
+        });
+        console.log(response)
+        return response.data;
+    } catch (error: any) {
+        throw new Error(error.response?.data?.detail || 'Failed to add favourite insight');
+    }
 };
+
 
 
 export async function getFavouriteCategories(userId: number) {

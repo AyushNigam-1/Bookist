@@ -1,6 +1,6 @@
 "use client";
 
-import { addFavouriteInsight, getFavouriteCategories, getFavouriteInsights } from '@/app/services/userService';
+import { addFavouriteInsight, getCompletedInsights, getFavouriteCategories, getFavouriteInsights, toggleFavouriteBook } from '@/app/services/userService';
 import React, { use, useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar';
 import { Description, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
@@ -33,12 +33,19 @@ const page = () => {
     const [categories, setCategories] = useState<Categories[]>([])
     const [isOpen, setIsOpen] = useState(false)
     const [shareModal, setShareModal] = useState(false)
-    // const [user, setUser] = useState<any>({})
-    const user = JSON.parse(localStorage.getItem("user") || "{}")
+    const [user, setUser] = useState<any>({})
+    // const user = JSON.parse(localStorage.getItem("user") || "{}")
 
     useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
         const fetchCategories = async () => {
             const categories = await getFavouriteCategories(user.user_id)
+            //  const completedInsights = await getCompletedInsights(user.user_id, params.title);
+            // console.log(completedInsights)
+            // setCompletedInsights(completedInsights)
             setCategories(categories)
             setFilteredCategories(categories)
         }
@@ -60,6 +67,7 @@ const page = () => {
                     user.user_id,
                     selectedCategory.length ? selectedCategory.map(cat => cat.name) : []
                 )
+                console.log("Insights", data)
                 setInsights(data)
                 setFilteredInsights(data)
 
@@ -74,7 +82,7 @@ const page = () => {
         try {
             let desc = categories.find((cate) => cate.name === category)?.description
             console.log(desc, id, category)
-            await addFavouriteInsight(user.user_id, { id, category, description: desc ? desc : "" })
+            await addFavouriteInsight(user.user_id, { id, category, description: desc ? desc : "", icon: "" })
             setFilteredInsights(filteredInsights.filter((insight) => insight.id !== id))
             setInsights(insights.filter((insight) => insight.id !== id))
             toast.error('Bookmark Removed', {
@@ -92,6 +100,7 @@ const page = () => {
             console.error("Bookmarking failed:", err.message)
         }
     }
+
     return (
         <div>
             <div className="sticky top-0 w-full bg-gray-100 z-10 h-14 md:h-20">

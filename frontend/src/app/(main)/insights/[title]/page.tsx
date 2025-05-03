@@ -1,15 +1,16 @@
 "use client"
 import SearchBar from '@/app/(main)/components/SearchBar';
-import { addFavouriteInsight, getBookContentKeys, getBookContentValue } from '@/app/services/bookService';
+import { getBookContentKeys, getBookContentValue } from '@/app/services/bookService';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Loader from '@/app/(main)/components/Loader';
 import Slider from "@/app/(main)/components/Slider"
-import { getCompletedInsights, getFavouriteIds } from '@/app/services/userService';
+import { addFavouriteInsight, getCompletedInsights, getFavouriteIds } from '@/app/services/userService';
 import ShareModal from '../../components/ShareModal';
 import CategoryDialog from '../../components/CategoryDialog';
 import { Slide, toast, ToastContainer } from 'react-toastify';
+import ProgressBar from '../../components/ProgressBar';
 interface StepData {
     step: string;
     category: string;
@@ -33,25 +34,29 @@ export default function Page() {
     const [selectedCategory, setSelectedCategory] = useState<Categories[]>([])
     const [filteredBooks, setFilteredBooks] = useState<StepData[]>([])
     const [filteredCategories, setFilteredCategories] = useState<Categories[]>([])
-    const [bookmarked, setBookmarked] = useState<number[]>([])
+    const [bookmarks, setBookmarkes] = useState<number[]>([])
     const [mode, setMode] = useState("List")
     const [isOpen, setIsOpen] = useState(false)
     const [shareModal, setShareModal] = useState(false)
     const [shareUrl, setShareUrl] = useState("")
+    const [user, setUser] = useState<any>()
     const [completedInsights, setCompletedInsights] = useState<string[]>([])
-    const user = JSON.parse(localStorage.getItem("user") || "{}")
+    // const user = JSON.parse(localStorage.getItem("user") || "{}")
 
     useEffect(() => {
-
-        const getBookmarkedIds = async () => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+        const getbookmarksIds = async () => {
             if (!params?.title) return
-            const bookmarkedIds = await getFavouriteIds(user.user_id)
+            const bookmarksIds = await getFavouriteIds(user.user_id)
             const completedInsights = await getCompletedInsights(user.user_id, params.title);
             console.log(completedInsights)
             setCompletedInsights(completedInsights)
-            setBookmarked(bookmarkedIds)
+            setBookmarkes(bookmarksIds)
         }
-        getBookmarkedIds()
+        getbookmarksIds()
     }, [])
 
     useEffect(() => {
@@ -97,14 +102,14 @@ export default function Page() {
         setIsOpen(false)
     }
 
-    const handleAdd = async (id: number, category: string) => {
+    const handleAdd = async (id: number, category: string, icon: string) => {
         try {
             let desc = categories.find((cate) => cate.name === category)?.description
             console.log(id, category, desc, user.user_id)
-            await addFavouriteInsight(user.user_id, { id, category, description: desc ? desc : "" })
+            await addFavouriteInsight(user.user_id, { id, category, description: desc ? desc : "", icon })
 
-            if (!bookmarked.includes(id)) {
-                setBookmarked((bookmarks) => ([...bookmarks, id]))
+            if (!bookmarks.includes(id)) {
+                setBookmarkes((bookmarks) => ([...bookmarks, id]))
                 toast.success('Bookmark Added', {
                     position: "top-center",
                     autoClose: 3000,
@@ -118,7 +123,7 @@ export default function Page() {
                 });
             }
             else {
-                setBookmarked((bookmarks) => bookmarks.filter((bookmark) => bookmark !== id))
+                setBookmarkes((bookmarks) => bookmarks.filter((bookmark) => bookmark !== id))
                 toast.error('Bookmark Removed', {
                     position: "top-center",
                     autoClose: 3000,
@@ -182,9 +187,11 @@ export default function Page() {
                     </div>
 
                     <div className=''>
-                        <div className='md:flex gap-3' >
+                        <div className='flex gap-3' >
+                            <ProgressBar completed={completedInsights.length} total={steps.length} />
                             <SearchBar responsive={true} data={steps} propertyToSearch='step' setFilteredData={setFilteredBooks} />
                             <div className='flex flex-col gap-3 md:relative fixed right-0 m-4 md:m-0 bottom-0' >
+
                                 <button onClick={() => setIsOpen(true)} className=" p-3 font-semibold  bg-gradient-to-r text-white bg-gray-700  shadow cursor-pointer rounded-full  flex gap-2 items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
@@ -207,7 +214,7 @@ export default function Page() {
                     {steps ? (
                         <div className="columns-1 md:columns-2 lg:columns-3 gap-3 space-y-3 md:gap-4 md:space-y-4" >
                             {filteredBooks.map((step, index) => (
-                                <div className='relative rounded-2xl   ' key={`${step.step_id}-${bookmarked.includes(step.step_id)}`} >
+                                <div className='relative rounded-2xl   ' key={`${step.step_id}-${bookmarks.includes(step.step_id)}`} >
                                     <div className={`rounded-2xl h-full col-span-1 p-3 flex-col flex gap-4 break-inside-avoid bg-gray-200 `}  >
                                         <Link href={{
                                             pathname: `/insight/${params.title}/${step?.category}/${step.step_id}`,
@@ -261,10 +268,10 @@ export default function Page() {
 
                                             <div className='flex gap-4 items-center'>
 
-                                                <button onClick={() => handleAdd(step.step_id, step.category)}
+                                                <button onClick={() => handleAdd(step.step_id, step.category, step.icon)}
                                                     type="button"
-                                                    className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold ${bookmarked.includes(step.step_id) ? 'outline-gray-800 outline-1 text-gray-500' : ''} `}
-                                                >{bookmarked.includes(step.step_id) ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                                                    className={`text-gray-600 bg-gray-100  focus:outline-none rounded-full p-2 w-min  font-semibold ${bookmarks.includes(step.step_id) ? 'outline-gray-800 outline-1 text-gray-500' : ''} `}
+                                                >{bookmarks.includes(step.step_id) ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5" />
                                                 </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />

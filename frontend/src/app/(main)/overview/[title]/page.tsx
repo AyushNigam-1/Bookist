@@ -4,24 +4,49 @@ import { getBookInfoByTitle } from "@/app/services/bookService";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import ShareModal from "../../components/ShareModal";
+import Loader from "../../components/Loader";
+import { toggleFavouriteBook } from "@/app/services/userService";
 
 const Overview = () => {
     const [book, setBook] = useState<any>(null);
     const params = useParams<{ title?: string }>();
     const [isOpen, setIsOpen] = useState(false);
+    const [isloading, setIsLoading] = useState(false);
+    const [user, setUser] = useState<any>(null)
+    // const user = JSON.parse(localStorage.getItem("user") || "{}")
+
     useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
         const getBook = async () => {
             if (!params.title) return
+            setIsLoading(true)
             const bookInfo = await getBookInfoByTitle(params?.title)
             if (bookInfo) {
                 console.log(bookInfo)
                 setBook(bookInfo);
             }
+            setIsLoading(false)
         }
         getBook()
     }, []);
+    const bookmarkBook = async (bookId: number) => {
+        try {
+            const data = await toggleFavouriteBook(
+                user.user_id,
+                bookId
+            )
+            // console.log(data)
+
+        } catch (error) {
+            console.error("Error fetching steps:", error)
+        }
+    }
+    if (isloading) return <Loader />
     return (
-        <div className="flex flex-col gap-4  w-full py-4">
+        <div className="flex flex-col gap-4  w-full py-2 md:py-4">
             {/* <div className="absolute  h-64 bg-gray-100 rounded-2xl " ></div> */}
 
             <div className="flex flex-col md:flex-row relative gap-4 w-full "  >

@@ -16,14 +16,15 @@ def get_all_books():
     conn = connect_db()
     if conn:
         cur = conn.cursor()
-        cur.execute("SELECT title, author, thumbnail, description, category FROM book")
+        cur.execute("SELECT id, title, author, thumbnail, description, category FROM book")
         books = cur.fetchall()
         cur.close()
         conn.close()
 
         book_list = []
-        for title, author, thumbnail, description, category in books:
+        for id, title, author, thumbnail, description, category in books:
             book_list.append({
+                "id": id,
                 "title": title,
                 "author": author,
                 "thumbnail": thumbnail,

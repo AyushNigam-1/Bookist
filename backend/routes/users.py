@@ -209,11 +209,11 @@ def add_fav_insight(
         cat = insight["category"]
         step_id = insight["id"]
         desc = insight["description"]
+        icon = insight["icon"]
 
         # If category not present, create with description and empty insights list
         if cat not in favs:
-            favs[cat] = {"description": desc, "insights": []}
-
+            favs[cat] = {"description": desc, "insights": [],"icon": icon}
         # update description (in case it changes)
         favs[cat]["description"] = desc
         arr = favs[cat]["insights"]
@@ -278,7 +278,7 @@ def get_fav_insights(
     user_id: int ,
     category: List[str] = Body(...) ,
 ):
-    print("user_id", user_id)
+    print("user_id lol", user_id)
     conn = connect_db()
     if not conn:
         raise HTTPException(500, "DB connection failed")
@@ -307,9 +307,11 @@ def get_fav_insights(
             cur.execute(query, tuple(ids))
             rows = cur.fetchall()
             for row in rows:
+                print(row)
                 item = dict(zip([desc[0] for desc in cur.description], row))
                 item["category"] = cat
                 item["description"] = cat_obj.get("description", "")
+                item['icon'] = cat_obj.get("icon", "")
                 result.append(item)
 
         return {"insights": result}
@@ -385,6 +387,56 @@ def get_completed_insights(user_id: int, book_name: str):
     except Exception as e:
         print("Error:", e)
         raise HTTPException(status_code=400, detail=str(e))
+
+    finally:
+        cur.close()
+        conn.close()
+
+@router.post("/favourite/book/{user_id}/{book_id}")
+def toggle_favourite_book(user_id: int, book_id: int ):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(status_code=500, detail="DB connection failed")
+
+    cur = conn.cursor()
+    try:
+        cur.execute('SELECT favourite_books FROM "user" WHERE id = %s;', (user_id,))
+        row = cur.fetchone()
+        books = row[0] if row and row[0] is not None else []
+
+        if book_id in books:
+            books.remove(book_id)
+        else:
+            books.append(book_id)
+
+        cur.execute(
+            'UPDATE "user" SET favourite_books = %s WHERE id = %s;',
+            (books, user_id)
+        )
+        conn.commit()
+        return {"message": "Favourite books updated","favourite_books": books}
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(e))
+    finally:
+        cur.close()
+        conn.close()
+
+
+@router.get("/favourite/book/{user_id}")
+def get_favourite_books(user_id: int):
+    conn = connect_db()
+    if not conn:
+        raise HTTPException(500, "DB connection failed")
+    cur = conn.cursor()
+
+    try:
+        cur.execute('SELECT favourite_books FROM "user" WHERE id = %s;', (user_id,))
+        row = cur.fetchone()
+        return {"favourite_books": row[0] if row and row[0] else []}
+
+    except Exception as e:
+        raise HTTPException(400, detail=str(e))
 
     finally:
         cur.close()
