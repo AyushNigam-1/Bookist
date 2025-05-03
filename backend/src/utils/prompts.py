@@ -45,36 +45,40 @@ import json
 
 def step_extraction_prompt(text_chunk):
     markdown_example = """\
+\
 ### 📌 Why This Matters
-- Explanation of its real-world importance.
+- The deep psychological, emotional, or practical reason this step truly matters in life or decision-making.
+
+### 🔍 Hidden Insight
+- A counterintuitive truth or uncommon mental shift that most people overlook but makes a big difference.
 
 ### 🚀 How to Apply
-- Step 1: Do this
-- Step 2: Do that
+- Step-by-step actions with psychological precision. Include real-life framing, cues, or habit triggers.
 
-### ⚠️ Common Mistake
-- A common mistake people make.
+### ⚠️ Common Trap
+- A mental bias, emotional block, or subtle mistake people usually fall into when trying this.
 
-### ⚡ Instant Step
-- One quick action to reinforce this step.
+### ⚡ Instant Action
+- One thing the reader can do *right now* to experience even 1% benefit from this idea.
 
-### 🧠 Memory Hack
-- A short and effective trick to remember this."""
+### 🧠 Memory Hook
+- A unique metaphor, phrase, or visual anchor to lock this idea into long-term memory."""
 
     prompt = f"""
-  Extract only the **most practical, instantly actionable, and high-impact steps** from the following text in **JSON format**.  
+Extract only the **most rare, psychologically deep, life-changing, and actionable insights** from the following text as **structured JSON**.
 
-    Each step must be **clear, easy to apply, and highly relevant to real life**.  
+Do NOT extract generic tips, surface-level observations, or common knowledge. Only include insights that show **clear thinking**, **original application**, or **behavioral transformation**.
 
-    **Each extracted step must include:**
-    - **Step (Actionable & Clear Title)** → A short, direct name that defines the action.  
-    - **Description (Simple & Concise Explanation)** → A clear and **straightforward** explanation of what this step means.  
-    - **detailed_breakdown (Double-Encoded Markdown String)** → A **JSON string** containing a markdown block:  
-        - 📌 **Why This Matters**: The real-world importance of this step.  
-        - 🚀 **How to Apply**: A clear step-by-step guide for implementation.  
-        - ⚠️ **Common Mistake**: A frequent mistake to avoid.  
-        - ⚡ **Instant Step**: A small, immediate action for reinforcement.  
-        - 🧠 **Memory Hack**: A short, effective trick (e.g., visualization, habit cue, or mental trigger) for better retention.  
+Each step must include:
+- **step**: A short, psychologically impactful title (not generic verbs). E.g., “Reframe the Failure Signal”, “Anchor Success to Identity”.
+- **description**: A brutally clear explanation of what this means, using simple but powerful words.
+- **detailed_breakdown** (as a double-encoded JSON markdown block) including:
+    - 📌 **Why This Matters** – Real-world significance, not fluff.
+    - 🔍 **Hidden Insight** – A non-obvious truth or insight most people miss.
+    - 🚀 **How to Apply** – Step-by-step application, using behavior, cues, or framing.
+    - ⚠️ **Common Trap** – Mistakes tied to emotion, bias, or misunderstanding.
+    - ⚡ **Instant Action** – A quick action to prove the insight’s value immediately.
+    - 🧠 **Memory Hook** – Sticky, symbolic phrase or metaphor to remember this insight. 
 
     **JSON Output Example:**  
 

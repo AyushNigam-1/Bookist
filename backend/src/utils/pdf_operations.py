@@ -7,9 +7,9 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import DBSCAN
 
-def extract_text_from_pdf(pdf_path, chunk_size=5):
+def extract_text_from_pdf(pdf_path, chunk_size=3):
     doc = fitz.open(pdf_path)
-    pages = [page.get_text() for page in doc][:50]  
+    pages = [page.get_text() for page in doc][:30]  
     print(pages)
     return ["\n".join(pages[i:i+chunk_size]) for i in range(0, len(pages), chunk_size)]
 
