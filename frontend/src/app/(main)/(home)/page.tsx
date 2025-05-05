@@ -77,6 +77,7 @@ const Page = () => {
             )
             // console.log(data)
             setBookmarkedBooks(data)
+            
         } catch (error) {
             console.error("Error fetching steps:", error)
         }

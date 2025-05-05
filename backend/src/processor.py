@@ -27,15 +27,17 @@ class BookistProcessor:
         }
     
     def process(self):
-        text_chunks = extract_text_from_pdf(self.pdf_path, self.chunk_size)
-        for chunk in text_chunks:
-            extracted_steps = extract_actionable_steps(self.folder_path, self.model, chunk)
-            categorized_steps = categorize_steps(self.folder_path, extracted_steps,self.metadata["Category"], self.model)
-        #     order_hierarchy(self.folder_path, categorized_steps, self.model)
-        file = load_json_file(self.pdf_name,"categorized_steps.json",{})
-        self.metadata["Content"] = file
-        save_json_file(self.pdf_name,"final_result.json",self.metadata)
-        return self.metadata
+        print("processed called")
+        text_chunks = extract_text_from_pdf(self.pdf_path)
+        print(text_chunks)
+        # for chunk in text_chunks:
+        #     extracted_steps = extract_actionable_steps(self.folder_path, self.model, chunk)
+        #     categorized_steps = categorize_steps(self.folder_path, extracted_steps,self.metadata["Category"], self.model)
+        # #     order_hierarchy(self.folder_path, categorized_steps, self.model)
+        # file = load_json_file(self.pdf_name,"categorized_steps.json",{})
+        # self.metadata["Content"] = file
+        # save_json_file(self.pdf_name,"final_result.json",self.metadata)
+        # return self.metadata
     
         
 
