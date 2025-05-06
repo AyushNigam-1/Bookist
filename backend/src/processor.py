@@ -1,7 +1,7 @@
 import os
 import json
 from langchain_groq import ChatGroq
-from src.utils.pdf_operations import extract_text_from_pdf
+from src.utils.pdf_operations import extract_text_from_pdf , markdown_to_json
 from src.components.step_extraction import extract_actionable_steps
 from src.components.categorization import categorize_steps
 from src.components.hierarchy import order_hierarchy
@@ -28,8 +28,10 @@ class BookistProcessor:
     
     def process(self):
         print("processed called")
-        text_chunks = extract_text_from_pdf(self.pdf_path)
-        print(text_chunks)
+        markdown_path = extract_text_from_pdf(self.pdf_path)
+        _json = markdown_to_json(markdown_path)
+
+        # print(text_chunks)
         # for chunk in text_chunks:
         #     extracted_steps = extract_actionable_steps(self.folder_path, self.model, chunk)
         #     categorized_steps = categorize_steps(self.folder_path, extracted_steps,self.metadata["Category"], self.model)

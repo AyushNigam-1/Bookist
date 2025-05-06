@@ -15,3 +15,5 @@ unstructured
 pi_heif
 unstructured_inference
 pdf2image
+markitdown-mcp
+langchain_mcp_adapters
