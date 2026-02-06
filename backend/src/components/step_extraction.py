@@ -1,6 +1,6 @@
 import time
-from langchain.schema import HumanMessage
-from src.utils.pdf_operations import extract_json_from_markdown
+from langchain_core.messages import HumanMessage
+from src.utils.pdf_operations import markdown_to_json
 from src.utils.file_operations import save_json_file, load_json_file
 from src.utils.prompts import step_extraction_prompt
 from src.components.duplicate_removel import remove_duplicate_steps
@@ -11,7 +11,7 @@ def extract_actionable_steps(folder_path, model, text_chunk, max_retries=5, base
         try:
             prompt = step_extraction_prompt(text_chunk)
             response = model.invoke([HumanMessage(content=prompt)])
-            new_data = extract_json_from_markdown(response.content)
+            new_data = markdown_to_json(response.content)
 
             if not isinstance(new_data, dict) or "steps" not in new_data or not isinstance(new_data["steps"], list):
                 raise ValueError("Invalid response format: Expected a dictionary with a 'steps' list.")

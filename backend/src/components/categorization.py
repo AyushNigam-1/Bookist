@@ -1,6 +1,6 @@
 import time
-from langchain.schema import HumanMessage
-from src.utils.pdf_operations import extract_json_from_markdown
+from langchain_core.messages import HumanMessage
+from src.utils.pdf_operations import markdown_to_json
 from src.utils.file_operations import save_json_file, load_json_file
 from src.utils.prompts import categorization_prompt
 
@@ -26,7 +26,7 @@ def categorize_steps(folder_path, actionable_steps, categories, model, max_retri
 
             prompt = categorization_prompt(subcategories.keys(), steps_only)
             response = model.invoke([HumanMessage(content=prompt)])
-            new_categories = extract_json_from_markdown(response.content)
+            new_categories = markdown_to_json(response.content)
 
             if not isinstance(new_categories, dict):
                 raise ValueError("Categorization response is not a valid dictionary.")

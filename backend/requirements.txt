@@ -1,19 +1,24 @@
-faiss-cpu
+# fastapi
+# uvicorn 
+# psycopg2-binary
+# langchain_groq
+# pymupdf
+# markdown-it-py
+
+# faiss-cpu
 pymupdf
 langchain
 langchain_community
 langchain_groq
 markdown-it-py
-fastapi
-uvicorn 
 psycopg2-binary
 python-multipart
-sentence-transformers
+# sentence-transformers
 python-jose[cryptography]
 passlib[bcrypt]
-unstructured 
-pi_heif
-unstructured_inference
+# unstructured 
+# pi_heif
+# unstructured_inference
 pdf2image
-markitdown-mcp
+# markitdown-mcp
 langchain_mcp_adapters

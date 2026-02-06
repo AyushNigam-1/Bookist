@@ -1,29 +1,34 @@
-from sentence_transformers import SentenceTransformer
-from sklearn.cluster import DBSCAN
-from src.utils.file_operations import load_json_file , save_json_file
-
-def extract_steps(data):
-    return [step_obj['step'] for step_obj in data['steps']]
-
-def deduplicate_steps(steps, model, eps=0.4, min_samples=1):
-    embeddings = model.encode(steps, normalize_embeddings=True)
-    clustering = DBSCAN(eps=eps, min_samples=min_samples, metric='cosine').fit(embeddings)
-    unique_steps = {}
-    for i, label in enumerate(clustering.labels_):
-        if label not in unique_steps:
-            unique_steps[label] = steps[i]
-    return list(unique_steps.values())
-
-def filter_original_data(data, unique_steps):
-    data['steps'] = [step_obj for step_obj in data['steps'] if step_obj['step'] in unique_steps]
-    return data
-
-def remove_duplicate_steps(folder_name , file_name ):
-    model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-    data = load_json_file(folder_name,file_name , [])
-    steps = extract_steps(data)
-    unique_steps = deduplicate_steps(steps, model)
-    cleaned_data = filter_original_data(data, unique_steps)
-    save_json_file(folder_name , file_name , cleaned_data)
+import numpy as np
+from langchain_ollama import OllamaEmbeddings
 
 
+# Lightweight local embeddings via Ollama
+embeddings = OllamaEmbeddings(model="nomic-embed-text")
+
+
+def cosine(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+
+def remove_duplicate_steps(steps, threshold=0.75):
+    if not steps:
+        return []
+
+    vectors = embeddings.embed_documents(steps)
+
+    kept_vectors = []
+    kept_texts = []
+
+    for i, vec in enumerate(vectors):
+        is_dup = False
+
+        for kv in kept_vectors:
+            if cosine(vec, kv) > threshold:
+                is_dup = True
+                break
+
+        if not is_dup:
+            kept_vectors.append(vec)
+            kept_texts.append(steps[i])
+
+    return kept_texts

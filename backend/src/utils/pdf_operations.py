@@ -1,50 +1,97 @@
 import fitz
 import json
-from markdown_it import MarkdownIt
 import re
-import faiss
 import numpy as np
-from sentence_transformers import SentenceTransformer
-from sklearn.cluster import DBSCAN
+from markdown_it import MarkdownIt
+
+# NEW Ollama import (no deprecation)
+from langchain_ollama import OllamaEmbeddings
+
+
+# -------------------------------
+# Ollama Embeddings (nomic)
+# -------------------------------
+
+embeddings = OllamaEmbeddings(model="nomic-embed-text")
+
+
+# -------------------------------
+# PDF
+# -------------------------------
 
 def extract_text_from_pdf(pdf_path, chunk_size=3):
     doc = fitz.open(pdf_path)
-    pages = [page.get_text() for page in doc][:30]  
-    print(pages)
-    return ["\n".join(pages[i:i+chunk_size]) for i in range(0, len(pages), chunk_size)]
+    pages = [page.get_text() for page in doc][:30]
 
-def extract_json_from_markdown(markdown_text):
+    return [
+        "\n".join(pages[i:i + chunk_size])
+        for i in range(0, len(pages), chunk_size)
+    ]
+
+
+# -------------------------------
+# Markdown → JSON
+# (renamed to match imports)
+# -------------------------------
+
+def markdown_to_json(markdown_text):
     md = MarkdownIt()
     tokens = md.parse(markdown_text)
 
     for token in tokens:
-        if token.type == "fence" :
-            content = token.content.strip()  
-            content = clean_json_string(content)  # Clean the extracted JSON
+        if token.type == "fence":
+            content = clean_json_string(token.content)
 
             try:
                 return json.loads(content)
             except json.JSONDecodeError as e:
-                raise ValueError(f"Invalid JSON format: {e}\nRaw JSON: {repr(content)}")
+                raise ValueError(f"Invalid JSON: {e}")
+
+    return None
+
 
 def clean_json_string(json_string):
-    json_string = json_string.replace("\t", " ")  # Remove tabs
-    json_string = json_string.replace("\r", "")  # Remove carriage returns
-    json_string = re.sub(r"[\x00-\x1F\x7F]", "", json_string)  # Remove hidden control characters
+    json_string = json_string.replace("\t", " ")
+    json_string = json_string.replace("\r", "")
+    json_string = re.sub(r"[\x00-\x1F\x7F]", "", json_string)
     return json_string.strip()
+
+
+# -------------------------------
+# Cosine similarity (safe)
+# -------------------------------
+
+def cosine(a, b):
+    denom = np.linalg.norm(a) * np.linalg.norm(b)
+    if denom == 0:
+        return 0.0
+    return np.dot(a, b) / denom
+
+
+# -------------------------------
+# Remove similar insights
+# Lightweight (no sklearn / torch)
+# -------------------------------
 
 def remove_similar_insights(insights, threshold=0.65):
     if not insights:
         return []
-    
-    model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-    embeddings = model.encode(insights)
 
-    clustering = DBSCAN(eps=1-threshold, min_samples=1, metric='cosine').fit(embeddings)
+    vectors = embeddings.embed_documents(insights)
 
-    unique_insights = {}
-    for i, label in enumerate(clustering.labels_):
-        if label not in unique_insights:
-            unique_insights[label] = insights[i]
-    
-    return list(unique_insights.values())
+    kept_vectors = []
+    kept_texts = []
+
+    for i, vec in enumerate(vectors):
+        duplicate = False
+
+        for kvec in kept_vectors:
+            if cosine(vec, kvec) > threshold:
+                duplicate = True
+                break
+
+        if not duplicate:
+            kept_vectors.append(vec)
+            kept_texts.append(insights[i])
+
+    return kept_texts

@@ -1,4 +1,4 @@
-from langchain.schema import HumanMessage
+from langchain_core.messages import HumanMessage
 from src.utils.file_operations import save_json_file
 from src.utils.prompts import hierarchy_prompt
 import json
